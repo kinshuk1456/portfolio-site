@@ -21,7 +21,7 @@ export function initChat(config = {}) {
     panel.hidden = true;
     panel.innerHTML = `
       <div class="chat-scrim" data-chat-close></div>
-      <div class="chat-card" role="document">
+      <div class="chat-card" role="document" data-lenis-prevent>
         <header class="chat-head">
           <div>
             <div class="label">Ask</div>
@@ -57,12 +57,14 @@ export function initChat(config = {}) {
     panel.hidden = false;
     requestAnimationFrame(() => { panel.classList.add('is-open'); inputEl.focus(); });
     document.documentElement.style.overflow = 'hidden';
+    if (window.__lenis) window.__lenis.stop();
   }
 
   function close() {
     if (!built) return;
     panel.classList.remove('is-open');
     document.documentElement.style.overflow = '';
+    if (window.__lenis) window.__lenis.start();
     setTimeout(() => { panel.hidden = true; }, 220);
     if (restoreFocus && restoreFocus.focus) restoreFocus.focus();
   }

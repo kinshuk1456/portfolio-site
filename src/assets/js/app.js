@@ -76,7 +76,7 @@ function setupReveal(root) {
   if (prefersReduced || !('IntersectionObserver' in window)) return;
 
   const targets = root.querySelectorAll(
-    '.hero, .section, .card, .timeline-item, .panel, .pager, .article-head, .article-cover, .prose > *, .gallery > *'
+    '.hero, .section, .card, .timeline-item, .panel, .pager, .article-head, .article-cover, .prose > *, .gallery > *, [data-reveal]'
   );
 
   targets.forEach((el) => {
@@ -99,6 +99,21 @@ function setupReveal(root) {
   }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
 
   targets.forEach((el) => io.observe(el));
+}
+
+// Smooth (inertia) scrolling via Lenis — progressive enhancement, code-split,
+// disabled under reduced motion. Exposes window.__lenis for the chat scroll-lock.
+function setupSmoothScroll() {
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  import('./vendor/lenis.mjs')
+    .then(({ default: Lenis }) => {
+      const lenis = new Lenis({ lerp: 0.11, smoothWheel: true, wheelMultiplier: 1 });
+      window.__lenis = lenis;
+      const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+    })
+    .catch(() => { /* smooth scroll is enhancement-only */ });
 }
 
 async function run() {
@@ -128,6 +143,7 @@ async function run() {
 
   // Progressive motion: quiet reveal of blocks on scroll (before first paint).
   setupReveal(document);
+  setupSmoothScroll();
 
   // Hero "Signal" interaction — code-split, only fetched on pages that have it.
   const heroCanvas = document.querySelector('.hero-signal');
