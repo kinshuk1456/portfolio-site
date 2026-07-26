@@ -25,6 +25,11 @@ export async function renderContact({ site }) {
             ${email ? `<div><div class="muted">Email</div><a href="mailto:${email}">${email}</a></div>` : ''}
             ${location ? `<div><div class="muted">Location</div><div>${escapeHtml(location)}</div></div>` : ''}
             ${site.contact?.calendlyUrl ? `<div><a class="btn btn-primary" href="${escapeHtml(site.contact.calendlyUrl)}" target="_blank" rel="noopener">Schedule time</a></div>` : ''}
+            <div>
+              <div class="muted" style="margin-bottom:8px;">Ask first</div>
+              <button class="btn btn-primary" type="button" data-action="open-chat">Ask my AI assistant</button>
+              <p class="muted" style="margin-top:10px; font-size:var(--text-sm); max-width:52ch;">Have a quick question about my experience, projects, or focus? Ask the assistant — it's grounded in my real work.</p>
+            </div>
             ${socials ? `<div><div class="muted" style="margin-bottom:8px;">Social</div><div class="button-row">${socials}</div></div>` : ''}
           </div>
         </div>

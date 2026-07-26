@@ -145,15 +145,13 @@ async function run() {
       .catch(() => { /* depth is enhancement-only */ });
   }
 
-  // "Ask about my work" assistant — code-split, opened from the sidebar or ⌘K.
-  if (site.chat?.enabled) {
+  // "Ask about my work" assistant — code-split. Opened from the button on the
+  // contact page only (no global sidebar entry / shortcut).
+  if (site.chat?.enabled && document.querySelector('[data-action="open-chat"]')) {
     import('./chat.js')
       .then((m) => {
         const chat = m.initChat(site.chat);
         document.querySelectorAll('[data-action="open-chat"]').forEach((b) => b.addEventListener('click', chat.open));
-        window.addEventListener('keydown', (e) => {
-          if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); chat.open(); }
-        });
       })
       .catch(() => { /* assistant is enhancement-only */ });
   }

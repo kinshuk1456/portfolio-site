@@ -83,10 +83,6 @@ export function renderSidebar(site, { currentPath = '' } = {}) {
         </div>
 
         <div class="side-actions" data-role="sidebar-utilities">
-          <button class="side-btn side-btn-ask" type="button" data-action="open-chat" aria-label="Ask about my work">
-            <span class="side-ic" aria-hidden="true">${ICONS.chat}</span>
-            <span class="side-label">Ask</span>
-          </button>
           <button class="side-btn side-btn-theme" type="button" data-action="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
             <span class="side-ic" aria-hidden="true">${ICONS.moon}</span>
             <span class="side-label">Theme</span>
