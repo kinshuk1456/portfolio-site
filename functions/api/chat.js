@@ -5,7 +5,9 @@
 // in PORTFOLIO_CONTEXT below. Set the key as an encrypted env var in the Cloudflare
 // Pages dashboard, then set site.json -> chat.endpoint to "/api/chat" and rebuild.
 //
-// Optional: bind a KV namespace named CHAT_RL for per-IP rate limiting (see README).
+// Hardened: the whole handler is wrapped so it never hard-crashes (no 502s). On any
+// failure it returns HTTP 200 with a graceful reply plus a `_debug` field describing
+// the cause (safe — never includes the API key).
 
 const PORTFOLIO_CONTEXT = `
 Kinshuk Agarwal — MBA candidate at UC Riverside, based in Riverside, California.
@@ -52,34 +54,46 @@ ${PORTFOLIO_CONTEXT}`;
 const MAX_MSG = 800;
 const MAX_HISTORY = 8;
 
+const jsonResponse = (obj, status = 200) =>
+  new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json' } });
+
+const UNAVAILABLE = 'The assistant is momentarily unavailable — please try again shortly, or email kinshuk.agarwal@email.ucr.edu.';
+
 export async function onRequestPost(context) {
+  try {
+    return await handle(context);
+  } catch (err) {
+    // Never 502. Surface the cause for debugging (no secrets).
+    return jsonResponse({ reply: UNAVAILABLE, _debug: 'handler_threw: ' + String((err && err.message) || err) });
+  }
+}
+
+async function handle(context) {
   const { request, env } = context;
-  const json = (obj, status = 200) =>
-    new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json' } });
 
   const key = env.GEMINI_API_KEY;
-  if (!key) return json({ error: 'server not configured' }, 500);
+  if (!key) return jsonResponse({ reply: UNAVAILABLE, _debug: 'no GEMINI_API_KEY' }, 200);
 
-  // Optional same-origin guard: block other sites embedding the endpoint.
   const allow = env.CHAT_ALLOW_ORIGIN;
   if (allow) {
     const origin = request.headers.get('Origin') || '';
-    if (origin && origin !== allow) return json({ reply: 'Request not allowed.' }, 403);
+    if (origin && origin !== allow) return jsonResponse({ reply: 'Request not allowed.' }, 403);
   }
 
-  // Optional KV rate limit (bind a KV namespace named CHAT_RL to enable).
   if (env.CHAT_RL) {
-    const ip = request.headers.get('CF-Connecting-IP') || 'x';
-    const k = `rl:${ip}`;
-    const n = parseInt((await env.CHAT_RL.get(k)) || '0', 10);
-    if (n >= 15) return json({ reply: 'You’ve sent a lot of questions in a short time — give it a minute.' }, 429);
-    await env.CHAT_RL.put(k, String(n + 1), { expirationTtl: 600 });
+    try {
+      const ip = request.headers.get('CF-Connecting-IP') || 'x';
+      const k = `rl:${ip}`;
+      const n = parseInt((await env.CHAT_RL.get(k)) || '0', 10);
+      if (n >= 15) return jsonResponse({ reply: 'You’ve sent a lot of questions in a short time — give it a minute.' }, 200);
+      await env.CHAT_RL.put(k, String(n + 1), { expirationTtl: 600 });
+    } catch { /* rate-limit is best-effort */ }
   }
 
   let body = {};
   try { body = await request.json(); } catch { /* empty */ }
-  let message = String(body.message || '').trim();
-  if (!message) return json({ reply: 'Ask me anything about Kinshuk’s work.' });
+  let message = String((body && body.message) || '').trim();
+  if (!message) return jsonResponse({ reply: 'Ask me anything about Kinshuk’s work.' });
   if (message.length > MAX_MSG) message = message.slice(0, MAX_MSG);
 
   const contents = [];
@@ -104,20 +118,32 @@ export async function onRequestPost(context) {
         generationConfig: { temperature: 0.4, maxOutputTokens: 400 },
       }),
     });
-  } catch {
-    return json({ reply: 'The assistant is unavailable right now. Please try again shortly.' }, 502);
+  } catch (err) {
+    return jsonResponse({ reply: UNAVAILABLE, _debug: 'fetch_threw: ' + String((err && err.message) || err) });
   }
-  if (!res.ok) return json({ reply: 'The assistant is unavailable right now. Please try again shortly, or email kinshuk.agarwal@email.ucr.edu.' }, 502);
 
-  const data = await res.json();
-  const reply = (data?.candidates?.[0]?.content?.parts?.[0]?.text || '').trim()
-    || "I'm not sure how to answer that from what I know about Kinshuk's work.";
-  return json({ reply });
+  const raw = await res.text();
+  if (!res.ok) {
+    return jsonResponse({ reply: UNAVAILABLE, _debug: `gemini_${res.status}: ` + raw.slice(0, 300) });
+  }
+
+  let data;
+  try { data = JSON.parse(raw); } catch (err) {
+    return jsonResponse({ reply: UNAVAILABLE, _debug: 'bad_json: ' + raw.slice(0, 200) });
+  }
+
+  const reply = (data && data.candidates && data.candidates[0] && data.candidates[0].content
+    && data.candidates[0].content.parts && data.candidates[0].content.parts[0]
+    && data.candidates[0].content.parts[0].text || '').trim();
+
+  if (!reply) {
+    const blocked = data?.promptFeedback?.blockReason || data?.candidates?.[0]?.finishReason || 'empty';
+    return jsonResponse({ reply: "I'm not sure how to answer that from what I know about Kinshuk's work.", _debug: 'no_text: ' + blocked });
+  }
+
+  return jsonResponse({ reply });
 }
 
-// Friendly response for accidental GETs.
 export function onRequestGet() {
-  return new Response(JSON.stringify({ ok: true, hint: 'POST { message, history } here.' }), {
-    headers: { 'Content-Type': 'application/json' },
-  });
+  return jsonResponse({ ok: true, hint: 'POST { message, history } here.' });
 }
