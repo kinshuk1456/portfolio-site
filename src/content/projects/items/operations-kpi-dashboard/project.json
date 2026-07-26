@@ -1,0 +1,49 @@
+{
+  "slug": "operations-kpi-dashboard",
+  "status": "published",
+  "featured": true,
+  "title": "Operations KPI Dashboard (Power BI)",
+  "date": "2025-12-01",
+  "summary": "Power BI dashboards that tracked operational KPIs and improved decision visibility across engineering and operations.",
+  "problem": "Operational performance data existed across multiple systems, which made it hard for stakeholders to quickly understand KPI health, diagnose issues, and prioritize workflow improvements.",
+  "approach": "Defined KPI requirements with stakeholders, wrote SQL queries (Snowflake + Redzone) to generate reliable views, and built Power BI dashboards designed for repeatable operational reviews.",
+  "tools": [
+    "Power BI",
+    "SQL",
+    "Snowflake",
+    "Redzone",
+    "Excel"
+  ],
+  "outcome": "Improved visibility into operational KPIs and enabled faster, more consistent data-driven discussions across teams.",
+  "role": "Data Analytics Intern",
+  "team": "Cross-functional (Engineering + Operations)",
+  "duration": "Aug 2025 — Dec 2025",
+  "links": [],
+  "tags": [
+    "KPI Analysis",
+    "Data Visualization",
+    "Stakeholder Management",
+    "Process Optimization",
+    "Data-Driven Decision Making"
+  ],
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": [
+      "gallery/01.svg",
+      "gallery/02.svg"
+    ],
+    "alt": {
+      "gallery/cover.svg": "Operations KPI dashboard cover",
+      "gallery/01.svg": "KPI trend view and operational drill-down",
+      "gallery/02.svg": "Workflow inefficiency signals and breakdown"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "disciplines": [
+    "Analytics",
+    "Forward Deployed"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "slug": "habitpact",
+  "status": "published",
+  "featured": true,
+  "title": "HabitPact",
+  "date": "2026-06-01",
+  "summary": "A behavioral-accountability mobile app that helps people follow through on their goals by attaching real consequences — financial, social, and device-based — to the commitments they make.",
+  "problem": "Most habit apps track what you do. HabitPact adds a reason to actually do it. Users set a goal (fitness, studying, productivity), commit to it, and stake something on follow-through — a financial penalty, an accountability partner who gets notified, or a device restriction that limits distractions until the commitment is met. The bet: consequences move behavior in a way streak counters alone don't.",
+  "approach": "Owned the product end to end — vision, user journeys, spec, and roadmap — from whiteboard concept to a working prototype. Built cross-platform in Flutter, using AI-assisted development (Claude, ChatGPT) across requirements, prototyping, and debugging to ship quickly. Feature set was prioritized against market and competitive research of habit-tracking and commitment-device tools.",
+  "tools": [
+    "Flutter",
+    "Firebase Auth",
+    "Cloud Firestore",
+    "Cloud Functions"
+  ],
+  "outcome": "Working prototype: demoable and beta-ready. Built solo, 0-to-1, from whiteboard to a shippable cross-platform app.",
+  "role": "Founder & Product Lead",
+  "team": "Solo",
+  "duration": "2026 · Ongoing",
+  "links": [
+    {
+      "label": "Request a Demo",
+      "url": "mailto:kinshuk.agarwal@email.ucr.edu?subject=HabitPact%20Demo%20Request"
+    }
+  ],
+  "tags": [
+    "Flutter",
+    "Mobile",
+    "Behavioral Design",
+    "0-to-1",
+    "Product"
+  ],
+  "images": {
+    "cover": "gallery/cover.png",
+    "gallery": [
+      "gallery/01.jpeg",
+      "gallery/02.jpeg",
+      "gallery/03.jpeg"
+    ],
+    "alt": {
+      "gallery/cover.png": "HabitPact branded hero — 'Accountability that makes goals stick' with a phone mockup showing a 21-day streak and completed habits",
+      "gallery/01.jpeg": "HabitPact app splash screen showing the HP logo and tagline 'Accountability that sticks'",
+      "gallery/02.jpeg": "HabitPact Chats screen — social accountability hub with direct messaging and group creation",
+      "gallery/03.jpeg": "HabitPact Pacts screen — an active 14-day workout commitment with a $10 stake at 100% progress, awaiting proof submission"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "disciplines": [
+    "Product",
+    "Engineering"
+  ]
+}

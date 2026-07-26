@@ -1,0 +1,16 @@
+{
+  "slug": "trail-notes-reset",
+  "type": "life",
+  "status": "published",
+  "featured": true,
+
+  "title": "Trail Notes: My Reset Routine",
+  "date": "2026-03-03",
+  "category": "Routines",
+  "tags": ["Routine", "Gym", "Reflection"],
+
+  "summary": "When work gets noisy, I go back to a simple loop: move, lift, write, plan. It keeps me grounded.",
+
+  "coverImage": "cover.svg",
+  "contentPath": "content.md"
+}

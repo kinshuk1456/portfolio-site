@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0b1020"/>
+  <text x="80" y="120" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="40" font-weight="700">Inefficiency Signals</text>
+  <text x="80" y="162" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">Placeholder image</text>
+  <rect x="80" y="210" width="1040" height="385" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <g transform="translate(140,280)">
+    <rect width="920" height="34" rx="16" fill="#111f33"/>
+    <rect y="70" width="760" height="34" rx="16" fill="#111f33"/>
+    <rect y="140" width="560" height="34" rx="16" fill="#111f33"/>
+    <rect y="210" width="820" height="34" rx="16" fill="#111f33"/>
+    <rect y="280" width="640" height="34" rx="16" fill="#111f33"/>
+    <rect width="920" height="34" rx="16" fill="#2dd4bf" opacity="0.22"/>
+  </g>
+</svg>

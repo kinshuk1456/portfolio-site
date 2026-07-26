@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0b1020"/>
+  <text x="80" y="120" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="40" font-weight="700">Capstone Overview</text>
+  <text x="80" y="164" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">Placeholder — swap in your real deck slides or diagrams</text>
+  <g transform="translate(80,220)">
+    <rect width="1040" height="360" rx="18" fill="#111f33" stroke="#2a3a57"/>
+    <text x="40" y="80" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Problem → TODO</text>
+    <text x="40" y="140" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Approach → TODO</text>
+    <text x="40" y="200" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Analysis → TODO</text>
+    <text x="40" y="260" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Recommendation → TODO</text>
+    <text x="40" y="320" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Outcome → TODO</text>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#3a2a12"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <text x="96" y="160" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="46" font-weight="700">Travel</text>
+  <text x="96" y="210" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">Small wins and good coffee</text>
+  <rect x="96" y="270" width="1008" height="310" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <g transform="translate(150,340)" fill="#f59e0b" opacity="0.85">
+    <circle cx="60" cy="60" r="44"/>
+    <path d="M150,150 C220,90 290,170 360,120 C430,70 500,150 570,100 C640,50 710,120 780,90" fill="none" stroke="#f59e0b" stroke-width="6"/>
+  </g>
+</svg>

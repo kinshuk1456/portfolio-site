@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0b1020"/>
+  <text x="80" y="120" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="40" font-weight="700">Scenario Comparison</text>
+  <text x="80" y="162" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">Placeholder image</text>
+  <rect x="80" y="210" width="1040" height="385" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <g transform="translate(140,270)" font-family="ui-sans-serif, system-ui" fill="#eaf0ff">
+    <text x="0" y="24" font-size="16" fill="#9db0d0">Best</text>
+    <rect x="0" y="40" width="820" height="16" rx="8" fill="#2dd4bf" opacity="0.85"/>
+    <text x="0" y="94" font-size="16" fill="#9db0d0">Base</text>
+    <rect x="0" y="110" width="700" height="16" rx="8" fill="#7c5cff" opacity="0.85"/>
+    <text x="0" y="164" font-size="16" fill="#9db0d0">Worst</text>
+    <rect x="0" y="180" width="560" height="16" rx="8" fill="#f97316" opacity="0.85"/>
+  </g>
+</svg>

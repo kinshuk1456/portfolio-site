@@ -1,0 +1,49 @@
+{
+  "slug": "dons-drugs-consulting",
+  "status": "draft",
+  "featured": true,
+  "title": "Don's Drugs — MBA Consulting Capstone",
+  "date": "2026-01-01",
+  "summary": "TODO: one-line summary of the Don's Drugs consulting capstone (the client challenge and what your team delivered).",
+  "problem": "TODO: describe the business problem the client (Don's Drugs) faced.",
+  "approach": "TODO: describe what you and your capstone team did — analysis, research, frameworks, deliverables.",
+  "tools": [
+    "TODO: add methods/tools, e.g. Market Analysis, Financial Modeling, Excel"
+  ],
+  "outcome": "TODO: describe the recommendation, results, and client response.",
+  "role": "TODO: your role on the capstone team",
+  "team": "TODO: team size / composition",
+  "duration": "TODO: term (e.g. Spring 2026)",
+  "links": [],
+  "tags": [
+    "Consulting",
+    "MBA Capstone",
+    "Business Strategy"
+  ],
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": [
+      "gallery/01.svg"
+    ],
+    "alt": {
+      "gallery/cover.svg": "Don's Drugs consulting capstone cover",
+      "gallery/01.svg": "Don's Drugs capstone analysis overview"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "_todo": [
+    "Confirm exact project/client name and title.",
+    "Fill summary, problem, approach, outcome with real details.",
+    "Set real date/duration (YYYY-MM-DD) — currently a placeholder.",
+    "Confirm your role and team composition.",
+    "List real tools/methods used.",
+    "Add link to deck/report if you want it public."
+  ],
+  "disciplines": [
+    "Strategy",
+    "Product"
+  ]
+}

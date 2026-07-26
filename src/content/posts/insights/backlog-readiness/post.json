@@ -1,0 +1,16 @@
+{
+  "slug": "backlog-readiness",
+  "type": "insights",
+  "status": "published",
+  "featured": false,
+
+  "title": "What Backlog Readiness Actually Improves",
+  "date": "2026-03-05",
+  "category": "Product Delivery",
+  "tags": ["Backlog Grooming", "Sprint Support", "Release Readiness", "Agile / Scrum"],
+
+  "summary": "Backlog grooming isn’t busywork. Done well, it reduces thrash, tightens QA/UAT alignment, and makes delivery more predictable.",
+
+  "coverImage": "cover.svg",
+  "contentPath": "content.md"
+}

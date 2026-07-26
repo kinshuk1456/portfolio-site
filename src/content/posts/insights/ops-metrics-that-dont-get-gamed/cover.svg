@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0b1020"/>
+  <text x="96" y="160" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="46" font-weight="700">Ops Metrics</text>
+  <text x="96" y="210" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">That don’t get gamed</text>
+  <rect x="96" y="270" width="1008" height="310" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <g transform="translate(150,320)">
+    <rect width="420" height="24" rx="12" fill="#7c5cff" opacity="0.9"/>
+    <rect y="60" width="720" height="24" rx="12" fill="#2dd4bf" opacity="0.8"/>
+    <rect y="120" width="560" height="24" rx="12" fill="#f97316" opacity="0.75"/>
+  </g>
+</svg>

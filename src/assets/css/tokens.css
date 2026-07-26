@@ -1,0 +1,95 @@
+/* tokens.css — "Editorial Press" system
+   Warm bone/ink, one restrained rust accent, high-contrast serif display.
+   Anti-template: hairline rules + sharp corners + no decoration.
+*/
+
+/* Fraunces (display serif, characterful) + Public Sans (grotesk body) + JetBrains Mono (labels). */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  color-scheme: light;
+
+  /* Colors (light / bone paper) */
+  --bg: #f4f1e8;
+  --surface: #fbfaf5;
+  --surface-2: #eae4d6;
+  --fg: #17150f;
+  --muted: rgba(23,21,15,0.60);
+  --faint: rgba(23,21,15,0.40);
+  --border: rgba(23,21,15,0.18);
+  --border-2: rgba(23,21,15,0.34);
+  --rule: #17150f;                 /* full-strength hairline rule */
+
+  --accent: #c1440e;               /* editorial rust / vermilion */
+  --accent-ink: #a63a0b;           /* accent tuned for small text on bone */
+  --danger: #b42318;
+
+  /* Typography */
+  --font-sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  /* Type scale */
+  --text-xs: 0.8rem;
+  --text-sm: 0.94rem;
+  --text-md: 1rem;
+  --text-lg: 1.2rem;
+  --text-xl: 1.55rem;
+  --text-2xl: 2.1rem;
+  --text-3xl: 3rem;
+  --text-display: clamp(3rem, 8.5vw, 8rem);
+  --text-section: clamp(2rem, 4vw, 3.4rem);
+
+  --label-size: 0.72rem;
+  --label-tracking: 0.16em;
+
+  /* Spacing (8px base) */
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 24px;
+  --space-6: 34px;
+  --space-7: 52px;
+  --space-8: 80px;
+  --space-9: 120px;
+
+  /* Radius — sharp/editorial */
+  --radius-xs: 0px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+
+  /* No soft shadows — depth comes from rules. Kept as near-none for optional use. */
+  --shadow-1: none;
+  --shadow-2: 0 1px 0 rgba(23,21,15,0.06);
+
+  /* Motion — quick, restrained */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --ease-editorial: cubic-bezier(.2, .7, .2, 1);
+  --dur-1: 90ms;
+  --dur-2: 160ms;
+  --dur-3: 300ms;
+  --dur-4: 440ms;
+}
+
+/* Dark theme (ink) */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #14130e;
+  --surface: #1b1a14;
+  --surface-2: #23211a;
+  --fg: #f2efe4;
+  --muted: rgba(242,239,228,0.62);
+  --faint: rgba(242,239,228,0.40);
+  --border: rgba(242,239,228,0.20);
+  --border-2: rgba(242,239,228,0.36);
+  --rule: #f2efe4;
+
+  --accent: #e2673a;
+  --accent-ink: #ef8055;
+
+  --shadow-1: none;
+  --shadow-2: 0 1px 0 rgba(0,0,0,0.4);
+}

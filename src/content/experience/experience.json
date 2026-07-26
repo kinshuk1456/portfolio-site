@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "id": "pim-brands-data-analytics-intern-2025",
+      "company": "PIM Brands",
+      "role": "Data Analytics Intern",
+      "location": "California",
+      "startDate": "2025-08-01",
+      "endDate": "2025-12-01",
+      "current": false,
+      "description": "Built and maintained reporting to make operational performance visible and help engineering + operations teams make faster, more consistent decisions.",
+      "achievements": [
+        "Built Power BI dashboards for operational KPIs used in recurring reviews",
+        "Wrote and maintained SQL queries (Snowflake + Redzone) to create reliable, repeatable KPI views",
+        "Partnered with engineering and operations stakeholders to translate workflow pain points into decision-ready reporting"
+      ],
+      "tools": ["Power BI", "SQL", "Snowflake", "Redzone", "Excel"],
+      "links": []
+    },
+    {
+      "id": "fly-me-high-software-developer-2023",
+      "company": "Fly Me High",
+      "role": "Software Developer",
+      "location": "",
+      "startDate": "2023-06-01",
+      "endDate": "2024-05-01",
+      "current": false,
+      "description": "Supported end-to-end delivery by turning stakeholder needs into clear requirements, coordinating QA/UAT readiness, and keeping releases predictable.",
+      "achievements": [
+        "Translated stakeholder pain points into user stories and acceptance criteria; supported backlog grooming and sprint planning",
+        "Coordinated QA and release readiness to reduce thrash and improve delivery consistency",
+        "Helped improve backend responsiveness through issue triage and tighter feedback loops",
+        "Maintained product documentation so requirements, changes, and release notes stayed aligned"
+      ],
+      "tools": ["Jira", "Agile / Scrum", "Documentation", "Stakeholder management"],
+      "links": []
+    },
+    {
+      "id": "inn4smart-software-developer-intern-2023",
+      "company": "Inn4Smart Solutions",
+      "role": "Software Developer Intern",
+      "location": "",
+      "startDate": "2023-01-01",
+      "endDate": "2023-05-01",
+      "current": false,
+      "description": "Built Java features using object-oriented design and collaborated with QA and stakeholders during UAT to validate outputs against requirements.",
+      "achievements": [
+        "Implemented Java/OOP features and validated outputs during UAT",
+        "Collaborated with QA and product teams to tighten testing workflows and feedback loops",
+        "Improved defect prevention by strengthening validation and clarifying edge cases before release"
+      ],
+      "tools": ["Java", "OOP", "UAT", "QA coordination"],
+      "links": []
+    }
+  ]
+}

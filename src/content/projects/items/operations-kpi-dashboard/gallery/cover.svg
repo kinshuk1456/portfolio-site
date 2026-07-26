@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#123247"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <text x="96" y="150" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700">Operations KPI Dashboard</text>
+  <text x="96" y="196" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">Power BI · SQL · Snowflake · Redzone</text>
+  <rect x="96" y="245" width="1008" height="360" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <g transform="translate(120,280)">
+    <rect width="290" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">KPI Health</text>
+    <text x="20" y="88" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="700">Stable</text>
+  </g>
+  <g transform="translate(430,280)">
+    <rect width="290" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Backlog</text>
+    <text x="20" y="88" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="700">Visible</text>
+  </g>
+  <g transform="translate(740,280)">
+    <rect width="290" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">SLA</text>
+    <text x="20" y="88" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="700">Tracked</text>
+  </g>
+  <g transform="translate(120,420)">
+    <rect width="910" height="160" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <path d="M50,120 C190,40 290,150 420,80 C560,10 690,150 820,60" fill="none" stroke="#2dd4bf" stroke-width="5"/>
+  </g>
+</svg>

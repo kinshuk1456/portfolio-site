@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c5cff" stop-opacity="0.85"/>
+      <stop offset="55%" stop-color="#2ee59d" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0b0d10" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#0b0d10"/>
+  <rect x="80" y="80" width="1440" height="740" rx="32" fill="url(#g)" opacity="0.35"/>
+  <rect x="120" y="130" width="560" height="160" rx="22" fill="#ffffff" opacity="0.10"/>
+  <rect x="710" y="130" width="770" height="160" rx="22" fill="#ffffff" opacity="0.08"/>
+  <rect x="120" y="330" width="1360" height="440" rx="26" fill="#ffffff" opacity="0.06"/>
+
+  <text x="140" y="190" fill="#e9eef5" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700">Signal Map</text>
+  <text x="140" y="240" fill="#e9eef5" opacity="0.75" font-family="ui-sans-serif, system-ui" font-size="22">Weekly product signals, without the noise.</text>
+
+  <path d="M170 690 C 320 560, 420 720, 560 600 S 860 620, 980 520 S 1280 520, 1410 450" fill="none" stroke="#2ee59d" stroke-width="10" opacity="0.8"/>
+  <circle cx="1410" cy="450" r="10" fill="#2ee59d"/>
+</svg>

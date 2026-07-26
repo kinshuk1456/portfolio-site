@@ -1,0 +1,44 @@
+{
+  "slug": "event-checkin-system",
+  "status": "published",
+  "featured": false,
+  "title": "Event Check-In Product System (QR + Python)",
+  "date": "2025-03-01",
+  "summary": "A QR-based event check-in system with real-time tracking and dashboard reporting across 30+ rooms.",
+  "problem": "Event operations needed a fast, reliable way to onboard attendees, track participation in real time, and provide stakeholders with clear reporting during and after events—without manual reconciliation.",
+  "approach": "Gathered stakeholder requirements, designed the check-in workflow, and implemented a QR onboarding system with real-time participant tracking and a reporting dashboard for visibility across 30+ rooms.",
+  "tools": [
+    "Python",
+    "SQLite",
+    "Data Visualization"
+  ],
+  "outcome": "Enabled real-time participant tracking and simplified event reporting with a workflow designed for speed, clarity, and operational reliability.",
+  "role": "Builder / Developer",
+  "team": "Stakeholders + event operations",
+  "duration": "",
+  "links": [],
+  "tags": [
+    "Requirements Gathering",
+    "Stakeholder Management",
+    "Process Optimization",
+    "Documentation"
+  ],
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": [
+      "gallery/01.svg"
+    ],
+    "alt": {
+      "gallery/cover.svg": "Event check-in system cover",
+      "gallery/01.svg": "Real-time room tracking dashboard"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "disciplines": [
+    "Forward Deployed",
+    "Product"
+  ]
+}

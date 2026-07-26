@@ -1,0 +1,76 @@
+:root{
+  --bg:#0b0f14;
+  --panel:#101824;
+  --panel2:#0e1520;
+  --text:#e8eef7;
+  --muted:#97a6ba;
+  --border:#1b2a3d;
+  --accent:#66b2ff;
+  --danger:#ff5c7a;
+  --ok:#3ddc97;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; background:linear-gradient(180deg,#070a0f, #0b0f14 60%); color:var(--text); font-family:var(--sans)}
+
+.app{display:grid; grid-template-columns: 280px 1fr; height:100%}
+.sidebar{background:rgba(16,24,36,.75); border-right:1px solid var(--border); padding:16px; display:flex; flex-direction:column; gap:12px; backdrop-filter: blur(10px)}
+.brand{padding:10px 10px 14px; border:1px solid var(--border); border-radius:12px; background:rgba(14,21,32,.8); box-shadow: var(--shadow)}
+.brand__title{font-weight:700; letter-spacing:.2px}
+.brand__sub{color:var(--muted); font-size:12px; margin-top:4px}
+
+.nav{display:flex; flex-direction:column; gap:6px}
+.nav__item{width:100%; text-align:left; padding:10px 10px; background:transparent; border:1px solid transparent; border-radius:10px; color:var(--text); cursor:pointer}
+.nav__item:hover{border-color:var(--border); background:rgba(14,21,32,.6)}
+.nav__item[aria-current="page"]{border-color:rgba(102,178,255,.35); background:rgba(102,178,255,.10)}
+.nav__divider{height:1px; background:var(--border); margin:8px 0}
+.sidebar__footer{margin-top:auto}
+.status{font-size:12px; color:var(--muted); padding:10px; border:1px solid var(--border); border-radius:10px; background:rgba(14,21,32,.55)}
+
+.main{display:flex; flex-direction:column; min-width:0}
+.header{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:18px 20px; border-bottom:1px solid var(--border); background:rgba(10,14,20,.65); backdrop-filter: blur(10px)}
+.header h1{margin:0; font-size:18px}
+.muted{color:var(--muted); font-size:13px; margin-top:4px}
+
+.content{padding:18px 20px; overflow:auto}
+
+.card{border:1px solid var(--border); border-radius:14px; background:rgba(14,21,32,.7); box-shadow: var(--shadow); padding:14px; margin-bottom:14px}
+.row{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+@media (max-width: 900px){ .app{grid-template-columns:1fr} .sidebar{display:none} .row{grid-template-columns:1fr} }
+
+.field{display:flex; flex-direction:column; gap:6px; margin-bottom:10px}
+.field label{font-size:12px; color:var(--muted)}
+.field input,.field textarea, .field select{
+  padding:10px 10px; border-radius:10px; border:1px solid var(--border);
+  background:rgba(8,12,18,.8); color:var(--text); outline:none
+}
+.field textarea{min-height:110px; font-family:var(--mono); line-height:1.35}
+
+.actions{display:flex; gap:10px; flex-wrap:wrap}
+.btn{padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:rgba(14,21,32,.6); color:var(--text); cursor:pointer}
+.btn:hover{border-color:rgba(102,178,255,.35)}
+.btn.primary{background:rgba(102,178,255,.15); border-color:rgba(102,178,255,.35)}
+.btn.danger{background:rgba(255,92,122,.12); border-color:rgba(255,92,122,.35)}
+.btn.ok{background:rgba(61,220,151,.12); border-color:rgba(61,220,151,.35)}
+
+.list{display:flex; flex-direction:column; gap:8px}
+.item{display:flex; justify-content:space-between; gap:12px; padding:10px; border:1px solid var(--border); border-radius:12px; background:rgba(8,12,18,.55); cursor:pointer}
+.item:hover{border-color:rgba(102,178,255,.35)}
+.item__title{font-weight:600}
+.item__meta{color:var(--muted); font-size:12px; margin-top:4px}
+.pill{display:inline-block; font-size:11px; padding:3px 8px; border:1px solid var(--border); border-radius:999px; color:var(--muted)}
+
+hr.sep{border:none; border-top:1px solid var(--border); margin:14px 0}
+.code{font-family:var(--mono); font-size:12px; color:var(--muted)}
+
+/* Tabs (Education editor) */
+.tabs{display:flex; gap:8px; flex-wrap:wrap}
+.tab{padding:8px 10px; border-radius:999px; border:1px solid var(--border); background:rgba(14,21,32,.55); color:var(--text); cursor:pointer; font-size:12px}
+.tab[data-active="true"]{border-color:rgba(102,178,255,.45); background:rgba(102,178,255,.12)}
+
+/* Simple vertical spacing helper */
+.stack{display:flex; flex-direction:column; gap:12px}
+

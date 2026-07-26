@@ -1,0 +1,16 @@
+{
+  "slug": "my-post-slug",
+  "type": "insights",
+  "status": "draft",
+  "featured": false,
+
+  "title": "Post Title",
+  "date": "2026-03-06",
+  "category": "Category Name",
+  "tags": ["Tag 1"],
+
+  "summary": "Short excerpt for cards (recommended).",
+
+  "coverImage": "cover.jpg",
+  "contentPath": "content.md"
+}

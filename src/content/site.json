@@ -1,0 +1,68 @@
+{
+  "person": {
+    "name": "Kinshuk Agarwal",
+    "headline": "MBA candidate at UC Riverside · Product-minded builder across analytics, operations, and software delivery.",
+    "location": "Riverside, CA",
+    "email": "kinshuk.agarwal@email.ucr.edu",
+
+    "profileImage": "data/assets/headshot-portrait.jpg",
+    "profileImageAlt": "data/assets/headshot-ghibli.png",
+    "profileImageAltText": "Kinshuk Agarwal",
+    "profileImageAltLabel": "Toggle profile image style"
+  },
+  "social": [
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/kinshuk-agarwal/" },
+    { "label": "GitHub", "url": "https://github.com/kinshuk1456" },
+    { "label": "Website", "url": "https://kinshukagarwal.com" }
+  ],
+  "home": {
+    "hero": {
+      "eyebrow": "Kinshuk Agarwal — Product · Analytics · Forward Deployed",
+      "headline": ["I turn noise", "into decisions."],
+      "sub": "Product-minded builder working across data, systems, and implementation — turning ambiguous problems into decisions and working products.",
+      "disciplines": ["Product", "Analytics", "Forward Deployed"],
+      "statusRoles": ["Product", "Analytics", "Forward Deployed"],
+      "metaLeft": "MBA — UC Riverside",
+      "metaRight": "Riverside, California",
+      "ctaPrimary": { "label": "Selected work", "href": "/projects.html" },
+      "ctaSecondary": { "label": "How I think", "href": "/insights.html" }
+    },
+    "featuredProjectSlugs": ["vizor", "dons-drugs-consulting", "operations-kpi-dashboard"],
+    "featuredInsightSlugs": ["from-messy-data-to-decisions"],
+    "featuredLifeSlugs": ["trail-notes-reset"]
+  },
+  "nav": [
+    { "label": "Home", "href": "/index.html" },
+    { "label": "Projects", "href": "/projects.html" },
+    { "label": "Experience", "href": "/experience.html" },
+    { "label": "Education", "href": "/education.html" },
+    { "label": "Insights", "href": "/insights.html" },
+    { "label": "Life Outside Work", "href": "/life.html" },
+    { "label": "Contact", "href": "/contact.html" }
+  ],
+  "contact": {
+    "title": "Let’s build something useful.",
+    "blurb": "If you’re hiring or collaborating in product, analytics, or ops strategy, I’d love to connect. Email is the best way to reach me.",
+    "email": "kinshuk.agarwal@email.ucr.edu",
+    "location": "Riverside, CA",
+    "calendlyUrl": "",
+    "form": { "enabled": false, "note": "Static site: use email/Calendly." }
+  },
+  "chat": {
+    "enabled": true,
+    "endpoint": "/api/chat",
+    "model": "gemini-2.0-flash",
+    "suggested": [
+      "What's his forward-deployed experience?",
+      "Show me his analytics work",
+      "What did he build in HabitPact?",
+      "What roles is he targeting?"
+    ]
+  },
+  "seo": {
+    "siteTitle": "Kinshuk Agarwal — MBA Candidate (UC Riverside) · Product & Analytics",
+    "siteDescription": "Kinshuk Agarwal’s portfolio: product-minded analytics and software delivery work—dashboards, workflow improvements, and execution notes.",
+    "siteUrl": "https://kinshukagarwal.com",
+    "defaultOgImage": ""
+  }
+}

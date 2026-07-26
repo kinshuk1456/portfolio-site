@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "id": "company-role-2026",
+      "company": "Company Name",
+      "role": "Role Title",
+      "location": "Remote / City, Country",
+
+      "startDate": "2025-01-01",
+      "endDate": "2026-01-01",
+      "current": false,
+
+      "description": "1–3 sentence overview.",
+      "achievements": [
+        "Achievement with impact",
+        "Another achievement"
+      ],
+
+      "tools": ["Tool 1", "Tool 2"],
+      "links": [{ "label": "Company", "url": "https://example.com" }]
+    }
+  ]
+}

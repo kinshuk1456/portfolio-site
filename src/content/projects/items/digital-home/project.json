@@ -1,0 +1,44 @@
+{
+  "slug": "digital-home",
+  "status": "published",
+  "featured": false,
+  "title": "Digital Home — Portfolio + Content System",
+  "date": "2026-03-06",
+  "summary": "A static-hostable portfolio and content system with validation, generated indexes, and a local Studio for fast authoring — no backend.",
+  "problem": "I didn’t want a one-off landing page. I wanted a portfolio that could grow like a small platform (projects + writing + life) while staying fast, maintainable, and easy to update.",
+  "approach": "Designed a simple content model for projects, posts, experience, and education; added a build step to validate content and generate indexes; and built a shared rendering layer for consistent layout across pages. Kept everything dependency-light and static-hostable.",
+  "tools": [
+    "HTML",
+    "CSS",
+    "Vanilla JS",
+    "Node.js"
+  ],
+  "outcome": "A clean multi-page site where content lives in `src/content`, build outputs live in `dist/`, and updates are as simple as editing local files and rebuilding.",
+  "role": "Frontend Architect + Content System Builder",
+  "team": "Solo",
+  "duration": "1 week",
+  "links": [],
+  "tags": [
+    "Frontend",
+    "Content Systems",
+    "Portfolio"
+  ],
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": [
+      "gallery/01.svg"
+    ],
+    "alt": {
+      "gallery/cover.svg": "Homepage hero and featured content grid",
+      "gallery/01.svg": "Project detail page layout"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "disciplines": [
+    "Product",
+    "Engineering"
+  ]
+}

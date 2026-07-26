@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#123247"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <text x="96" y="160" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="46" font-weight="700">Messy Data → Decisions</text>
+  <text x="96" y="210" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">A dashboard checklist</text>
+  <rect x="96" y="260" width="1008" height="320" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <path d="M160,520 C260,460 340,540 460,470 C580,400 700,540 820,450 C940,360 1030,450 1080,390" fill="none" stroke="#2dd4bf" stroke-width="5"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#183a1f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <text x="96" y="150" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700">Event Check-In System</text>
+  <text x="96" y="196" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">QR onboarding · Python · Real-time tracking</text>
+  <rect x="96" y="245" width="1008" height="360" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <g transform="translate(140,300)">
+    <rect width="300" height="340" rx="22" fill="#111f33" stroke="#2a3a57"/>
+    <rect x="44" y="56" width="212" height="212" rx="18" fill="#0f1a2a" stroke="#2a3a57"/>
+    <path d="M74,86 h60 v60 h-60z M164,86 h60 v60 h-60z M74,176 h60 v60 h-60z M164,176 h60 v60 h-60z" fill="#2dd4bf" opacity="0.55"/>
+    <text x="44" y="300" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Scan → Check in</text>
+  </g>
+  <g transform="translate(470,300)">
+    <rect width="634" height="340" rx="22" fill="#111f33" stroke="#2a3a57"/>
+    <text x="28" y="52" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Rooms</text>
+    <rect x="28" y="78" width="580" height="18" rx="9" fill="#7c5cff" opacity="0.75"/>
+    <rect x="28" y="116" width="520" height="18" rx="9" fill="#7c5cff" opacity="0.55"/>
+    <rect x="28" y="154" width="470" height="18" rx="9" fill="#7c5cff" opacity="0.40"/>
+  </g>
+</svg>

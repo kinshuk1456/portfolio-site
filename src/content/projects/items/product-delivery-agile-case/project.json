@@ -1,0 +1,48 @@
+{
+  "slug": "product-delivery-agile-case",
+  "status": "published",
+  "featured": false,
+  "title": "Product Delivery & Agile Execution Case",
+  "date": "2024-05-01",
+  "summary": "A delivery playbook shaped by real sprint execution: clearer stories, tighter QA/UAT alignment, and smoother releases.",
+  "problem": "Delivery slowed when requirements were ambiguous, QA/UAT alignment happened late, and release readiness was inconsistent. Stakeholders needed predictable execution and clear communication.",
+  "approach": "Translated business pain points into user stories with acceptance criteria, supported backlog grooming and sprint planning, coordinated QA/UAT, and maintained release documentation so teams shipped with fewer surprises.",
+  "tools": [
+    "Jira",
+    "Agile / Scrum",
+    "PRDs",
+    "Documentation",
+    "Stakeholder Management"
+  ],
+  "outcome": "Improved release readiness and helped reduce deployment cycle time by ~40% while improving backend responsiveness by ~25% (as reported during the role).",
+  "role": "Software Developer (Delivery + Coordination)",
+  "team": "Engineering + QA + stakeholders",
+  "duration": "Jun 2023 — May 2024",
+  "links": [],
+  "tags": [
+    "Requirements Gathering",
+    "Backlog Grooming",
+    "Sprint Support",
+    "UAT Coordination",
+    "Release Readiness",
+    "Cross-Functional Communication"
+  ],
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": [
+      "gallery/01.svg"
+    ],
+    "alt": {
+      "gallery/cover.svg": "Agile delivery case cover",
+      "gallery/01.svg": "User story readiness and release checklist view"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "disciplines": [
+    "Product",
+    "Strategy"
+  ]
+}

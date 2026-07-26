@@ -1,0 +1,9 @@
+/* pages.css
+   Page-level tweaks.
+*/
+
+/* Slightly tighter container on small screens */
+@media (max-width: 520px) {
+  .container { padding-left: 18px; padding-right: 18px; }
+  h1 { font-size: 2.2rem; }
+}

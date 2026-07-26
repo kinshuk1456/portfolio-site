@@ -1,0 +1,16 @@
+{
+  "slug": "ops-metrics-that-dont-get-gamed",
+  "type": "insights",
+  "status": "draft",
+  "featured": false,
+
+  "title": "Ops Metrics That Don’t Get Gamed",
+  "date": "2026-02-22",
+  "category": "Operations",
+  "tags": ["Operations", "KPIs", "Analytics"],
+
+  "summary": "A few metric patterns that stay useful under pressure — and how to avoid dashboards that incentivize the wrong behavior.",
+
+  "coverImage": "cover.svg",
+  "contentPath": "content.md"
+}

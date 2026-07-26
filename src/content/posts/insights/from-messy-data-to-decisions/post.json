@@ -1,0 +1,16 @@
+{
+  "slug": "from-messy-data-to-decisions",
+  "type": "insights",
+  "status": "published",
+  "featured": true,
+
+  "title": "From Messy Data to Real Decisions: What Dashboards Need",
+  "date": "2026-03-04",
+  "category": "Product / Analytics",
+  "tags": ["Dashboards", "Decision Making", "Analytics"],
+
+  "summary": "Dashboards fail when they show *more* data instead of making the next decision obvious. A practical checklist I use to ship decision-ready reporting.",
+
+  "coverImage": "cover.svg",
+  "contentPath": "content.md"
+}

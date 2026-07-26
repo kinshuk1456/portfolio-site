@@ -1,0 +1,12 @@
+{
+  "name": "personal-ecosystem-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve-dist.mjs",
+    "validate": "node scripts/validate-content.mjs",
+    "author": "node scripts/author.mjs",
+    "studio": "node scripts/studio-server.mjs"
+  }
+}

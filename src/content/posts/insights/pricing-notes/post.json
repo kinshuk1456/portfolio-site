@@ -1,0 +1,16 @@
+{
+  "slug": "pricing-notes",
+  "type": "insights",
+  "status": "draft",
+  "featured": false,
+
+  "title": "Pricing Notes: A Simple Framework for SaaS Packaging",
+  "date": "2026-02-28",
+  "category": "Strategy",
+  "tags": ["SaaS", "Packaging", "Positioning"],
+
+  "summary": "A lightweight way to think about packaging that aligns value, reduces confusion, and makes upgrades feel inevitable.",
+
+  "coverImage": "cover.svg",
+  "contentPath": "content.md"
+}

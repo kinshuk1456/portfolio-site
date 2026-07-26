@@ -1,0 +1,16 @@
+{
+  "slug": "weekend-reset",
+  "type": "life",
+  "status": "draft",
+  "featured": false,
+
+  "title": "Weekend Reset: Walks, Training, and a Clean Calendar",
+  "date": "2026-03-02",
+  "category": "Gym",
+  "tags": ["Routine", "Training", "Reflection"],
+
+  "summary": "A small ritual that keeps my weeks calm: move, lift, review, simplify.",
+
+  "coverImage": "cover.svg",
+  "contentPath": "content.md"
+}

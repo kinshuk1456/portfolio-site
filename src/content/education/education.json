@@ -1,0 +1,108 @@
+{
+  "degrees": [
+    {
+      "id": "ucr-mba",
+      "university": "University of California, Riverside",
+      "degree": "Master of Business Administration (MBA)",
+      "location": "Riverside, CA",
+      "startDate": "2024-09-01",
+      "endDate": "2026-06-01",
+      "duration": "Sep 2024 — Jun 2026",
+      "details": [
+        "MBA Candidate · CGPA: 3.63 / 4.0",
+        "Focus: analytics, operations, product execution, and strategy"
+      ],
+      "links": [{ "label": "UCR Business", "url": "https://business.ucr.edu/" }]
+    },
+    {
+      "id": "vit-ap-btech-cse",
+      "university": "Vellore Institute of Technology, AP",
+      "degree": "Bachelor of Technology (B.Tech) — Computer Science Engineering",
+      "location": "India",
+      "startDate": "2019-07-01",
+      "endDate": "2023-06-01",
+      "duration": "Jul 2019 — Jun 2023",
+      "details": [
+        "Foundation in software engineering, systems thinking, and problem-solving"
+      ],
+      "links": []
+    }
+  ],
+  "campusRoles": [
+    {
+      "id": "ucr-ta-bus104-decision-analysis",
+      "title": "Graduate Teaching Assistant — BUS 104 (Decision Analysis)",
+      "organization": "University of California, Riverside",
+      "location": "Riverside, CA",
+      "startDate": "2025-09-01",
+      "endDate": "2026-01-01",
+      "current": false,
+      "duration": "Sep 2025 — Jan 2026",
+      "description": "Supported course delivery and student problem-solving; assisted with grading and academic support.",
+      "details": []
+    },
+    {
+      "id": "ucr-ta-economics-discussion-sections",
+      "title": "Graduate Teaching Assistant — Economics (Discussion Sections)",
+      "organization": "University of California, Riverside",
+      "location": "Riverside, CA",
+      "startDate": "2026-01-01",
+      "endDate": "",
+      "current": true,
+      "duration": "Jan 2026 — Present",
+      "description": "Supported economics instruction and discussion sections; helped students understand concepts and coursework; assisted with grading and academic support.",
+      "details": []
+    },
+    {
+      "id": "ucr-grad-student-ambassador",
+      "title": "Graduate Student Ambassador",
+      "organization": "University of California, Riverside",
+      "location": "Riverside, CA",
+      "startDate": "2024-10-01",
+      "endDate": "",
+      "current": true,
+      "duration": "Oct 2024 — Present",
+      "description": "Represented the graduate business program and supported prospective and current student engagement through outreach and events.",
+      "details": []
+    }
+  ],
+  "achievements": [],
+  "leadership": [
+    {
+      "id": "programming-club-member",
+      "title": "Member",
+      "organization": "Programming Club",
+      "location": "University of California, Riverside",
+      "startDate": "2024-10-01",
+      "endDate": "2025-12-01",
+      "current": false,
+      "duration": "Oct 2024 — Dec 2025",
+      "description": "Supported club workshops, events, and student engagement to strengthen the programming community on campus.",
+      "details": []
+    },
+    {
+      "id": "programming-club-vice-president",
+      "title": "Vice President",
+      "organization": "Programming Club",
+      "location": "University of California, Riverside",
+      "startDate": "2024-12-01",
+      "endDate": "2025-06-01",
+      "current": false,
+      "duration": "Dec 2024 — Jun 2025",
+      "description": "Helped organize technical activities and supported event coordination and member engagement.",
+      "details": []
+    },
+    {
+      "id": "programming-club-president",
+      "title": "President",
+      "organization": "Programming Club",
+      "location": "University of California, Riverside",
+      "startDate": "2025-06-01",
+      "endDate": "",
+      "current": true,
+      "duration": "Jun 2025 — Present",
+      "description": "Led club programming activities, workshops, and community-building initiatives.",
+      "details": []
+    }
+  ]
+}

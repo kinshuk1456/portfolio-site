@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio Studio (Local)</title>
+  <link rel="stylesheet" href="/studio/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand__title">Portfolio Studio</div>
+        <div class="brand__sub">Local-only editor</div>
+      </div>
+
+      <nav class="nav" id="nav">
+        <button class="nav__item" data-view="site">Site Settings</button>
+        <button class="nav__item" data-view="projects">Projects</button>
+        <button class="nav__item" data-view="insights">Insights Posts</button>
+        <button class="nav__item" data-view="life">Life Posts</button>
+        <button class="nav__item" data-view="experience">Experience</button>
+        <button class="nav__item" data-view="education">Education</button>
+        <div class="nav__divider"></div>
+        <button class="nav__item" data-view="tools">Build / Preview</button>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div class="status" id="status">Ready.</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="header">
+        <div class="header__left">
+          <h1 id="viewTitle">—</h1>
+          <div class="muted" id="viewSubtitle"></div>
+        </div>
+        <div class="header__right" id="headerActions"></div>
+      </header>
+
+      <section class="content" id="content"></section>
+    </main>
+  </div>
+
+  <script type="module" src="/studio/app.js"></script>
+</body>
+</html>

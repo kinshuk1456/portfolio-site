@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Authoring Helper</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/pages.css" />
+  </head>
+  <body data-page="author">
+    <noscript>This page requires JavaScript.</noscript>
+    <main class="container">
+      <section class="page-head">
+        <h1>Local Authoring Helper</h1>
+        <p class="muted">
+          This is a <strong>local-only helper</strong> for generating JSON/Markdown files. It does not log in, does not write to any server,
+          and is safe to keep out of production.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Recommended (safer + faster): use the CLI</h2>
+        <p class="muted">In your terminal:</p>
+        <pre class="prose"><code>cd portfolio-site
+npm run author
+npm run build
+npm run preview</code></pre>
+      </section>
+
+      <section class="panel" style="margin-top: var(--space-5)">
+        <h2>Browser generator (downloads files)</h2>
+        <p class="muted">Generates files and downloads them. You still place them into <code>src/content/…</code>.</p>
+
+        <div class="stack">
+          <div>
+            <label class="muted">Type</label>
+            <div class="button-row" style="margin-top: 8px">
+              <button class="btn btn-primary" data-kind="project">Project</button>
+              <button class="btn" data-kind="insights">Insights Post</button>
+              <button class="btn" data-kind="life">Life Post</button>
+            </div>
+          </div>
+
+          <form id="author-form" class="stack" style="margin-top: var(--space-4)">
+            <div>
+              <label class="muted" for="title">Title</label>
+              <input id="title" name="title" class="input" placeholder="Title" required />
+            </div>
+            <div>
+              <label class="muted" for="slug">Slug</label>
+              <input id="slug" name="slug" class="input" placeholder="auto-from-title" />
+            </div>
+            <div class="two-col">
+              <div>
+                <label class="muted" for="date">Date</label>
+                <input id="date" name="date" class="input" placeholder="YYYY-MM-DD" />
+              </div>
+              <div>
+                <label class="muted" for="category">Category (posts)</label>
+                <input id="category" name="category" class="input" placeholder="e.g., Product / Analytics" />
+              </div>
+            </div>
+            <div>
+              <label class="muted" for="summary">Summary</label>
+              <textarea id="summary" name="summary" class="input" rows="3" placeholder="One or two sentences"></textarea>
+            </div>
+            <div>
+              <label class="muted" for="tags">Tags (comma-separated)</label>
+              <input id="tags" name="tags" class="input" placeholder="Analytics, Ops, Strategy" />
+            </div>
+
+            <div class="button-row">
+              <button class="btn btn-primary" type="submit">Download files</button>
+            </div>
+
+            <p class="muted" id="out"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/assets/js/author.js"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "slug": "my-project-slug",
+  "status": "draft",
+  "featured": false,
+
+  "title": "Project Title",
+  "date": "2026-03-06",
+  "summary": "One-paragraph summary used on cards and for SEO snippets.",
+
+  "problem": "What problem existed?",
+  "approach": "How you approached it.",
+  "tools": ["Tool 1", "Tool 2"],
+  "outcome": "Impact / results.",
+
+  "role": "",
+  "team": "",
+  "duration": "",
+
+  "links": [
+    { "label": "Live", "url": "" },
+    { "label": "GitHub", "url": "" }
+  ],
+
+  "tags": ["Tag 1"],
+
+  "images": {
+    "cover": "gallery/cover.jpg",
+    "gallery": ["gallery/01.jpg"],
+    "alt": {
+      "gallery/cover.jpg": "Cover image description",
+      "gallery/01.jpg": "Screenshot description"
+    }
+  },
+
+  "caseStudy": {
+    "enabled": false,
+    "path": "case-study.md"
+  }
+}

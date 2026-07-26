@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#2a1b3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <text x="96" y="150" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700">Agile Execution Case</text>
+  <text x="96" y="196" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">Stories · QA/UAT · Release readiness</text>
+  <rect x="96" y="245" width="1008" height="360" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <g transform="translate(140,300)" font-family="ui-sans-serif, system-ui">
+    <rect width="920" height="62" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <text x="22" y="40" fill="#eaf0ff" font-size="18">User story ready: acceptance criteria, edge cases, dependencies</text>
+
+    <rect y="92" width="920" height="62" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <text x="22" y="132" fill="#eaf0ff" font-size="18">QA/UAT aligned: test cases, ownership, sign-off</text>
+
+    <rect y="184" width="920" height="62" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <text x="22" y="224" fill="#eaf0ff" font-size="18">Release ready: checklist, comms, rollback plan</text>
+  </g>
+</svg>

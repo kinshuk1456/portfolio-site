@@ -1,0 +1,16 @@
+{
+  "slug": "stakeholders-to-requirements",
+  "type": "insights",
+  "status": "published",
+  "featured": false,
+
+  "title": "Translating Stakeholder Needs into Requirements",
+  "date": "2026-02-26",
+  "category": "Product Thinking",
+  "tags": ["Requirements Gathering", "PRDs", "Stakeholder Management", "Documentation"],
+
+  "summary": "A repeatable way to move from opinions and pain points to clear user stories, acceptance criteria, and measurable outcomes.",
+
+  "coverImage": "cover.svg",
+  "contentPath": "content.md"
+}

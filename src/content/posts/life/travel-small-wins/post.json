@@ -1,0 +1,16 @@
+{
+  "slug": "travel-small-wins",
+  "type": "life",
+  "status": "published",
+  "featured": false,
+
+  "title": "Travel: Small Wins and Good Coffee",
+  "date": "2026-02-15",
+  "category": "Travel",
+  "tags": ["Travel", "Reflection"],
+
+  "summary": "A short note on why I like quick trips: new inputs, better thinking, and a reset of attention.",
+
+  "coverImage": "cover.svg",
+  "contentPath": "content.md"
+}

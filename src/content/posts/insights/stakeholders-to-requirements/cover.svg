@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0b1020"/>
+  <text x="96" y="160" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="46" font-weight="700">Stakeholders → Requirements</text>
+  <text x="96" y="210" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">Turning pain points into shippable work</text>
+  <rect x="96" y="270" width="1008" height="310" rx="24" fill="#0f1a2a" stroke="#25324a"/>
+  <g transform="translate(150,330)">
+    <rect width="860" height="56" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <rect y="86" width="860" height="56" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <rect y="172" width="860" height="56" rx="16" fill="#111f33" stroke="#2a3a57"/>
+    <path d="M820,28 l20,28 l-20,28" fill="none" stroke="#7c5cff" stroke-width="4"/>
+  </g>
+</svg>

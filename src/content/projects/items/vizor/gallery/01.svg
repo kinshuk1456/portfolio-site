@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0b1020"/>
+  <text x="80" y="120" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="40" font-weight="700">Observe → Recommend → Apply</text>
+  <text x="80" y="164" fill="#a99fe0" font-family="ui-sans-serif, system-ui" font-size="20">Confidence-scored observations with human-in-the-loop safe edits</text>
+
+  <g transform="translate(80,220)">
+    <rect width="320" height="360" rx="18" fill="#141133" stroke="#3a2f66"/>
+    <text x="24" y="52" fill="#7c5cff" font-family="ui-sans-serif, system-ui" font-size="16" font-weight="700">1 · OBSERVE</text>
+    <text x="24" y="96" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="18">dashboard_type</text>
+    <text x="24" y="128" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="18">worksheets_detected</text>
+    <text x="24" y="176" fill="#a99fe0" font-family="ui-sans-serif, system-ui" font-size="15">confidence_level</text>
+    <text x="24" y="204" fill="#a99fe0" font-family="ui-sans-serif, system-ui" font-size="15">confidence_note</text>
+  </g>
+
+  <g transform="translate(440,220)">
+    <rect width="320" height="360" rx="18" fill="#141133" stroke="#3a2f66"/>
+    <text x="24" y="52" fill="#7c5cff" font-family="ui-sans-serif, system-ui" font-size="16" font-weight="700">2 · RECOMMEND</text>
+    <text x="24" y="96" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="18">rename_worksheet</text>
+    <text x="24" y="128" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="18">update metadata</text>
+    <text x="24" y="176" fill="#a99fe0" font-family="ui-sans-serif, system-ui" font-size="15">priority: low / med / high</text>
+    <text x="24" y="204" fill="#a99fe0" font-family="ui-sans-serif, system-ui" font-size="15">deterministic scoring</text>
+  </g>
+
+  <g transform="translate(800,220)">
+    <rect width="320" height="360" rx="18" fill="#141133" stroke="#3a2f66"/>
+    <text x="24" y="52" fill="#2fe8a1" font-family="ui-sans-serif, system-ui" font-size="16" font-weight="700">3 · APPLY</text>
+    <text x="24" y="96" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="18">write edited .twb</text>
+    <text x="24" y="128" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="18">re-parse to verify</text>
+    <text x="24" y="176" fill="#2fe8a1" font-family="ui-sans-serif, system-ui" font-size="15">valid XML guaranteed</text>
+    <text x="24" y="204" fill="#a99fe0" font-family="ui-sans-serif, system-ui" font-size="15">tested round-trip</text>
+  </g>
+</svg>
