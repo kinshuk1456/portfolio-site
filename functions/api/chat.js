@@ -3,11 +3,11 @@
 //
 // Holds the Gemini key server-side (context.env.GEMINI_API_KEY) and grounds answers
 // in PORTFOLIO_CONTEXT below. Set the key as an encrypted env var in the Cloudflare
-// Pages dashboard, then set site.json -> chat.endpoint to "/api/chat" and rebuild.
+// Pages dashboard. Model defaults to gemini-2.5-flash (free tier); override with the
+// GEMINI_MODEL env var. The handler never hard-crashes (no 502s) — on any failure it
+// returns a graceful reply, and the client falls back to a grounded demo.
 //
-// Hardened: the whole handler is wrapped so it never hard-crashes (no 502s). On any
-// failure it returns HTTP 200 with a graceful reply plus a `_debug` field describing
-// the cause (safe — never includes the API key).
+// Optional: bind a KV namespace named CHAT_RL for per-IP rate limiting (see README).
 
 const PORTFOLIO_CONTEXT = `
 Kinshuk Agarwal — MBA candidate at UC Riverside, based in Riverside, California.
@@ -23,6 +23,10 @@ Experience:
 - Inn4Smart Solutions — Software Developer Intern.
 
 Selected projects (published):
+- Don's Drugs — Community Pharmacy Growth Strategy (Strategy + Product). MBA consulting
+  capstone (team of 3) for an independent pharmacy in San Bernardino; identified ~$156K
+  in ESTIMATED annual revenue opportunity (estimated, not realized) across preventive
+  care, medication adherence, and high-touch patient retention.
 - Operations KPI Dashboard (Power BI) — Analytics + Forward Deployed. Power BI on
   SQL/Snowflake/Redzone; repeatable operational reviews; better decision visibility.
 - HabitPact — Product + Engineering. A 0-to-1 behavioral-accountability mobile app
@@ -33,10 +37,6 @@ Selected projects (published):
   with validation, generated indexes, and a local authoring Studio.
 - Product Delivery & Agile Execution Case — Product + Strategy. Clearer stories, tighter
   QA/UAT alignment, smoother releases.
-
-In progress (mention as drafts if asked, don't over-claim): Vizor (AI-assisted Tableau
-workbook reviewer, Python MCP), Signal Map, Ops Pulse, Forecast Forge, Don's Drugs
-(MBA consulting capstone, details being finalized).
 
 Toolkit: SQL, Power BI, Snowflake, Python, Tableau, Excel.
 Contact: kinshuk.agarwal@email.ucr.edu.
@@ -62,9 +62,8 @@ const UNAVAILABLE = 'The assistant is momentarily unavailable — please try aga
 export async function onRequestPost(context) {
   try {
     return await handle(context);
-  } catch (err) {
-    // Never 502. Surface the cause for debugging (no secrets).
-    return jsonResponse({ reply: UNAVAILABLE, _debug: 'handler_threw: ' + String((err && err.message) || err) });
+  } catch {
+    return jsonResponse({ reply: UNAVAILABLE });
   }
 }
 
@@ -72,7 +71,7 @@ async function handle(context) {
   const { request, env } = context;
 
   const key = env.GEMINI_API_KEY;
-  if (!key) return jsonResponse({ reply: UNAVAILABLE, _debug: 'no GEMINI_API_KEY' }, 200);
+  if (!key) return jsonResponse({ reply: UNAVAILABLE });
 
   const allow = env.CHAT_ALLOW_ORIGIN;
   if (allow) {
@@ -85,7 +84,7 @@ async function handle(context) {
       const ip = request.headers.get('CF-Connecting-IP') || 'x';
       const k = `rl:${ip}`;
       const n = parseInt((await env.CHAT_RL.get(k)) || '0', 10);
-      if (n >= 15) return jsonResponse({ reply: 'You’ve sent a lot of questions in a short time — give it a minute.' }, 200);
+      if (n >= 15) return jsonResponse({ reply: 'You’ve sent a lot of questions in a short time — give it a minute.' });
       await env.CHAT_RL.put(k, String(n + 1), { expirationTtl: 600 });
     } catch { /* rate-limit is best-effort */ }
   }
@@ -118,28 +117,21 @@ async function handle(context) {
         generationConfig: { temperature: 0.4, maxOutputTokens: 400 },
       }),
     });
-  } catch (err) {
-    return jsonResponse({ reply: UNAVAILABLE, _debug: 'fetch_threw: ' + String((err && err.message) || err) });
+  } catch {
+    return jsonResponse({ reply: UNAVAILABLE });
   }
 
   const raw = await res.text();
-  if (!res.ok) {
-    return jsonResponse({ reply: UNAVAILABLE, _debug: `gemini_${res.status} model=${model}: ` + raw.slice(0, 900) });
-  }
+  if (!res.ok) return jsonResponse({ reply: UNAVAILABLE });
 
   let data;
-  try { data = JSON.parse(raw); } catch (err) {
-    return jsonResponse({ reply: UNAVAILABLE, _debug: 'bad_json: ' + raw.slice(0, 200) });
-  }
+  try { data = JSON.parse(raw); } catch { return jsonResponse({ reply: UNAVAILABLE }); }
 
   const reply = (data && data.candidates && data.candidates[0] && data.candidates[0].content
     && data.candidates[0].content.parts && data.candidates[0].content.parts[0]
     && data.candidates[0].content.parts[0].text || '').trim();
 
-  if (!reply) {
-    const blocked = data?.promptFeedback?.blockReason || data?.candidates?.[0]?.finishReason || 'empty';
-    return jsonResponse({ reply: "I'm not sure how to answer that from what I know about Kinshuk's work.", _debug: 'no_text: ' + blocked });
-  }
+  if (!reply) return jsonResponse({ reply: "I'm not sure how to answer that from what I know about Kinshuk's work." });
 
   return jsonResponse({ reply });
 }
