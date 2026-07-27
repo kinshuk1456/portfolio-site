@@ -1,13 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <rect width="1200" height="675" fill="#0b1020"/>
-  <text x="80" y="120" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="40" font-weight="700">Capstone Overview</text>
-  <text x="80" y="164" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">Placeholder — swap in your real deck slides or diagrams</text>
-  <g transform="translate(80,220)">
-    <rect width="1040" height="360" rx="18" fill="#111f33" stroke="#2a3a57"/>
-    <text x="40" y="80" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Problem → TODO</text>
-    <text x="40" y="140" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Approach → TODO</text>
-    <text x="40" y="200" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Analysis → TODO</text>
-    <text x="40" y="260" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Recommendation → TODO</text>
-    <text x="40" y="320" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="18">• Outcome → TODO</text>
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+
+  <text x="72" y="92" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">THE VALUE LADDER — MARGIN &amp; RELATIONSHIP DEPTH</text>
+  <text x="70" y="150" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="500">More value from the same patients</text>
+
+  <!-- ascending steps -->
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <g transform="translate(90,540)">
+      <rect width="230" height="70" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.18"/>
+      <text x="20" y="42" font-size="22" font-weight="600">Dispensing</text>
+    </g>
+    <g transform="translate(360,470)">
+      <rect width="230" height="140" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.18"/>
+      <text x="20" y="42" font-size="22" font-weight="600">Medication</text>
+      <text x="20" y="70" font-size="22" font-weight="600">management</text>
+    </g>
+    <g transform="translate(630,390)">
+      <rect width="230" height="220" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.5"/>
+      <text x="20" y="42" font-size="22" font-weight="600">Vaccinations &amp;</text>
+      <text x="20" y="70" font-size="22" font-weight="600">preventive care</text>
+    </g>
+    <g transform="translate(900,300)">
+      <rect width="230" height="310" fill="#c1440e"/>
+      <text x="20" y="42" font-size="22" font-weight="600" fill="#fff">Specialty</text>
+      <text x="20" y="70" font-size="22" font-weight="600" fill="#fff">pharmacy</text>
+      <text x="20" y="286" font-size="14" font-family="ui-monospace, monospace" letter-spacing="1" fill="#fff" fill-opacity="0.85">HIGHER MARGIN →</text>
+    </g>
   </g>
+
+  <!-- baseline + arrow -->
+  <line x1="90" y1="612" x2="1130" y2="612" stroke="#17150f" stroke-opacity="0.3"/>
+  <text x="90" y="648" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, monospace" font-size="14" letter-spacing="1">DEEPER PATIENT RELATIONSHIP · STRONGER MARGINS  →</text>
 </svg>

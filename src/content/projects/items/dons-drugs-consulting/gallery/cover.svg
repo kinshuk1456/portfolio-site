@@ -1,34 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b1020"/>
-      <stop offset="1" stop-color="#0f2233"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="675" fill="url(#g)"/>
-  <rect x="84" y="92" width="1032" height="491" rx="24" fill="#0f1a2a" stroke="#25324a"/>
-  <text x="120" y="170" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700">Don's Drugs</text>
-  <text x="120" y="214" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">MBA Consulting Capstone</text>
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
 
-  <g transform="translate(120,260)">
-    <rect width="280" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
-    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Client challenge</text>
-    <text x="20" y="86" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="22" font-weight="700">TODO</text>
-  </g>
-  <g transform="translate(420,260)">
-    <rect width="280" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
-    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Approach</text>
-    <text x="20" y="86" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="22" font-weight="700">TODO</text>
-  </g>
-  <g transform="translate(720,260)">
-    <rect width="280" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
-    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Recommendation</text>
-    <text x="20" y="86" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="22" font-weight="700">TODO</text>
-  </g>
+  <text x="72" y="96" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="19" letter-spacing="3">STRATEGY · MBA CONSULTING CAPSTONE</text>
 
-  <g transform="translate(120,408)">
-    <rect width="880" height="140" rx="16" fill="#111f33" stroke="#2a3a57"/>
-    <text x="20" y="52" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="15">Placeholder — replace with real capstone visuals</text>
-    <path d="M40,100 C160,60 260,110 380,80 C500,50 620,100 740,70 C800,55 840,80 840,80" fill="none" stroke="#4fd1c5" stroke-width="4"/>
+  <text x="68" y="300" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="220" font-weight="500" letter-spacing="-6">$156K</text>
+  <rect x="74" y="330" width="470" height="6" fill="#c1440e"/>
+  <text x="74" y="380" fill="#17150f" fill-opacity="0.62" font-family="ui-sans-serif, system-ui" font-size="30">estimated annual revenue opportunity</text>
+
+  <text x="72" y="452" fill="#17150f" fill-opacity="0.75" font-family="ui-sans-serif, system-ui" font-size="22">Don's Drugs — independent community pharmacy, San Bernardino</text>
+
+  <g font-family="ui-sans-serif, system-ui" font-size="22" fill="#17150f">
+    <g transform="translate(72,520)">
+      <rect width="330" height="88" fill="none" stroke="#17150f" stroke-opacity="0.18"/>
+      <rect x="0" y="0" width="5" height="88" fill="#c1440e"/>
+      <text x="26" y="38" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#c1440e">01</text>
+      <text x="26" y="66" font-weight="600">Preventive care</text>
+    </g>
+    <g transform="translate(430,520)">
+      <rect width="330" height="88" fill="none" stroke="#17150f" stroke-opacity="0.18"/>
+      <rect x="0" y="0" width="5" height="88" fill="#c1440e"/>
+      <text x="26" y="38" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#c1440e">02</text>
+      <text x="26" y="66" font-weight="600">Medication adherence</text>
+    </g>
+    <g transform="translate(788,520)">
+      <rect width="340" height="88" fill="none" stroke="#17150f" stroke-opacity="0.18"/>
+      <rect x="0" y="0" width="5" height="88" fill="#c1440e"/>
+      <text x="26" y="38" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#c1440e">03</text>
+      <text x="26" y="66" font-weight="600">High-touch retention</text>
+    </g>
   </g>
 </svg>
