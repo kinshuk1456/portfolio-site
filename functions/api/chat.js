@@ -104,7 +104,7 @@ async function handle(context) {
   }
   contents.push({ role: 'user', parts: [{ text: message }] });
 
-  const model = env.GEMINI_MODEL || 'gemini-2.0-flash';
+  const model = env.GEMINI_MODEL || 'gemini-2.5-flash';
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(key)}`;
 
   let res;
