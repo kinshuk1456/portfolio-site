@@ -124,7 +124,7 @@ async function handle(context) {
 
   const raw = await res.text();
   if (!res.ok) {
-    return jsonResponse({ reply: UNAVAILABLE, _debug: `gemini_${res.status}: ` + raw.slice(0, 300) });
+    return jsonResponse({ reply: UNAVAILABLE, _debug: `gemini_${res.status} model=${model}: ` + raw.slice(0, 900) });
   }
 
   let data;
