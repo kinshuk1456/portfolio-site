@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="86" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">CHECK-IN FLOW</text>
+  <text x="62" y="146" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="500">Real-time attendance across 30+ rooms</text>
+
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <!-- step 1: QR -->
+    <g transform="translate(64,270)">
+      <rect width="230" height="200" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <g transform="translate(76,44)" fill="#17150f">
+        <rect width="24" height="24"/><rect x="34" width="24" height="24"/><rect x="68" width="24" height="24"/>
+        <rect y="34" width="24" height="24"/><rect x="68" y="34" width="24" height="24"/>
+        <rect y="68" width="24" height="24"/><rect x="34" y="68" width="24" height="24"/><rect x="68" y="68" width="24" height="24"/>
+      </g>
+      <text x="115" y="180" font-size="19" font-weight="600" text-anchor="middle">QR code</text>
+    </g>
+    <text x="312" y="382" font-size="30" fill="#c1440e">→</text>
+
+    <!-- step 2 -->
+    <g transform="translate(362,270)">
+      <rect width="230" height="200" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="115" y="96" font-size="21" font-weight="600" text-anchor="middle">Scan at door</text>
+      <text x="115" y="128" font-size="15" fill-opacity="0.6" text-anchor="middle">attendee checks in</text>
+    </g>
+    <text x="610" y="382" font-size="30" fill="#c1440e">→</text>
+
+    <!-- step 3 -->
+    <g transform="translate(660,270)">
+      <rect width="230" height="200" fill="#17150f"/>
+      <text x="115" y="90" font-size="21" font-weight="600" fill="#f4f1e8" text-anchor="middle">Logged</text>
+      <text x="115" y="120" font-size="15" fill="#f4f1e8" fill-opacity="0.7" text-anchor="middle">Python backend</text>
+      <text x="115" y="142" font-size="15" fill="#f4f1e8" fill-opacity="0.7" text-anchor="middle">real-time</text>
+    </g>
+    <text x="908" y="382" font-size="30" fill="#c1440e">→</text>
+
+    <!-- step 4 -->
+    <g transform="translate(956,270)">
+      <rect width="180" height="200" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.5"/>
+      <text x="90" y="90" font-size="20" font-weight="600" text-anchor="middle">Live</text>
+      <text x="90" y="118" font-size="20" font-weight="600" text-anchor="middle">dashboard</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="524" x2="1136" y2="524" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="568" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="26">One QR scan → live attendance and reporting, deployed into a real event workflow.</text>
+</svg>

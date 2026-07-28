@@ -29,13 +29,15 @@
   "images": {
     "cover": "gallery/cover.svg",
     "gallery": [
+      "gallery/diagram.svg",
       "gallery/01.svg",
       "gallery/02.svg"
     ],
     "alt": {
       "gallery/cover.svg": "Operations KPI dashboard cover",
       "gallery/01.svg": "KPI trend view and operational drill-down",
-      "gallery/02.svg": "Workflow inefficiency signals and breakdown"
+      "gallery/02.svg": "Workflow inefficiency signals and breakdown",
+      "gallery/diagram.svg": "Operations review flow: Snowflake/SQL sources modeled in Power BI, reviewed as health → drivers → drill-down"
     }
   },
   "caseStudy": {

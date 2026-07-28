@@ -26,11 +26,13 @@
   "images": {
     "cover": "gallery/cover.svg",
     "gallery": [
+      "gallery/diagram.svg",
       "gallery/01.svg"
     ],
     "alt": {
       "gallery/cover.svg": "Event check-in system cover",
-      "gallery/01.svg": "Real-time room tracking dashboard"
+      "gallery/01.svg": "Real-time room tracking dashboard",
+      "gallery/diagram.svg": "Check-in flow: QR scan → logged via Python backend → live attendance dashboard across 30+ rooms"
     }
   },
   "caseStudy": {

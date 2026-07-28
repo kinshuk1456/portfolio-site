@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="86" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">FROM SOURCES TO DECISIONS</text>
+  <text x="62" y="146" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="500">One repeatable operational review</text>
+
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <!-- sources -->
+    <text x="64" y="238" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#c1440e">DATA SOURCES</text>
+    <g transform="translate(64,258)">
+      <rect width="230" height="54" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="34" font-size="20">Snowflake</text>
+      <rect y="66" width="230" height="54" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="100" font-size="20">SQL views</text>
+      <rect y="132" width="230" height="54" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="166" font-size="20">Redzone</text>
+    </g>
+
+    <!-- arrow -->
+    <text x="320" y="360" font-size="30" fill="#c1440e">→</text>
+
+    <!-- power bi -->
+    <text x="370" y="238" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#c1440e">MODELED IN</text>
+    <g transform="translate(370,258)">
+      <rect width="230" height="186" fill="#17150f"/>
+      <text x="20" y="44" font-size="22" font-weight="600" fill="#f4f1e8">Power BI</text>
+      <text x="20" y="80" font-size="15" fill="#f4f1e8" fill-opacity="0.7">Consistent KPI</text>
+      <text x="20" y="102" font-size="15" fill="#f4f1e8" fill-opacity="0.7">definitions</text>
+      <text x="20" y="150" font-size="15" fill="#f4f1e8" fill-opacity="0.7">Repeatable views</text>
+    </g>
+
+    <text x="626" y="360" font-size="30" fill="#c1440e">→</text>
+
+    <!-- review flow -->
+    <text x="676" y="238" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#c1440e">REVIEW FLOW</text>
+    <g transform="translate(676,258)">
+      <rect width="450" height="54" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.4"/><text x="20" y="34" font-size="20" font-weight="600">1 · Health — are KPIs on track?</text>
+      <rect y="66" width="450" height="54" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.4"/><text x="20" y="100" font-size="20" font-weight="600">2 · Drivers — what moved, and why?</text>
+      <rect y="132" width="450" height="54" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.4"/><text x="20" y="166" font-size="20" font-weight="600">3 · Drill-down — where to act?</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="512" x2="1136" y2="512" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="556" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="26">Fewer metric debates, faster decisions — without changing the source systems.</text>
+</svg>
