@@ -679,6 +679,7 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 .chat-input { flex: 1 1 auto; }
 .chat-send { flex: 0 0 auto; }
 .chat-foot { padding: 0 var(--space-5) var(--space-4); color: var(--faint); margin: 0; }
+.chat-followups { display: flex; flex-wrap: wrap; gap: 8px; align-self: flex-start; margin-top: -2px; }
 @media (max-width: 560px) { .chat-card { width: 100%; border-left: 0; } }
 @media (prefers-reduced-motion: reduce) { .chat-card, .chat-scrim { transition: none; } }
 

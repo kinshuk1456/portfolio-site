@@ -9,6 +9,15 @@
 export function initChat(config = {}) {
   const endpoint = config.endpoint || '';
   const suggested = config.suggested || [];
+  const followPool = config.followups || [
+    "What's his forward-deployed experience?",
+    "Show me his analytics work",
+    "What did he build in HabitPact?",
+    "Tell me about the Don's Drugs project",
+    "What roles is he targeting?",
+    "What's his background in data?"
+  ];
+  const asked = new Set();
   const history = [];
   let panel, messagesEl, inputEl, restoreFocus, built = false, busy = false;
 
@@ -78,9 +87,23 @@ export function initChat(config = {}) {
     return el;
   }
 
+  function renderFollowups() {
+    const remaining = followPool.filter((q) => !asked.has(q.toLowerCase()));
+    if (!remaining.length) return;
+    const picks = remaining.slice(0, 2);
+    const row = document.createElement('div');
+    row.className = 'chat-followups';
+    row.innerHTML = picks.map((q) => `<button class="chat-chip" type="button">${esc(q)}</button>`).join('');
+    row.querySelectorAll('.chat-chip').forEach((c, i) => c.addEventListener('click', () => send(picks[i])));
+    messagesEl.appendChild(row);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
   async function send(text) {
     text = (text || '').trim();
     if (!text || busy) return;
+    asked.add(text.toLowerCase());
+    messagesEl.querySelectorAll('.chat-followups').forEach((r) => r.remove());
     inputEl.value = '';
     addMsg('user', text);
     history.push({ role: 'user', text });
@@ -92,6 +115,7 @@ export function initChat(config = {}) {
       typing.remove();
       addMsg('bot', reply);
       history.push({ role: 'model', text: reply });
+      renderFollowups();
     } catch {
       typing.remove();
       addMsg('bot', 'Sorry — I couldn’t reach the assistant. Please try again shortly, or email Kinshuk directly.');
