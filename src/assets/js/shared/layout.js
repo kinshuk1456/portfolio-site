@@ -151,6 +151,11 @@ export function mountLayout({ site, pagePath, mainHtml }) {
         ${footer}
       </div>
       <div class="sidebar-backdrop" data-action="nav-toggle" aria-hidden="true"></div>
+      ${site.chat?.enabled ? `
+      <button class="chat-fab" type="button" data-action="open-chat" aria-label="Ask about Kinshuk’s work">
+        ${ICONS.chat}
+        <span class="chat-fab-label">Ask</span>
+      </button>` : ''}
     </div>
   `;
 }
