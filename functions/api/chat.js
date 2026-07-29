@@ -104,7 +104,7 @@ async function handle(context) {
   contents.push({ role: 'user', parts: [{ text: message }] });
 
   const model = env.GEMINI_MODEL || 'gemini-2.5-flash';
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(key)}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:streamGenerateContent?alt=sse&key=${encodeURIComponent(key)}`;
 
   let res;
   try {
@@ -121,19 +121,47 @@ async function handle(context) {
     return jsonResponse({ reply: UNAVAILABLE });
   }
 
-  const raw = await res.text();
-  if (!res.ok) return jsonResponse({ reply: UNAVAILABLE });
+  // On any upstream error, fall back to a plain JSON reply (the client handles both).
+  if (!res.ok || !res.body) return jsonResponse({ reply: UNAVAILABLE });
 
-  let data;
-  try { data = JSON.parse(raw); } catch { return jsonResponse({ reply: UNAVAILABLE }); }
+  // Transform Gemini's SSE into a plain-text stream of just the answer deltas.
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder();
+  const stream = new ReadableStream({
+    start(controller) {
+      (async () => {
+        const reader = res.body.getReader();
+        let buf = '';
+        let any = false;
+        try {
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            buf += decoder.decode(value, { stream: true });
+            let nl;
+            while ((nl = buf.indexOf('\n')) >= 0) {
+              const line = buf.slice(0, nl).trim();
+              buf = buf.slice(nl + 1);
+              if (!line.startsWith('data:')) continue;
+              const js = line.slice(5).trim();
+              if (!js || js === '[DONE]') continue;
+              try {
+                const d = JSON.parse(js);
+                const t = d && d.candidates && d.candidates[0] && d.candidates[0].content
+                  && d.candidates[0].content.parts && d.candidates[0].content.parts[0]
+                  && d.candidates[0].content.parts[0].text;
+                if (t) { any = true; controller.enqueue(encoder.encode(t)); }
+              } catch { /* skip malformed chunk */ }
+            }
+          }
+        } catch { /* upstream ended */ }
+        if (!any) controller.enqueue(encoder.encode("I'm not sure how to answer that from what I know about Kinshuk's work."));
+        controller.close();
+      })();
+    },
+  });
 
-  const reply = (data && data.candidates && data.candidates[0] && data.candidates[0].content
-    && data.candidates[0].content.parts && data.candidates[0].content.parts[0]
-    && data.candidates[0].content.parts[0].text || '').trim();
-
-  if (!reply) return jsonResponse({ reply: "I'm not sure how to answer that from what I know about Kinshuk's work." });
-
-  return jsonResponse({ reply });
+  return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' } });
 }
 
 export function onRequestGet() {

@@ -108,39 +108,61 @@ export function initChat(config = {}) {
     addMsg('user', text);
     history.push({ role: 'user', text });
     busy = true;
-    const typing = addMsg('bot', '…');
-    typing.classList.add('is-typing');
+    const el = addMsg('bot', '…');
+    el.classList.add('is-typing');
     try {
-      const reply = await getReply(text);
-      typing.remove();
-      addMsg('bot', reply);
+      const reply = endpoint ? await streamInto(text, el) : setReply(el, await mockReply(text));
       history.push({ role: 'model', text: reply });
       renderFollowups();
     } catch {
-      typing.remove();
-      addMsg('bot', 'Sorry — I couldn’t reach the assistant. Please try again shortly, or email Kinshuk directly.');
+      // Endpoint unreachable → graceful grounded demo fallback.
+      try {
+        const reply = setReply(el, await mockReply(text));
+        history.push({ role: 'model', text: reply });
+        renderFollowups();
+      } catch {
+        setReply(el, 'Sorry — I couldn’t reach the assistant. Please try again shortly, or email Kinshuk directly.');
+      }
     } finally {
       busy = false;
     }
   }
 
-  async function getReply(text) {
-    if (endpoint) {
-      // Real Gemini via the proxy; fall back to the grounded demo if it's unreachable.
-      try { return await callEndpoint(text); } catch { return await mockReply(text); }
-    }
-    return mockReply(text);
+  function setReply(el, text) {
+    el.classList.remove('is-typing');
+    el.textContent = text;
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return text;
   }
 
-  async function callEndpoint(text) {
+  // Streams plain-text deltas from the proxy into the message element as they arrive.
+  // Falls back cleanly if the server returns a plain JSON reply instead of a stream.
+  async function streamInto(text, el) {
     const res = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, history: history.slice(-8) })
+      body: JSON.stringify({ message: text, history: history.slice(-8) }),
     });
     if (!res.ok) throw new Error('bad status ' + res.status);
-    const data = await res.json();
-    return (data.reply || '').trim() || 'I’m not sure how to answer that one.';
+    const ct = res.headers.get('content-type') || '';
+    if (ct.includes('application/json') || !res.body || !res.body.getReader) {
+      const data = await res.json().catch(() => ({}));
+      return setReply(el, (data.reply || '').trim() || 'I’m not sure how to answer that one.');
+    }
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let acc = '';
+    el.classList.remove('is-typing');
+    el.textContent = '';
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      acc += dec.decode(value, { stream: true });
+      el.textContent = acc;
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+    acc = acc.trim();
+    return setReply(el, acc || 'I’m not sure how to answer that one.');
   }
 
   // Grounded local demo — honest, sourced from the real portfolio content.
