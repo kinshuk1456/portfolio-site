@@ -1,9 +1,9 @@
 {
   "slug": "vizor",
-  "status": "draft",
+  "status": "published",
   "featured": true,
   "title": "Vizor — AI-assisted Tableau Workbook Reviewer",
-  "date": "2026-01-01",
+  "date": "2026-04-01",
   "summary": "A Python MCP tool that reviews Tableau workbooks, surfaces confidence-scored observations about dashboards and worksheets, and applies safe automated edits while keeping the file valid.",
   "problem": "Tableau workbooks accumulate unclear worksheet names, stale identity metadata, and inconsistent dashboards. Reviewing and cleaning them up by hand is slow, easy to get wrong, and hard to do consistently across many files.",
   "approach": "Built a Python MCP server that parses .twb XML into a structured model, generates honest, confidence-scored observations about the workbook (dashboard type, detected worksheets), and proposes or applies safe, deterministic edits — renaming worksheets to describe what they show and refreshing workbook identity metadata — while guaranteeing the file stays valid Tableau XML. Deterministic scoring means the same input always produces the same result, and edited workbooks are re-parsed in tests to prove they still open.",
@@ -40,13 +40,6 @@
     "enabled": true,
     "path": "case-study.md"
   },
-  "_todo": [
-    "Confirm exact project date/duration (YYYY-MM-DD) — currently a placeholder.",
-    "Confirm role/team framing (solo vs. course/team).",
-    "Add real outcome/impact or metrics if any.",
-    "Add GitHub repo / demo link if you want it public.",
-    "Confirm the tagline and whether a vision model is part of the story."
-  ],
   "disciplines": [
     "Forward Deployed",
     "Analytics"
