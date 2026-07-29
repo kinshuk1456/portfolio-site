@@ -144,6 +144,7 @@ export function mountLayout({ site, pagePath, mainHtml }) {
 
   return `
     <div class="app-shell">
+      <a class="skip-link" href="#app">Skip to content</a>
       ${sidebar}
       ${topbar}
       <div class="content-column">
