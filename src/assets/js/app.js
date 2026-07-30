@@ -101,6 +101,40 @@ function setupReveal(root) {
   targets.forEach((el) => io.observe(el));
 }
 
+// Sticky in-page section nav (project case studies): scroll-spy highlight +
+// smooth anchor scroll via Lenis when available. Enhancement-only.
+function setupSectionNav(root) {
+  const nav = root.querySelector('[data-section-nav]');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a[data-nav-target]'));
+  const sections = links
+    .map((a) => root.querySelector(`#${CSS.escape(a.dataset.navTarget)}`))
+    .filter(Boolean);
+  if (!sections.length) return;
+
+  // Smooth-scroll on click (respects the sticky nav offset).
+  links.forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const target = root.querySelector(`#${CSS.escape(a.dataset.navTarget)}`);
+      if (!target) return;
+      e.preventDefault();
+      if (window.__lenis) window.__lenis.scrollTo(target, { offset: -60 });
+      else target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  if (!('IntersectionObserver' in window)) return;
+  const setActive = (id) => links.forEach((a) =>
+    a.setAttribute('data-active', String(a.dataset.navTarget === id)));
+
+  const io = new IntersectionObserver((entries) => {
+    const visible = entries.filter((en) => en.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+    if (visible) setActive(visible.target.id);
+  }, { rootMargin: '-25% 0px -60% 0px', threshold: 0 });
+  sections.forEach((s) => io.observe(s));
+}
+
 // Smooth (inertia) scrolling via Lenis — progressive enhancement, code-split,
 // disabled under reduced motion. Exposes window.__lenis for the chat scroll-lock.
 function setupSmoothScroll() {
@@ -143,6 +177,7 @@ async function run() {
 
   // Progressive motion: quiet reveal of blocks on scroll (before first paint).
   setupReveal(document);
+  setupSectionNav(document);
   setupSmoothScroll();
 
   // Hero "Signal" interaction — code-split, only fetched on pages that have it.

@@ -23,6 +23,14 @@ Experience:
 - Inn4Smart Solutions — Software Developer Intern.
 
 Selected projects (published):
+- Vizor — AI-assisted Tableau Workbook Reviewer (Forward Deployed + Analytics). A Python
+  MCP (Model Context Protocol) tool that parses .twb Tableau XML into a structured model,
+  generates honest, confidence-scored observations about dashboards and worksheets, and
+  applies safe, deterministic automated edits (renaming worksheets, refreshing identity
+  metadata) while guaranteeing the file stays valid, reopenable Tableau XML. Deterministic
+  scoring means the same input always produces the same result; edited workbooks are
+  re-parsed in pytest to prove they still open. Solo project. This is his clearest example
+  of building agentic / LLM-adjacent tooling (MCP) grounded in real, verifiable output.
 - Don's Drugs — Community Pharmacy Growth Strategy (Strategy + Product). MBA consulting
   capstone (team of 3) for an independent pharmacy in San Bernardino; identified ~$156K
   in ESTIMATED annual revenue opportunity (estimated, not realized) across preventive
@@ -38,7 +46,8 @@ Selected projects (published):
 - Product Delivery & Agile Execution Case — Product + Strategy. Clearer stories, tighter
   QA/UAT alignment, smoother releases.
 
-Toolkit: SQL, Power BI, Snowflake, Python, Tableau, Excel.
+Toolkit: SQL, Power BI, Snowflake, Python, Tableau, Excel, plus applied AI tooling —
+LLMs, RAG (retrieval-augmented generation), and MCP (Model Context Protocol, used in Vizor).
 Contact: kinshuk.agarwal@email.ucr.edu.
 `;
 
@@ -47,6 +56,10 @@ professional background and work, grounded ONLY in the context below. Be concise
 specific, and understated — prefer "he built / analyzed / shipped" over buzzwords. Never invent
 facts, metrics, dates, employers, or job titles; if a detail isn't in the context, say you don't
 have it. Only discuss Kinshuk's work; politely redirect anything off-topic.
+
+Formatting: reply in light Markdown. Use **bold** for names of projects, tools, or key terms, and
+use a short "- " bulleted list when you're naming two or more distinct items (projects, skills,
+responsibilities). Keep it tight — no headings, no more than ~4 bullets.
 
 ---
 ${PORTFOLIO_CONTEXT}`;

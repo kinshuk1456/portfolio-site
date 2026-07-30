@@ -11,6 +11,8 @@ export function initChat(config = {}) {
   const suggested = config.suggested || [];
   const followPool = config.followups || [
     "What's his forward-deployed experience?",
+    "Tell me about Vizor",
+    "How does he use LLMs, RAG, and MCP?",
     "Show me his analytics work",
     "What did he build in HabitPact?",
     "Tell me about the Don's Drugs project",
@@ -55,7 +57,19 @@ export function initChat(config = {}) {
     panel.querySelectorAll('[data-chat-close]').forEach(b => b.addEventListener('click', close));
     panel.querySelector('[data-chat-form]').addEventListener('submit', (e) => { e.preventDefault(); send(inputEl.value); });
     panel.querySelectorAll('.chat-chip').forEach(c => c.addEventListener('click', () => send(c.textContent)));
-    panel.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    panel.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key !== 'Tab') return;
+      // Focus trap: keep Tab focus inside the dialog while it's open.
+      const focusables = panel.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const list = Array.from(focusables).filter((el) => el.offsetParent !== null);
+      if (!list.length) return;
+      const first = list[0], last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
     addMsg('bot', "Hi — I can answer questions about Kinshuk's work across product, analytics, and forward-deployed engineering. What would you like to know?");
     built = true;
   }
@@ -130,7 +144,7 @@ export function initChat(config = {}) {
 
   function setReply(el, text) {
     el.classList.remove('is-typing');
-    el.textContent = text;
+    el.innerHTML = renderMarkdown(text);
     messagesEl.scrollTop = messagesEl.scrollHeight;
     return text;
   }
@@ -162,6 +176,7 @@ export function initChat(config = {}) {
       messagesEl.scrollTop = messagesEl.scrollHeight;
     }
     acc = acc.trim();
+    // Streaming showed raw text; now resolve to formatted markdown.
     return setReply(el, acc || 'I’m not sure how to answer that one.');
   }
 
@@ -170,8 +185,10 @@ export function initChat(config = {}) {
     await new Promise((r) => setTimeout(r, 450));
     const t = text.toLowerCase();
     const tag = ' (Demo answer — once the Gemini proxy is connected I’ll respond to anything, grounded in the real portfolio.)';
+    if (/vizor|mcp|rag|llm|ai tool|agent/.test(t))
+      return "**Vizor** is his clearest applied-AI project — a Python **MCP** (Model Context Protocol) tool that reviews Tableau workbooks. It parses the `.twb` XML, surfaces **confidence-scored observations** about dashboards and worksheets, and applies safe, deterministic edits while guaranteeing the file stays valid and reopenable (verified in pytest). It's how his toolkit stretches into **LLM / RAG / MCP** tooling, grounded in real, verifiable output." + tag;
     if (/forward|deploy|fde|implement/.test(t))
-      return "The forward-deployed pattern shows in work like the Event Check-In System (QR + Python, deployed live across 30+ rooms) and the Operations KPI Dashboard (built on Snowflake/SQL and put into real operational reviews). The thread: take an ambiguous business problem, build the technical solution, and get it working in a real workflow." + tag;
+      return "The forward-deployed pattern shows in work like:\n- **Vizor** — a Python MCP tool that reviews and safely edits Tableau workbooks\n- **Event Check-In System** — QR + Python, deployed live across 30+ rooms\n- **Operations KPI Dashboard** — built on Snowflake/SQL and put into real operational reviews\n\nThe thread: take an ambiguous business problem, build the technical solution, and get it working in a real workflow." + tag;
     if (/analytic|data|sql|dashboard|tableau|power ?bi|kpi/.test(t))
       return "On analytics: at PIM Brands he built Power BI dashboards on SQL/Snowflake to track operational KPIs and support decisions. Projects like the Ops KPI Dashboard show KPI development and decision support — analytics framed as decisions, not just charts." + tag;
     if (/product|build|habit|ship|user/.test(t))
@@ -186,4 +203,34 @@ export function initChat(config = {}) {
 
 function esc(s) {
   return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// Minimal, safe markdown → HTML for chat replies. Escapes first, then applies
+// inline (**bold**, *em*, `code`, links) and block-level (- bullets, paragraphs).
+function renderMarkdown(text) {
+  const inline = (s) => esc(s)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+  const lines = String(text || '').replace(/\r\n/g, '\n').split('\n');
+  let html = '', para = [], inList = false;
+  const flushPara = () => { if (para.length) { html += `<p>${inline(para.join(' '))}</p>`; para = []; } };
+  const closeList = () => { if (inList) { html += '</ul>'; inList = false; } };
+
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (/^[-*]\s+/.test(line)) {
+      flushPara();
+      if (!inList) { html += '<ul>'; inList = true; }
+      html += `<li>${inline(line.replace(/^[-*]\s+/, ''))}</li>`;
+    } else if (line === '') {
+      flushPara(); closeList();
+    } else {
+      closeList(); para.push(line);
+    }
+  }
+  flushPara(); closeList();
+  return html || `<p>${inline(text)}</p>`;
 }

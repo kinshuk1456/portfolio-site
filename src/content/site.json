@@ -54,8 +54,8 @@
     "model": "gemini-2.0-flash",
     "suggested": [
       "What's his forward-deployed experience?",
-      "Show me his analytics work",
-      "What did he build in HabitPact?",
+      "Tell me about Vizor",
+      "How does he use LLMs, RAG, and MCP?",
       "What roles is he targeting?"
     ]
   },
