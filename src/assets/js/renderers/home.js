@@ -90,7 +90,7 @@ export async function renderHome({ site }) {
   const firstName = (person.name || 'there').trim().split(/\s+/)[0];
   const profileNormal = person.profileImage ? `/${person.profileImage}` : '';
   const profileAlt = person.profileImageAlt ? `/${person.profileImageAlt}` : '';
-  const toolkit = hero.toolkit || ['SQL', 'Power BI', 'Snowflake', 'Python', 'Tableau', 'Excel'];
+  const toolkit = hero.toolkit || ['SQL', 'Power BI', 'Snowflake', 'Python', 'Tableau', 'Excel', 'LLM', 'RAG', 'MCP'];
   const disciplines = hero.disciplines || ['Product', 'Analytics', 'Forward Deployed'];
   const statusRoles = hero.statusRoles || disciplines;
 
