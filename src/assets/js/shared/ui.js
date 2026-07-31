@@ -48,6 +48,30 @@ export function renderCard({ href, title, meta, summary, coverImage, tags }) {
   `;
 }
 
+// Unique disciplines across projects, in a sensible editorial order
+// (known ones first, then any extras alphabetically).
+export function projectDisciplines(index = []) {
+  const order = ['Product', 'Analytics', 'Forward Deployed', 'Strategy', 'Engineering'];
+  const seen = new Set();
+  for (const p of index) for (const d of (p.disciplines || [])) if (d) seen.add(d);
+  const known = order.filter((d) => seen.has(d));
+  const extra = [...seen].filter((d) => !order.includes(d)).sort();
+  return [...known, ...extra];
+}
+
+// Render a set of project cards for the grid (shared by initial render and
+// the client-side filter re-render so markup stays identical).
+export function renderProjectCards(items = []) {
+  return items.map((p) => renderCard({
+    href: `/project.html?slug=${encodeURIComponent(p.slug)}`,
+    title: p.title,
+    meta: (p.disciplines || []).join(' · ') || formatDate(p.date),
+    summary: p.summary,
+    coverImage: p.coverImage,
+    tags: p.tags
+  })).join('');
+}
+
 export function pickFeatured({
   explicitSlugs = [],
   items = [],

@@ -9,6 +9,8 @@ import { fetchJSON } from './content-api.js';
 import { mountLayout } from './shared/layout.js';
 import { initTheme, bindThemeToggle } from './shared/theme.js';
 
+import { renderProjectCards } from './shared/ui.js';
+
 import { renderHome } from './renderers/home.js';
 import { renderProjects } from './renderers/projects.js';
 import { renderProjectDetail } from './renderers/project-detail.js';
@@ -101,6 +103,43 @@ function setupReveal(root) {
   targets.forEach((el) => io.observe(el));
 }
 
+// Projects page: discipline filter. Re-renders the grid (so CSS counters and
+// edge borders recompute) and supports ?discipline= deep-linking. Enhancement-only.
+function setupProjectFilter(root) {
+  const wrap = root.querySelector('[data-project-filter]');
+  if (!wrap) return;
+  const grid = wrap.querySelector('[data-project-grid]');
+  const countEl = wrap.querySelector('[data-filter-count]');
+  const chips = Array.from(wrap.querySelectorAll('.filter-chip'));
+  const dataEl = wrap.querySelector('script[data-projects]');
+  if (!grid || !dataEl) return;
+
+  let items = [];
+  try { items = JSON.parse(dataEl.textContent || '[]'); } catch { return; }
+
+  const apply = (filter, { push = true } = {}) => {
+    const subset = filter
+      ? items.filter((p) => (p.disciplines || []).includes(filter))
+      : items;
+    grid.innerHTML = renderProjectCards(subset);
+    if (countEl) countEl.textContent = `${subset.length} project${subset.length === 1 ? '' : 's'}`;
+    chips.forEach((c) => c.setAttribute('data-active', String((c.dataset.filter || '') === filter)));
+    if (push) {
+      const url = new URL(window.location.href);
+      if (filter) url.searchParams.set('discipline', filter);
+      else url.searchParams.delete('discipline');
+      history.replaceState(null, '', url);
+    }
+  };
+
+  chips.forEach((c) => c.addEventListener('click', () => apply(c.dataset.filter || '')));
+
+  // Honor an incoming ?discipline= (deep link / shared filtered view).
+  const initial = new URL(window.location.href).searchParams.get('discipline') || '';
+  const valid = chips.some((c) => (c.dataset.filter || '') === initial);
+  if (initial && valid) apply(initial, { push: false });
+}
+
 // Sticky in-page section nav (project case studies): scroll-spy highlight +
 // smooth anchor scroll via Lenis when available. Enhancement-only.
 function setupSectionNav(root) {
@@ -178,6 +217,7 @@ async function run() {
   // Progressive motion: quiet reveal of blocks on scroll (before first paint).
   setupReveal(document);
   setupSectionNav(document);
+  setupProjectFilter(document);
   setupSmoothScroll();
 
   // Hero "Signal" interaction — code-split, only fetched on pages that have it.

@@ -7,7 +7,7 @@
 // - dist/content contains GENERATED artifacts only (indexes/manifests)
 // - exclude src/content/templates from dist
 
-import { rm, mkdir, cp } from 'node:fs/promises';
+import { rm, mkdir, readdir, copyFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { validateContent } from './validate-content.mjs';
@@ -17,6 +17,22 @@ const ROOT = process.cwd();
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 
+// Recursive directory copy using copyFile (the OS copy sets permissions
+// atomically). We deliberately avoid node's recursive `cp`, whose separate
+// chmod step intermittently fails on Windows (EPERM) when an external process
+// (antivirus / file-sync) briefly locks a freshly written file. Behaves
+// identically on Linux/CI.
+async function copyDir(src, dest) {
+  await mkdir(dest, { recursive: true });
+  const entries = await readdir(src, { withFileTypes: true });
+  for (const entry of entries) {
+    const from = path.join(src, entry.name);
+    const to = path.join(dest, entry.name);
+    if (entry.isDirectory()) await copyDir(from, to);
+    else if (entry.isFile()) await copyFile(from, to);
+  }
+}
+
 async function cleanDist() {
   await rm(DIST, { recursive: true, force: true });
   await mkdir(DIST, { recursive: true });
@@ -24,17 +40,17 @@ async function cleanDist() {
 
 async function copyPagesAndAssets() {
   // Copy pages -> dist (flat)
-  await cp(path.join(SRC, 'pages'), DIST, { recursive: true });
+  await copyDir(path.join(SRC, 'pages'), DIST);
 
   // Copy frontend assets -> dist/assets
-  await cp(path.join(SRC, 'assets'), path.join(DIST, 'assets'), { recursive: true });
+  await copyDir(path.join(SRC, 'assets'), path.join(DIST, 'assets'));
 }
 
 async function copyAuthoredContentToDist() {
   // Copy authored content into dist/data (deployment-readable), but keep dist/content
   // reserved for GENERATED artifacts only.
   // Note: we exclude templates after copy to keep it simple and reliable.
-  await cp(path.join(SRC, 'content'), path.join(DIST, 'data'), { recursive: true });
+  await copyDir(path.join(SRC, 'content'), path.join(DIST, 'data'));
 
   // Remove templates from dist/data (authoring-only)
   await rm(path.join(DIST, 'data', 'templates'), { recursive: true, force: true });
