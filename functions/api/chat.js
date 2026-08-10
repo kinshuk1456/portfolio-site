@@ -22,29 +22,54 @@ Experience:
 - Fly Me High — Software Developer.
 - Inn4Smart Solutions — Software Developer Intern.
 
-Selected projects (published):
-- Vizor — AI-assisted Tableau Workbook Reviewer (Forward Deployed + Analytics). A Python
-  MCP (Model Context Protocol) tool that parses .twb Tableau XML into a structured model,
-  generates honest, confidence-scored observations about dashboards and worksheets, and
-  applies safe, deterministic automated edits (renaming worksheets, refreshing identity
-  metadata) while guaranteeing the file stays valid, reopenable Tableau XML. Deterministic
-  scoring means the same input always produces the same result; edited workbooks are
-  re-parsed in pytest to prove they still open. Solo project. This is his clearest example
-  of building agentic / LLM-adjacent tooling (MCP) grounded in real, verifiable output.
-- Don's Drugs — Community Pharmacy Growth Strategy (Strategy + Product). MBA consulting
-  capstone (team of 3) for an independent pharmacy in San Bernardino; identified ~$156K
-  in ESTIMATED annual revenue opportunity (estimated, not realized) across preventive
-  care, medication adherence, and high-touch patient retention.
-- Operations KPI Dashboard (Power BI) — Analytics + Forward Deployed. Power BI on
-  SQL/Snowflake/Redzone; repeatable operational reviews; better decision visibility.
-- HabitPact — Product + Engineering. A 0-to-1 behavioral-accountability mobile app
-  (Flutter) attaching real consequences to commitments; problem framing, user flows.
-- Event Check-In Product System (QR + Python) — Forward Deployed + Product. QR check-in
-  with real-time tracking and dashboard reporting across 30+ rooms.
-- Digital Home — Product + Engineering. A static-hostable portfolio + content system
-  with validation, generated indexes, and a local authoring Studio.
-- Product Delivery & Agile Execution Case — Product + Strategy. Clearer stories, tighter
-  QA/UAT alignment, smoother releases.
+Selected projects (published). For each: name — disciplines — timeline — what it is,
+what he did, and the outcome. If asked to summarize any project, use these details.
+
+1. Vizor — AI-assisted Tableau Workbook Reviewer (Forward Deployed + Analytics). July 2026 –
+   present. Solo project. A Python MCP (Model Context Protocol) tool that parses .twb Tableau
+   XML into a structured model, generates honest, confidence-scored observations about
+   dashboards and worksheets, and applies safe, deterministic automated edits (renaming
+   worksheets to describe what they show, refreshing identity metadata) while GUARANTEEING the
+   file stays valid, reopenable Tableau XML. Deterministic scoring = same input always yields
+   the same result; edited workbooks are re-parsed in pytest to prove they still open. Tools:
+   Python, MCP, Tableau (.twb/XML), pytest. Outcome: turns manual workbook cleanup into a
+   repeatable, reviewable flow where a human stays in control. His clearest example of building
+   agentic / LLM-adjacent tooling grounded in real, verifiable output.
+
+2. Don's Drugs — Community Pharmacy Growth Strategy (Strategy + Product). March – June 2026,
+   MBA capstone (MGT 238, UC Riverside), team of 3. For Don's Drugs, an independent community
+   pharmacy in San Bernardino, the team turned existing patient relationships into growth across
+   three pillars: preventive-care expansion, a medication-adherence ecosystem, and high-touch
+   retention. Identified ~$156K in ESTIMATED annual revenue opportunity (estimated, NOT realized).
+   Work: industry/competitive analysis, customer lifetime value, workflow analysis, revenue/margin
+   modeling, opportunity prioritization, executive presentation. Delivered as the MBA capstone.
+
+3. Operations KPI Dashboard (Power BI) — Analytics + Forward Deployed. Aug – Dec 2025. Power BI
+   dashboards built on SQL, Snowflake, Redzone, and Excel that tracked operational KPIs across
+   engineering and operations. Outcome: improved visibility into operational KPIs and enabled
+   faster, more consistent, data-driven discussions across teams (repeatable operational reviews).
+
+4. HabitPact — Product + Engineering. 2026, ongoing. A 0-to-1 behavioral-accountability mobile
+   app that helps people follow through on goals by attaching REAL consequences — financial,
+   social, and device-based — to their commitments. Built solo from whiteboard to a shippable
+   cross-platform app. Tools: Flutter, Firebase Auth, Cloud Firestore, Cloud Functions. Outcome:
+   a working, demoable, beta-ready prototype. Emphasis on problem framing, user flows, and shipping.
+
+5. Event Check-In Product System (QR + Python) — Forward Deployed + Product. 2025. A QR-based
+   event check-in system with real-time participant tracking and dashboard reporting across 30+
+   rooms. Tools: Python, SQLite, data visualization. Outcome: real-time tracking and simplified
+   event reporting, with a workflow designed for speed, clarity, and operational reliability.
+
+6. Digital Home — Product + Engineering. March 2026, ~1 week. A static-hostable portfolio and
+   content system with content validation, generated indexes, and a local authoring Studio — no
+   backend. Content lives in src/content, builds output to dist/, updates = edit local files and
+   rebuild. Tools: HTML, CSS, vanilla JS, Node.js. (This portfolio site itself.)
+
+7. Product Delivery & Agile Execution Case — Product + Strategy. Jun 2023 – May 2024. A delivery
+   playbook shaped by real sprint execution: clearer user stories, tighter QA/UAT alignment, and
+   smoother releases. Tools: Jira, Agile/Scrum, PRDs, documentation, stakeholder management.
+   Outcome: improved release readiness; reduced deployment cycle time by ~40% and improved backend
+   responsiveness by ~25% (as reported during the role).
 
 Toolkit: SQL, Power BI, Snowflake, Python, Tableau, Excel, plus applied AI tooling —
 LLMs, RAG (retrieval-augmented generation), and MCP (Model Context Protocol, used in Vizor).
@@ -127,7 +152,7 @@ async function handle(context) {
       body: JSON.stringify({
         systemInstruction: { parts: [{ text: SYSTEM }] },
         contents,
-        generationConfig: { temperature: 0.4, maxOutputTokens: 400 },
+        generationConfig: { temperature: 0.4, maxOutputTokens: 512 },
       }),
     });
   } catch {
