@@ -35,13 +35,19 @@
     "gallery": [
       "gallery/01.jpeg",
       "gallery/02.jpeg",
-      "gallery/03.jpeg"
+      "gallery/03.jpeg",
+      "gallery/05.jpeg",
+      "gallery/06.jpeg",
+      "gallery/07.jpeg"
     ],
     "alt": {
       "gallery/cover.png": "HabitPact branded hero — 'Accountability that makes goals stick' with a phone mockup showing a 21-day streak and completed habits",
       "gallery/01.jpeg": "HabitPact app splash screen showing the HP logo and tagline 'Accountability that sticks'",
       "gallery/02.jpeg": "HabitPact Chats screen — social accountability hub with direct messaging and group creation",
-      "gallery/03.jpeg": "HabitPact Pacts screen — an active 14-day workout commitment with a $10 stake at 100% progress, awaiting proof submission"
+      "gallery/03.jpeg": "HabitPact Pacts screen — an active 14-day workout commitment with a $10 stake at 100% progress, awaiting proof submission",
+      "gallery/05.jpeg": "HabitPact Home dashboard — active commitment pacts with progress bars, staked points, and Submit Proof actions, plus an automatic screen-time tracking card",
+      "gallery/06.jpeg": "HabitPact Create Pact screen — choosing how a pact is verified: photo proof, partner review, or automatic step and screen-time tracking",
+      "gallery/07.jpeg": "HabitPact Profile screen — identity card with points balance and a points ledger of approvals, penalties, and the welcome bonus"
     }
   },
   "caseStudy": {
