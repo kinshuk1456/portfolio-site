@@ -634,7 +634,7 @@ textarea.input { resize: vertical; }
 @media (max-width: 980px) { .gallery { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 640px) { .gallery { grid-template-columns: 1fr; } }
 .gallery-item { margin: 0; display: flex; flex-direction: column; gap: 8px; }
-.gallery-img { width: 100%; height: 100%; border-radius: 0; border: 1px solid var(--rule); background: var(--surface); }
+.gallery-img { width: 100%; height: auto; border-radius: 0; border: 1px solid var(--rule); background: var(--surface); }
 .gallery-item figcaption { color: var(--muted); text-transform: none; letter-spacing: 0.01em; line-height: 1.4; }
 
 /* Project case-study: facts grid */

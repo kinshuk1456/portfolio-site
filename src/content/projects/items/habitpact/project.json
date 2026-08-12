@@ -33,15 +33,21 @@
   "images": {
     "cover": "gallery/cover.png",
     "gallery": [
-      "gallery/01.jpeg",
-      "gallery/02.jpeg",
-      "gallery/03.jpeg"
+      "gallery/home.webp",
+      "gallery/pacts.webp",
+      "gallery/create-pact.webp",
+      "gallery/chats.webp",
+      "gallery/direct-chat.webp",
+      "gallery/profile.webp"
     ],
     "alt": {
       "gallery/cover.png": "HabitPact branded hero — 'Accountability that makes goals stick' with a phone mockup showing a 21-day streak and completed habits",
-      "gallery/01.jpeg": "HabitPact app splash screen showing the HP logo and tagline 'Accountability that sticks'",
-      "gallery/02.jpeg": "HabitPact Chats screen — social accountability hub with direct messaging and group creation",
-      "gallery/03.jpeg": "HabitPact Pacts screen — an active 14-day workout commitment with a $10 stake at 100% progress, awaiting proof submission"
+      "gallery/home.webp": "Home dashboard — active commitment pacts with staked points, live progress bars, and one-tap 'Submit Proof'",
+      "gallery/pacts.webp": "Commitment Pacts — goals filtered by Active / Awaiting / Completed / Failed, each showing its point stake, progress, and the proof it needs",
+      "gallery/create-pact.webp": "Create a pact — choose a friend or group, pick a goal preset, and set how it's verified: photo proof, partner review, or automatic step and screen-time tracking",
+      "gallery/chats.webp": "Chats — the social accountability layer, with direct messages and group threads where partners nudge and verify each other",
+      "gallery/direct-chat.webp": "A direct-message thread between accountability partners checking in on a screen-time pact",
+      "gallery/profile.webp": "Profile and points ledger — a verified account with a running record of points earned and lost as pacts are kept or missed"
     }
   },
   "caseStudy": {
