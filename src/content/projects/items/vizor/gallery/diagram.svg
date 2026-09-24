@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Vizor evolution: it began as a screenshot-to-critique web app that only gave advice, then pivoted to an agent that proposes a change spec and a deterministic compiler that applies it to the real workbook with validation">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="82" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">HOW VIZOR EVOLVED</text>
+  <text x="62" y="140" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="500">From advice to actually applying the change</text>
+
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <!-- early -->
+    <g transform="translate(64,200)">
+      <rect width="330" height="230" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="22" y="40" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">EARLY EXPLORATION</text>
+      <text x="22" y="82" font-size="22" font-weight="600">Screenshot → critique</text>
+      <text x="22" y="116" font-size="15" fill-opacity="0.65">Upload a dashboard image; get a</text>
+      <text x="22" y="138" font-size="15" fill-opacity="0.65">scored six-lens review + redesign</text>
+      <text x="22" y="160" font-size="15" fill-opacity="0.65">plan.</text>
+      <text x="22" y="200" font-size="14" fill="#c1440e">Limit: it only gives advice.</text>
+    </g>
+    <text x="410" y="322" font-size="30" fill="#c1440e">→</text>
+
+    <!-- problem -->
+    <g transform="translate(454,200)">
+      <rect width="300" height="230" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.22"/>
+      <text x="22" y="40" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#c1440e">THE PROBLEM</text>
+      <text x="22" y="82" font-size="21" font-weight="600">To apply a change,</text>
+      <text x="22" y="108" font-size="21" font-weight="600">you touch the file</text>
+      <text x="22" y="150" font-size="15" fill-opacity="0.65">…but you can't let an LLM rewrite</text>
+      <text x="22" y="172" font-size="15" fill-opacity="0.65">Tableau XML — it produces</text>
+      <text x="22" y="194" font-size="15" fill-opacity="0.65">plausible but invalid workbooks.</text>
+    </g>
+    <text x="770" y="322" font-size="30" fill="#c1440e">→</text>
+
+    <!-- now -->
+    <g transform="translate(814,200)">
+      <rect width="322" height="230" fill="#17150f"/>
+      <text x="22" y="40" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#f4f1e8" fill-opacity="0.6">CURRENT VERSION</text>
+      <text x="22" y="82" font-size="22" font-weight="600" fill="#f4f1e8">Propose → apply</text>
+      <text x="22" y="120" font-size="15" fill="#f4f1e8" fill-opacity="0.72">Agent proposes a neutral spec;</text>
+      <text x="22" y="142" font-size="15" fill="#f4f1e8" fill-opacity="0.72">a deterministic compiler applies</text>
+      <text x="22" y="164" font-size="15" fill="#f4f1e8" fill-opacity="0.72">and validates it.</text>
+      <text x="22" y="204" font-size="14" fill="#e0623a">Output: a versioned, valid .twb.</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="486" x2="1136" y2="486" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="532" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="24">The pivot is the point: the model plans, deterministic code ships the workbook only after validation passes.</text>
+  <text x="64" y="576" fill="#17150f" fill-opacity="0.42" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2">EXPLANATORY DIAGRAM · NOT A PRODUCT SCREENSHOT</text>
+</svg>

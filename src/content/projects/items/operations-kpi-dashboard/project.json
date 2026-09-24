@@ -1,43 +1,43 @@
 {
   "slug": "operations-kpi-dashboard",
   "status": "published",
-  "featured": true,
-  "title": "Operations KPI Dashboard (Power BI)",
+  "featured": false,
+  "tier": "selected",
+  "title": "PIM Brands — Operational Analytics",
   "date": "2025-12-01",
-  "summary": "Power BI dashboards that tracked operational KPIs and improved decision visibility across engineering and operations.",
-  "problem": "Operational performance data existed across multiple systems, which made it hard for stakeholders to quickly understand KPI health, diagnose issues, and prioritize workflow improvements.",
-  "approach": "Defined KPI requirements with stakeholders, wrote SQL queries (Snowflake + Redzone) to generate reliable views, and built Power BI dashboards designed for repeatable operational reviews.",
+  "summary": "Manufacturing analytics for PIM Brands, built after time on the production floor: OEE, downtime, changeover, and capacity reporting that plant and operations leaders actually used to make decisions — plus automated Python/SQL reporting that took the manual work out of the loop.",
+  "problem": "Operational performance data was spread across Snowflake, SQL Server, SAP HANA, and Redzone. Leaders couldn't quickly see how a line was performing, why it was underperforming, or where to focus — and pulling the numbers was a manual, repeated chore.",
+  "approach": "I spent the first part of the internship embedded with manufacturing teams, learning how production actually ran, before building anything — I didn't want to report on a process I didn't understand. From there: defined KPIs with stakeholders, reconciled and validated data across four source systems, modeled it, built Power BI dashboards for OEE (availability, performance, quality), utilization, downtime, changeover, and capacity, and automated the recurring reporting in Python and SQL. Shipped through KPI definition, source reconciliation, data validation, UAT, and stakeholder feedback, and presented to plant and executive leadership.",
   "tools": [
-    "Power BI",
-    "SQL",
     "Snowflake",
+    "SQL Server",
+    "SAP HANA",
     "Redzone",
-    "Excel"
+    "Power BI",
+    "Python",
+    "SQL"
   ],
-  "outcome": "Improved visibility into operational KPIs and enabled faster, more consistent data-driven discussions across teams.",
-  "role": "Data Analytics Intern",
-  "team": "Cross-functional (Engineering + Operations)",
-  "duration": "Aug 2025 — Dec 2025",
+  "outcome": "Delivered 15 analytics products used in recurring operational reviews, and automated Python/SQL reporting that saved an estimated 10+ hours per week of manual pulling — turning scattered source data into decisions plant and operations leaders could act on.",
+  "role": "Data Analytics Intern — Operations",
+  "team": "Embedded with engineering + operations",
+  "duration": "Aug 2025 — Dec 2025 · PIM Brands",
   "links": [],
   "tags": [
-    "KPI Analysis",
-    "Data Visualization",
-    "Stakeholder Management",
-    "Process Optimization",
-    "Data-Driven Decision Making"
+    "Manufacturing Analytics",
+    "OEE",
+    "Power BI",
+    "Data Modeling",
+    "Workflow Discovery",
+    "Automation"
   ],
   "images": {
     "cover": "gallery/cover.svg",
     "gallery": [
-      "gallery/diagram.svg",
-      "gallery/01.svg",
-      "gallery/02.svg"
+      "gallery/diagram.svg"
     ],
     "alt": {
-      "gallery/cover.svg": "Operations KPI dashboard cover",
-      "gallery/01.svg": "KPI trend view and operational drill-down",
-      "gallery/02.svg": "Workflow inefficiency signals and breakdown",
-      "gallery/diagram.svg": "Operations review flow: Snowflake/SQL sources modeled in Power BI, reviewed as health → drivers → drill-down"
+      "gallery/cover.svg": "PIM Brands operational analytics — OEE, downtime, and changeover reporting built from four source systems",
+      "gallery/diagram.svg": "Explanatory flow: Snowflake, SQL Server, SAP HANA, and Redzone reconciled and modeled into Power BI, reviewed as KPI health then drivers then line-level drill-down"
     }
   },
   "caseStudy": {
@@ -47,5 +47,24 @@
   "disciplines": [
     "Analytics",
     "Forward Deployed"
+  ],
+  "metrics": [
+    {
+      "value": 15,
+      "short": "analytics products",
+      "label": "Analytics products delivered"
+    },
+    {
+      "value": 10,
+      "prefix": "~",
+      "suffix": "+ hrs",
+      "short": "saved / week",
+      "label": "Manual reporting saved per week"
+    },
+    {
+      "value": 4,
+      "short": "source systems",
+      "label": "Source systems reconciled"
+    }
   ]
 }

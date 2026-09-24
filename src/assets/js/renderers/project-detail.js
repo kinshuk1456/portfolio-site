@@ -10,6 +10,16 @@ import { fetchJSON, fetchText } from '../content-api.js';
 import { getSlug } from '../router.js';
 import { markdownToHtml } from '../shared/markdown.js';
 import { escapeHtml, formatDate, renderTags } from '../shared/ui.js';
+import { vizorArchitecture } from '../shared/graphics.js';
+
+// Inline-SVG architecture diagrams keyed by slug (case-study visual storytelling).
+const ARCHITECTURES = {
+  vizor: {
+    title: 'System architecture',
+    note: 'The agent only ever proposes a neutral change spec — it never sees or edits Tableau XML. A deterministic compiler applies the approved change and runs schema, field, zone and fidelity validation, so the output is a valid, versioned workbook or nothing at all.',
+    svg: vizorArchitecture
+  }
+};
 
 export async function renderProjectDetail() {
   const slug = getSlug();
@@ -66,10 +76,75 @@ export async function renderProjectDetail() {
     ? `data/projects/items/${slug}/${project.images.cover}`
     : '';
 
+  // Metric tiles (animated count-up, wired in app.js setupCounters).
+  const metrics = Array.isArray(project.metrics) ? project.metrics : [];
+  const metricsHtml = metrics.length ? `
+    <div class="stats" role="list">
+      ${metrics.map((m) => {
+        const attrs = [
+          `data-count-to="${Number(m.value) || 0}"`,
+          m.prefix ? `data-prefix="${escapeHtml(String(m.prefix))}"` : '',
+          m.suffix ? `data-suffix="${escapeHtml(String(m.suffix))}"` : '',
+          m.plain ? 'data-plain="true"' : ''
+        ].filter(Boolean).join(' ');
+        // Render the real value as initial text (not "0"): if the count-up never
+        // runs — reduced motion, printing before the tile scrolls into view — the
+        // correct number is already there. setupCounters still animates 0→value
+        // when the tile enters the viewport.
+        const body = m.plain ? escapeHtml(String(m.value)) : (Number(m.value) || 0).toLocaleString();
+        const unit = m.suffix ? `<span class="stat-unit">${escapeHtml(String(m.suffix))}</span>` : '';
+        const initial = (m.prefix ? escapeHtml(String(m.prefix)) : '') + body + unit;
+        return `
+        <div class="stat" role="listitem">
+          <div class="stat-num" ${attrs}>${initial}</div>
+          <div class="stat-cap">${escapeHtml(m.label || '')}</div>
+        </div>`;
+      }).join('')}
+    </div>` : '';
+
+  // Step Player — an interactive build-story progression (e.g. Vizor). All step
+  // content is in the DOM; app.js setupStepPlayer turns it into a tablist.
+  const steps = Array.isArray(project.steps) ? project.steps : [];
+  const stepPlayerHtml = steps.length ? `
+    <section class="section step-player" id="build-story" data-step-player>
+      <h2>How it was built</h2>
+      <div class="stepper">
+        <ol class="stepper-rail" role="tablist" aria-label="Build story">
+          ${steps.map((s, i) => `
+            <li role="presentation">
+              <button class="stepper-tab" role="tab" id="step-tab-${i}" data-step="${i}"
+                aria-controls="step-panel-${i}" aria-selected="${i === 0 ? 'true' : 'false'}" tabindex="${i === 0 ? '0' : '-1'}">
+                <span class="step-n">${escapeHtml(s.n || String(i + 1).padStart(2, '0'))}</span>
+                <span class="step-t">${escapeHtml(s.title || '')}</span>
+              </button>
+            </li>`).join('')}
+        </ol>
+        <div class="stepper-panels">
+          ${steps.map((s, i) => `
+            <div class="stepper-panel" id="step-panel-${i}" role="tabpanel" aria-labelledby="step-tab-${i}" data-panel="${i}">
+              <div class="step-panel-n label">${escapeHtml(s.n || '')}</div>
+              <h3 class="step-panel-title">${escapeHtml(s.title || '')}</h3>
+              <p class="prose">${escapeHtml(s.body || '')}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>` : '';
+
+  // Inline architecture diagram (case-study visual storytelling), if defined.
+  const arch = ARCHITECTURES[slug];
+  const architectureHtml = arch ? `
+    <section class="section" id="architecture">
+      <h2>${escapeHtml(arch.title)}</h2>
+      <div class="arch">${arch.svg()}</div>
+      ${arch.note ? `<p class="prose" style="margin-top:var(--space-4)">${escapeHtml(arch.note)}</p>` : ''}
+    </section>` : '';
+
   // Build the in-page section nav from the sections that actually render.
   const sections = [
     project.problem || project.approach ? ['overview', 'Overview'] : null,
-    project.outcome ? ['outcome', 'Outcome'] : null,
+    (project.outcome || metrics.length) ? ['outcome', 'Outcome'] : null,
+    stepPlayerHtml ? ['build-story', 'How it was built'] : null,
+    architectureHtml ? ['architecture', 'Architecture'] : null,
     (project.tools || []).length ? ['tools', 'Tools'] : null,
     gallery ? ['gallery', 'Gallery'] : null,
     caseStudyHtml ? ['case-study', 'Case study'] : null
@@ -131,11 +206,16 @@ export async function renderProjectDetail() {
           </div>
         </section>` : ''}
 
-        ${project.outcome ? `
+        ${(project.outcome || metricsHtml) ? `
         <section class="section" id="outcome">
           <h2>Outcome</h2>
-          <p class="prose">${escapeHtml(project.outcome)}</p>
+          ${metricsHtml}
+          ${project.outcome ? `<p class="prose">${escapeHtml(project.outcome)}</p>` : ''}
         </section>` : ''}
+
+        ${stepPlayerHtml}
+
+        ${architectureHtml}
 
         ${(project.tools || []).length ? `
         <section class="section" id="tools">

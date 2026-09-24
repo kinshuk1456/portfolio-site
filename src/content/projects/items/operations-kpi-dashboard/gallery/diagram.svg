@@ -8,9 +8,10 @@
     <!-- sources -->
     <text x="64" y="238" font-family="ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#c1440e">DATA SOURCES</text>
     <g transform="translate(64,258)">
-      <rect width="230" height="54" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="34" font-size="20">Snowflake</text>
-      <rect y="66" width="230" height="54" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="100" font-size="20">SQL views</text>
-      <rect y="132" width="230" height="54" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="166" font-size="20">Redzone</text>
+      <rect width="230" height="40" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="27" font-size="18">Snowflake</text>
+      <rect y="48" width="230" height="40" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="75" font-size="18">SQL Server</text>
+      <rect y="96" width="230" height="40" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="123" font-size="18">SAP HANA</text>
+      <rect y="144" width="230" height="40" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="20" y="171" font-size="18">Redzone</text>
     </g>
 
     <!-- arrow -->

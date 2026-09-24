@@ -10,14 +10,14 @@ export function initChat(config = {}) {
   const endpoint = config.endpoint || '';
   const suggested = config.suggested || [];
   const followPool = config.followups || [
-    "What's his forward-deployed experience?",
-    "Tell me about Vizor",
-    "How does he use LLMs, RAG, and MCP?",
-    "Show me his analytics work",
-    "What did he build in HabitPact?",
-    "Tell me about the Don's Drugs project",
-    "What roles is he targeting?",
-    "What's his background in data?"
+    "Why did you change Vizor's architecture?",
+    "What did you build at PIM Brands?",
+    "Which projects best show customer-facing engineering?",
+    "How does your technical background complement your MBA?",
+    "What did you build in HabitPact?",
+    "Tell me about the Summit operations platform",
+    "How do you use LLMs and MCP?",
+    "What roles are you targeting?"
   ];
   const asked = new Set();
   const history = [];
@@ -185,20 +185,28 @@ export function initChat(config = {}) {
     await new Promise((r) => setTimeout(r, 450));
     const t = text.toLowerCase();
     const tag = ' (Demo answer — once the Gemini proxy is connected I’ll respond to anything, grounded in the real portfolio.)';
-    if (/vizor|mcp|rag|llm|ai tool|agent/.test(t))
-      return "**Vizor** is his clearest applied-AI project — a Python **MCP** (Model Context Protocol) tool that reviews Tableau workbooks. It parses the `.twb` XML, surfaces **confidence-scored observations** about dashboards and worksheets, and applies safe, deterministic edits while guaranteeing the file stays valid and reopenable (verified in pytest). It's how his toolkit stretches into **LLM / RAG / MCP** tooling, grounded in real, verifiable output." + tag;
-    if (/forward|deploy|fde|implement/.test(t))
-      return "The forward-deployed pattern shows in work like:\n- **Vizor** — a Python MCP tool that reviews and safely edits Tableau workbooks\n- **Event Check-In System** — QR + Python, deployed live across 30+ rooms\n- **Operations KPI Dashboard** — built on Snowflake/SQL and put into real operational reviews\n\nThe thread: take an ambiguous business problem, build the technical solution, and get it working in a real workflow." + tag;
-    if (/analytic|data|sql|dashboard|tableau|power ?bi|kpi/.test(t))
-      return "On analytics: at PIM Brands he built Power BI dashboards on SQL/Snowflake to track operational KPIs and support decisions. Projects like the Ops KPI Dashboard show KPI development and decision support — analytics framed as decisions, not just charts." + tag;
+    if (/vizor|mcp|llm|ai tool|agent|architecture/.test(t))
+      return "**Vizor** is his clearest applied-AI project — **AI dashboard optimization for Tableau**. You describe a change in plain language (“add West-region revenue as a KPI”); an **agent proposes** a structured change spec, and a **deterministic compiler applies** it to the real workbook — the model never edits the file's XML. Every apply runs schema, field, zone, and **fidelity** validation and **fails closed**, and outputs are versioned, hash-verified workbooks. It started as a screenshot→critique web app, then pivoted to this propose-and-apply system. The key idea: the model plans; deterministic code ships the workbook only when validation passes." + tag;
+    if (/forward|deploy|fde|implement|customer/.test(t))
+      return "The forward-deployed pattern shows in work like:\n- **Summit Operations Platform** — Streamlit + Google Sheets, run live for a real event (120+ check-ins, 18 sessions)\n- **Fly Me High** — first technical hire building an internal Java/Spring platform for a non-technical company\n- **Inn4Smart** — a data-integration pipeline where reliability meant detectable, recoverable failures, not just a 200\n\nThe thread: take an ambiguous business problem, build the technical solution, and get it working in a real workflow." + tag;
+    if (/analytic|data|sql|dashboard|tableau|power ?bi|kpi|pim/.test(t))
+      return "At **PIM Brands** he spent time on the production floor first, then built manufacturing analytics — OEE, downtime, changeover — reconciling Snowflake, SQL Server, SAP HANA, and Redzone into Power BI. He shipped 15 analytics products and automated ~10+ hours/week of reporting. Analytics framed as decisions, not just charts." + tag;
     if (/product|build|habit|ship|user/.test(t))
-      return "Product-wise, HabitPact is a 0-to-1 behavioral-accountability mobile app — problem framing, user flows, prioritization, and shipping. Digital Home is a full content system he designed and built. The emphasis is on the decision (what to build and why), not just the stack." + tag;
-    if (/role|hiring|looking|target|open|job/.test(t))
-      return "He's targeting Product, Analytics, and Forward Deployed Engineering roles — the overlap of product thinking, data, and hands-on implementation. Based in Riverside, CA; MBA at UC Riverside." + tag;
-    return "I can tell you about Kinshuk's product work, analytics work, forward-deployed engineering, experience, or the roles he's targeting — just ask." + tag;
+      return "Product-wise, **HabitPact** is a 0-to-1 accountability app where friends verify each other's goals — taken to beta-ready with 167 automated tests and testing on real devices. The emphasis is on owning the whole problem: what a pact *is*, what proof *means*, and where to stop — not just the stack." + tag;
+    if (/role|hiring|looking|target|open|job|mba/.test(t))
+      return "He's targeting the overlap of product, analytics, and hands-on implementation — Forward Deployed / Deployment Engineer, AI / Customer Engineer, Technical PM, Founder's Office, and Strategy & Ops. CS undergrad plus a STEM MBA at UC Riverside; based in the San Francisco Bay Area, California." + tag;
+    return "I can tell you about Kinshuk's product work, analytics, forward-deployed engineering, experience, or the roles he's targeting — just ask." + tag;
   }
 
-  return { open, close };
+  // Open the panel and immediately ask a preset question (used by the
+  // "Ask my portfolio" orb prompts on the homepage).
+  function ask(question) {
+    open();
+    const q = String(question || '').trim();
+    if (q) setTimeout(() => send(q), 280);
+  }
+
+  return { open, close, ask };
 }
 
 function esc(s) {

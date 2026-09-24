@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Sri Kalyani Cottons: matching a customer's quality specification to inventory organized by quality, and finding production bottlenecks">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="84" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">OPERATIONS &amp; TRADING IMPROVEMENT</text>
+  <text x="62" y="146" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="500">Start with the customer and the operation.</text>
+
+  <!-- quality spec card -->
+  <g transform="translate(64,214)" font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <rect width="470" height="286" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.22"/>
+    <text x="24" y="44" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2" fill="#c1440e">QUALITY PARAMETERS</text>
+    <g font-size="19">
+      <text x="24" y="92">Staple length</text><text x="446" y="92" text-anchor="end" fill-opacity="0.55">spec</text>
+      <line x1="24" y1="108" x2="446" y2="108" stroke="#17150f" stroke-opacity="0.12"/>
+      <text x="24" y="140">Micronaire</text><text x="446" y="140" text-anchor="end" fill-opacity="0.55">spec</text>
+      <line x1="24" y1="156" x2="446" y2="156" stroke="#17150f" stroke-opacity="0.12"/>
+      <text x="24" y="188">Fiber strength</text><text x="446" y="188" text-anchor="end" fill-opacity="0.55">spec</text>
+      <line x1="24" y1="204" x2="446" y2="204" stroke="#17150f" stroke-opacity="0.12"/>
+      <text x="24" y="236">Cleanliness / trash</text><text x="446" y="236" text-anchor="end" fill-opacity="0.55">spec</text>
+      <line x1="24" y1="252" x2="446" y2="252" stroke="#17150f" stroke-opacity="0.12"/>
+      <text x="24" y="278">Moisture</text><text x="446" y="278" text-anchor="end" fill-opacity="0.55">spec</text>
+    </g>
+  </g>
+
+  <text x="560" y="366" font-size="34" fill="#c1440e">→</text>
+
+  <!-- match result -->
+  <g transform="translate(624,214)" font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <rect width="512" height="132" fill="#17150f"/>
+    <text x="24" y="40" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2" fill="#f4f1e8" fill-opacity="0.6">MATCH</text>
+    <text x="24" y="82" font-size="24" font-weight="600" fill="#f4f1e8">Lot that fits the need</text>
+    <text x="24" y="112" font-size="15" fill="#f4f1e8" fill-opacity="0.7">inventory organized by quality, not just quantity</text>
+
+    <g transform="translate(0,150)">
+      <rect width="512" height="132" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.5"/>
+      <text x="24" y="40" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2" fill="#c1440e">OR</text>
+      <text x="24" y="82" font-size="24" font-weight="600">A workable alternative</text>
+      <text x="24" y="112" font-size="15" fill-opacity="0.65">a conversation, not a dead-end "not available"</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="560" x2="1136" y2="560" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="604" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="23">Contributed to ~25% higher production throughput by finding the bottlenecks that were capping it.</text>
+</svg>

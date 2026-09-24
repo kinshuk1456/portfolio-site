@@ -1,8 +1,8 @@
 {
   "person": {
     "name": "Kinshuk Agarwal",
-    "headline": "MBA candidate at UC Riverside · Product-minded builder across analytics, operations, and software delivery.",
-    "location": "Riverside, CA",
+    "headline": "Technical product builder and operator at the intersection of AI, software, data, and real-world workflows. CS + STEM MBA.",
+    "location": "San Francisco Bay Area, CA",
     "email": "kinshuk.agarwal@email.ucr.edu",
 
     "profileImage": "data/assets/headshot-portrait.jpg",
@@ -17,17 +17,18 @@
   ],
   "home": {
     "hero": {
-      "eyebrow": "Kinshuk Agarwal — Product · Analytics · Forward Deployed",
-      "headline": ["I turn noise", "into decisions."],
-      "sub": "Product-minded builder working across data, systems, and implementation — turning ambiguous problems into decisions and working products.",
+      "eyebrow": "Kinshuk Agarwal — building at the intersection of AI, product, data & operations",
+      "headline": ["I turn messy", "problems into", "working systems."],
+      "sub": "I like starting with a messy real-world problem, understanding how people actually work, and then building the software, AI system, data product, or process that makes the workflow better. CS undergrad, STEM MBA.",
       "disciplines": ["Product", "Analytics", "Forward Deployed"],
-      "statusRoles": ["Product", "Analytics", "Forward Deployed"],
-      "metaLeft": "MBA — UC Riverside",
-      "metaRight": "Riverside, California",
+      "statusRoles": ["Forward Deployed", "AI / Customer Engineering", "Technical PM", "Founder's Office", "Strategy & Ops"],
+      "toolkit": ["React", "FastAPI", "Flutter", "Java / Spring", "Python", "SQL", "Snowflake", "Power BI", "LLMs", "MCP"],
+      "metaLeft": "STEM MBA — UC Riverside",
+      "metaRight": "San Francisco Bay Area, California",
       "ctaPrimary": { "label": "Selected work", "href": "/projects.html" },
       "ctaSecondary": { "label": "How I think", "href": "/insights.html" }
     },
-    "featuredProjectSlugs": ["vizor", "dons-drugs-consulting", "operations-kpi-dashboard"],
+    "featuredProjectSlugs": ["vizor", "habitpact", "event-checkin-system", "grhastha", "operations-kpi-dashboard"],
     "featuredInsightSlugs": ["from-messy-data-to-decisions"],
     "featuredLifeSlugs": ["trail-notes-reset"]
   },
@@ -44,25 +45,25 @@
     "title": "Let’s build something useful.",
     "blurb": "If you’re hiring or collaborating in product, analytics, or ops strategy, I’d love to connect. Email is the best way to reach me.",
     "email": "kinshuk.agarwal@email.ucr.edu",
-    "location": "Riverside, CA",
+    "location": "San Francisco Bay Area, CA",
     "calendlyUrl": "",
     "form": { "enabled": false, "note": "Static site: use email/Calendly." }
   },
   "chat": {
     "enabled": true,
     "endpoint": "/api/chat",
-    "model": "gemini-2.0-flash",
+    "model": "gemini-2.5-flash",
     "suggested": [
       "What's his forward-deployed experience?",
       "Tell me about Vizor",
-      "How does he use LLMs, RAG, and MCP?",
+      "What did he build at PIM Brands?",
       "What roles is he targeting?"
     ]
   },
   "seo": {
-    "siteTitle": "Kinshuk Agarwal — MBA Candidate (UC Riverside) · Product & Analytics",
-    "siteDescription": "Kinshuk Agarwal’s portfolio: product-minded analytics and software delivery work—dashboards, workflow improvements, and execution notes.",
+    "siteTitle": "Kinshuk Agarwal — AI Product Builder · Forward Deployed · Technical PM",
+    "siteDescription": "Kinshuk Agarwal builds at the intersection of AI, software, data, and real-world workflows — a CS undergrad and STEM MBA who ships products, data systems, and AI tools grounded in how people actually work.",
     "siteUrl": "https://kinshukagarwal.com",
-    "defaultOgImage": ""
+    "defaultOgImage": "/data/assets/og.png"
   }
 }

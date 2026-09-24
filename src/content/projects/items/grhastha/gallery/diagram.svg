@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Grhastha product flow: onboard once, then a direct home experience that branches into timing, step-by-step guidance, and mantras">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="82" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">PRODUCT FLOW</text>
+  <text x="62" y="140" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="500">Onboard once, then straight to the home</text>
+
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <!-- first run -->
+    <g transform="translate(64,220)">
+      <rect width="220" height="110" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="18" y="34" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">FIRST VISIT</text>
+      <text x="18" y="68" font-size="19" font-weight="600">Onboarding</text>
+      <text x="18" y="92" font-size="14" fill-opacity="0.6">shown only once</text>
+    </g>
+    <text x="300" y="282" font-size="26" fill="#c1440e">→</text>
+
+    <!-- home -->
+    <g transform="translate(344,210)">
+      <rect width="220" height="130" fill="#17150f"/>
+      <text x="18" y="34" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#f4f1e8" fill-opacity="0.6">EVERY VISIT AFTER</text>
+      <text x="18" y="74" font-size="21" font-weight="600" fill="#f4f1e8">Home</text>
+      <text x="18" y="104" font-size="14" fill="#f4f1e8" fill-opacity="0.65">no login · calm · direct</text>
+    </g>
+
+    <!-- branches -->
+    <path d="M564,240 H620 V150 H700" fill="none" stroke="#c1440e" stroke-opacity="0.6" stroke-width="2"/>
+    <path d="M564,275 H700" fill="none" stroke="#c1440e" stroke-opacity="0.6" stroke-width="2"/>
+    <path d="M564,310 H620 V400 H700" fill="none" stroke="#c1440e" stroke-opacity="0.6" stroke-width="2"/>
+
+    <g transform="translate(700,110)">
+      <rect width="436" height="90" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="20" y="34" font-size="19" font-weight="600">Know When</text>
+      <text x="20" y="62" font-size="14" fill-opacity="0.6">location-aware timing &amp; muhurta</text>
+    </g>
+    <g transform="translate(700,230)">
+      <rect width="436" height="90" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="20" y="34" font-size="19" font-weight="600">Know How</text>
+      <text x="20" y="62" font-size="14" fill-opacity="0.6">steps · materials · substitutes</text>
+    </g>
+    <g transform="translate(700,350)">
+      <rect width="436" height="90" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="20" y="34" font-size="19" font-weight="600">Know the Words</text>
+      <text x="20" y="62" font-size="14" fill-opacity="0.6">mantras · audio · transliteration · meaning</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="512" x2="1136" y2="512" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="556" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="24">The product rules — no login, onboard once, authentic over gamified — come from a non-profit orientation.</text>
+  <text x="64" y="600" fill="#17150f" fill-opacity="0.42" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2">EXPLANATORY DIAGRAM · NOT A PRODUCT SCREENSHOT</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Pipeline diagram: spreadsheet to JSON to API submission, with a response check branching to success or to retry and failure logging">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="82" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">PIPELINE · THE FAILURE PATH IS THE POINT</text>
+  <text x="62" y="140" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="500">What happens when a record is bad</text>
+
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <!-- main line -->
+    <g transform="translate(64,220)">
+      <rect width="180" height="90" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="16" y="40" font-size="18" font-weight="600">Spreadsheet</text>
+      <text x="16" y="66" font-size="13" fill-opacity="0.6">row</text>
+    </g>
+    <text x="252" y="272" font-size="24" fill="#c1440e">→</text>
+    <g transform="translate(288,220)">
+      <rect width="180" height="90" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="16" y="40" font-size="18" font-weight="600">Transform</text>
+      <text x="16" y="66" font-size="13" fill-opacity="0.6">→ JSON</text>
+    </g>
+    <text x="476" y="272" font-size="24" fill="#c1440e">→</text>
+    <g transform="translate(512,220)">
+      <rect width="180" height="90" fill="#17150f"/>
+      <text x="16" y="40" font-size="18" font-weight="600" fill="#f4f1e8">Submit to API</text>
+      <text x="16" y="66" font-size="13" fill="#f4f1e8" fill-opacity="0.65">POST</text>
+    </g>
+
+    <!-- decision -->
+    <g transform="translate(770,205)">
+      <path d="M60,0 L120,60 L60,120 L0,60 Z" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.6"/>
+      <text x="60" y="56" font-size="14" font-weight="600" text-anchor="middle">Response</text>
+      <text x="60" y="76" font-size="14" font-weight="600" text-anchor="middle">valid?</text>
+    </g>
+    <text x="700" y="272" font-size="24" fill="#c1440e">→</text>
+
+    <!-- yes -->
+    <path d="M890,265 H980" fill="none" stroke="#17150f" stroke-opacity="0.4" stroke-width="2"/>
+    <text x="906" y="256" font-size="13" fill="#17150f" fill-opacity="0.6">yes</text>
+    <g transform="translate(980,225)">
+      <rect width="156" height="80" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="16" y="34" font-size="17" font-weight="600">Committed</text>
+      <text x="16" y="58" font-size="13" fill-opacity="0.6">record done</text>
+    </g>
+
+    <!-- no -->
+    <path d="M830,325 V400 H520 V360" fill="none" stroke="#c1440e" stroke-opacity="0.6" stroke-width="2"/>
+    <text x="838" y="352" font-size="13" fill="#c1440e">no</text>
+    <g transform="translate(360,400)">
+      <rect width="320" height="90" fill="#fbfaf5" stroke="#c1440e" stroke-opacity="0.5"/>
+      <text x="18" y="34" font-size="17" font-weight="600">Retry, then log the failure</text>
+      <text x="18" y="60" font-size="13" fill-opacity="0.6">visible + explainable, not silent</text>
+      <text x="18" y="80" font-size="13" fill-opacity="0.6">→ recovery procedure kicks in</text>
+    </g>
+    <path d="M360,445 H150 V310" fill="none" stroke="#17150f" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="4 4"/>
+    <text x="150" y="470" font-size="12" fill="#17150f" fill-opacity="0.5">re-processed after fix</text>
+  </g>
+
+  <line x1="64" y1="536" x2="1136" y2="536" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="580" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="23">Reliability is what happens on the "no" branch — detectable, understandable, recoverable.</text>
+</svg>

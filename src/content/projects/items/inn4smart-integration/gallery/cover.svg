@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Inn4Smart integration: spreadsheets to JSON to an external API, with validation, retries and failure logging">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="84" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">ENTERPRISE DATA INTEGRATION WORKFLOW</text>
+  <text x="62" y="146" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="500">"200 OK" is not the same as reliable.</text>
+
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <!-- pipeline -->
+    <g transform="translate(64,220)">
+      <rect width="190" height="120" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="16" y="34" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">INPUT</text>
+      <text x="16" y="72" font-size="19" font-weight="600">Spreadsheets</text>
+      <text x="16" y="98" font-size="14" fill-opacity="0.6">thousands of rows</text>
+    </g>
+    <text x="262" y="286" font-size="26" fill="#c1440e">→</text>
+    <g transform="translate(300,220)">
+      <rect width="190" height="120" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="16" y="34" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">TRANSFORM</text>
+      <text x="16" y="72" font-size="19" font-weight="600">Structured</text>
+      <text x="16" y="96" font-size="19" font-weight="600">JSON</text>
+    </g>
+    <text x="498" y="286" font-size="26" fill="#c1440e">→</text>
+    <g transform="translate(536,220)">
+      <rect width="190" height="120" fill="#17150f"/>
+      <text x="16" y="34" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#f4f1e8" fill-opacity="0.6">SUBMIT</text>
+      <text x="16" y="72" font-size="19" font-weight="600" fill="#f4f1e8">External API</text>
+      <text x="16" y="98" font-size="14" fill="#f4f1e8" fill-opacity="0.65">+ response check</text>
+    </g>
+
+    <!-- reliability trio -->
+    <g transform="translate(770,220)">
+      <rect width="366" height="120" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.5"/>
+      <text x="18" y="34" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#c1440e">WHEN IT FAILS</text>
+      <text x="18" y="66" font-size="17" font-weight="600">Detectable · Understandable · Recoverable</text>
+      <text x="18" y="96" font-size="14" fill-opacity="0.65">validation · retries · failure logging</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="420" x2="1136" y2="420" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="470" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="24">Edge cases pushed hard in Postman · 8-release cadence · documented recovery · 6+ users trained.</text>
+  <text x="64" y="516" fill="#17150f" fill-opacity="0.42" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2">EXPLANATORY DIAGRAM · NOT A PRODUCT SCREENSHOT</text>
+</svg>

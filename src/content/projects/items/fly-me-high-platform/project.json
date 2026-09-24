@@ -1,0 +1,71 @@
+{
+  "slug": "fly-me-high-platform",
+  "status": "published",
+  "featured": false,
+  "tier": "selected",
+  "title": "Fly Me High — Internal Operations Platform",
+  "date": "2024-05-01",
+  "summary": "The first internal software for a small travel company that ran on spreadsheets: a backend system for customer records, prospects, and operational handoffs, built as their first full-time technical hire.",
+  "problem": "Fly Me High is a travel company, not a software company. Sales and operations lived in spreadsheets and manual steps — customer records, prospects, handoffs between people — which was slow, easy to get wrong, and impossible to see across. There was no internal product because there had never been anyone to build one.",
+  "approach": "As the first full-time technical hire, I started by learning how the business actually worked, then turned those workflow pains into requirements. I designed the backend architecture and built the internal system in Java / Spring Boot on PostgreSQL, exposing REST APIs I tested and debugged in Postman. I also coordinated roughly four frontend interns — defining tasks, setting roadmap priorities, and supporting releases and the internal users who depended on it day to day.",
+  "tools": [
+    "Java",
+    "Spring Boot",
+    "PostgreSQL",
+    "JavaScript",
+    "REST APIs",
+    "Postman"
+  ],
+  "outcome": "Replaced manual spreadsheet workflows with an internal product: roughly 30 minutes less processing time per customer record, adoption growing from about 3 users to 6–7 across the team, and ~25% faster backend responses after targeted API debugging.",
+  "role": "Software Developer — first full-time technical hire",
+  "team": "Solo backend + ~4 frontend interns coordinated",
+  "duration": "Jun 2023 — May 2024",
+  "links": [],
+  "tags": [
+    "Internal Tools",
+    "Backend",
+    "Spring Boot",
+    "Requirements",
+    "Team Coordination"
+  ],
+  "disciplines": [
+    "Forward Deployed",
+    "Engineering",
+    "Product"
+  ],
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": [
+      "gallery/diagram.svg"
+    ],
+    "alt": {
+      "gallery/cover.svg": "Fly Me High internal platform — replacing spreadsheet workflows with a Spring Boot / PostgreSQL system",
+      "gallery/diagram.svg": "Explanatory system diagram: manual spreadsheet workflows converted into requirements, a Spring Boot REST backend on PostgreSQL, and a frontend built by coordinated interns, used by internal operations"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "metrics": [
+    {
+      "value": 30,
+      "prefix": "~",
+      "suffix": " min",
+      "short": "saved / record",
+      "label": "Saved per customer record"
+    },
+    {
+      "value": 25,
+      "prefix": "~",
+      "suffix": "%",
+      "short": "faster backend",
+      "label": "Faster backend responses"
+    },
+    {
+      "value": 7,
+      "short": "internal users",
+      "label": "Internal users, up from 3"
+    }
+  ]
+}

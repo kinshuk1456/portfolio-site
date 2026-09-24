@@ -60,6 +60,8 @@ async function buildProjectsIndex({ srcContentDir, distContentDir }) {
       tags: project.tags || [],
       disciplines: project.disciplines || [],
       featured: !!project.featured,
+      tier: project.tier || (project.featured ? 'featured' : 'selected'),
+      metrics: Array.isArray(project.metrics) ? project.metrics.slice(0, 3) : [],
       status,
       coverImage: project?.images?.cover
         ? toPosix(path.join('data', 'projects', 'items', slug, project.images.cover))

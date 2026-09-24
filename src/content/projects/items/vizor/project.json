@@ -2,46 +2,102 @@
   "slug": "vizor",
   "status": "published",
   "featured": true,
-  "title": "Vizor — AI-assisted Tableau Workbook Reviewer",
+  "tier": "featured",
+  "title": "Vizor — AI Dashboard Optimization for Tableau",
   "date": "2026-07-09",
-  "summary": "A Python MCP tool that reviews Tableau workbooks, surfaces confidence-scored observations about dashboards and worksheets, and applies safe automated edits while keeping the file valid.",
-  "problem": "Tableau workbooks accumulate unclear worksheet names, stale identity metadata, and inconsistent dashboards. Reviewing and cleaning them up by hand is slow, easy to get wrong, and hard to do consistently across many files.",
-  "approach": "Built a Python MCP server that parses .twb XML into a structured model, generates honest, confidence-scored observations about the workbook (dashboard type, detected worksheets), and proposes or applies safe, deterministic edits — renaming worksheets to describe what they show and refreshing workbook identity metadata — while guaranteeing the file stays valid Tableau XML. Deterministic scoring means the same input always produces the same result, and edited workbooks are re-parsed in tests to prove they still open.",
+  "summary": "A local-first tool that turns a natural-language request into structured dashboard changes and applies them to the real Tableau workbook through a deterministic compiler — with schema and fidelity validation and versioned outputs, so the model plans the change but never touches the file.",
+  "problem": "Editing a Tableau dashboard is fiddly, and describing the change you want in words is the natural interface. But you can't hand a workbook to an LLM and let it rewrite the XML — it can produce plausible but structurally invalid workbooks. The hard problem is getting the flexibility of natural language without losing the property that the output is only written when it passes validation.",
+  "approach": "Split the responsibilities down the middle. An agent interprets the request and proposes a structured, neutral change spec (add / replace / move a visual, with grounded references) — it never sees or edits Tableau XML. Only after explicit approval does a deterministic compiler apply the change to the real workbook, through an apply loop (proposed → accepted → compiled → applied) that runs package, schema, field, zone, and fidelity validation and fails closed on any check. Outputs are written as versioned workbooks (`<source>_vizor_vN.twb`), the original's SHA-256 is verified unchanged, and every edit is undoable. It runs local-first on one machine (no cloud credentials required), with a pluggable LLM provider for planning.",
   "tools": [
     "Python",
+    "FastAPI",
+    "Tableau (.twb / .twbx)",
+    "Power BI (.pbip)",
     "Model Context Protocol (MCP)",
-    "Tableau (.twb / XML)",
+    "React",
+    "TypeScript",
+    "Supabase (auth)",
     "pytest"
   ],
-  "outcome": "Turned manual workbook cleanup into a repeatable, reviewable flow: observations carry explicit confidence signals so a human stays in control, and every automated edit preserves a valid, reopenable workbook.",
-  "role": "Builder / Developer",
+  "outcome": "A working private beta (packaged and code-signed for Windows) that produces real, versioned Tableau workbooks from planned changes — validated to still open and render, with layout fidelity scored on every generation and low-fidelity results rejected rather than shipped. Field-tested on real public dashboards. Its clearest lesson: let the model plan, and keep the correctness checks in deterministic code.",
+  "role": "Founder / Builder",
   "team": "Solo project",
-  "duration": "July 2026 – present",
-  "links": [],
+  "duration": "July 2026 – present · Windows private beta",
+  "links": [
+    {
+      "label": "Request a demo",
+      "url": "mailto:kinshuk.agarwal@email.ucr.edu?subject=Vizor%20Demo%20Request"
+    }
+  ],
   "tags": [
-    "Python",
-    "MCP",
+    "Applied AI",
     "Tableau",
-    "Automation",
+    "Deterministic Systems",
+    "MCP",
     "Data Visualization",
-    "AI Tooling"
+    "FastAPI"
+  ],
+  "disciplines": [
+    "Forward Deployed",
+    "Analytics",
+    "Engineering"
   ],
   "images": {
     "cover": "gallery/cover.svg",
     "gallery": [
-      "gallery/01.svg"
+      "gallery/diagram.svg"
     ],
     "alt": {
-      "gallery/cover.svg": "Vizor reviewing a Tableau workbook with confidence-scored observations",
-      "gallery/01.svg": "Vizor observation and safe-edit flow for a Tableau dashboard"
+      "gallery/cover.svg": "Vizor — a natural-language dashboard request planned by an agent and applied to a real Tableau workbook by a deterministic compiler, with validation and a versioned output",
+      "gallery/diagram.svg": "Explanatory architecture diagram: a natural-language request is interpreted by an agent into a proposed change spec; after approval a deterministic compiler applies it and runs schema, field, zone and fidelity validation, producing a versioned .twb or failing closed"
     }
   },
   "caseStudy": {
     "enabled": true,
     "path": "case-study.md"
   },
-  "disciplines": [
-    "Forward Deployed",
-    "Analytics"
+  "metrics": [
+    {
+      "value": 91,
+      "short": "peak fidelity",
+      "label": "Peak layout-fidelity score in the evaluated set"
+    },
+    {
+      "value": 3,
+      "short": "dashboards field-tested",
+      "label": "Real Tableau dashboards field-tested"
+    }
+  ],
+  "steps": [
+    {
+      "n": "01",
+      "title": "The problem",
+      "body": "Describing a dashboard change in words is the natural interface — “make West region a KPI up top.” But you cannot let a language model freely rewrite a Tableau workbook's XML: it can produce plausible but structurally invalid workbooks."
+    },
+    {
+      "n": "02",
+      "title": "Early exploration",
+      "body": "The project started as a web app that took a dashboard screenshot and returned a scored, six-lens critique with a redesign plan. Useful, but it stopped at advice — it never touched the real workbook, so it couldn't actually make the change."
+    },
+    {
+      "n": "03",
+      "title": "The pivot",
+      "body": "To actually apply changes, the architecture had to change. The insight: never let the model edit the file. Let it interpret intent and propose a structured, neutral change spec, and move all correctness-critical work into deterministic code."
+    },
+    {
+      "n": "04",
+      "title": "The apply loop",
+      "body": "An agent proposes a change (add / replace / move a visual); you approve it; a deterministic compiler applies it to the workbook through a state machine — proposed → accepted → compiled → applied — that runs package, schema, field, zone, and fidelity validation and fails closed on any check."
+    },
+    {
+      "n": "05",
+      "title": "Safeguards",
+      "body": "Outputs are versioned workbooks (`<source>_vizor_vN.twb`); the original's SHA-256 is verified unchanged; every edit is undoable; and each generation is scored for layout fidelity, with low-fidelity results rejected instead of shipped. The model plans; deterministic code writes the file only after those checks pass."
+    },
+    {
+      "n": "06",
+      "title": "What I learned",
+      "body": "The best AI architecture is usually not “use the model for everything.” Use probabilistic systems where interpretation and judgment add value, and deterministic software wherever correctness is non-negotiable — the boundary between them is the product."
+    }
   ]
 }

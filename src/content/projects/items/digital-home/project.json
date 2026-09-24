@@ -2,6 +2,7 @@
   "slug": "digital-home",
   "status": "published",
   "featured": false,
+  "tier": "labs",
   "title": "Digital Home — Portfolio + Content System",
   "date": "2026-03-06",
   "summary": "A static-hostable portfolio and content system with validation, generated indexes, and a local Studio for fast authoring — no backend.",
@@ -25,12 +26,9 @@
   ],
   "images": {
     "cover": "gallery/cover.svg",
-    "gallery": [
-      "gallery/01.svg"
-    ],
+    "gallery": [],
     "alt": {
-      "gallery/cover.svg": "Homepage hero and featured content grid",
-      "gallery/01.svg": "Project detail page layout"
+      "gallery/cover.svg": "Homepage hero and featured content grid"
     }
   },
   "caseStudy": {

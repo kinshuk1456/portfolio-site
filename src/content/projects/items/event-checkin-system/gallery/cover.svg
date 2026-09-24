@@ -1,25 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b1020"/>
-      <stop offset="1" stop-color="#183a1f"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="675" fill="url(#g)"/>
-  <text x="96" y="150" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700">Event Check-In System</text>
-  <text x="96" y="196" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">QR onboarding · Python · Real-time tracking</text>
-  <rect x="96" y="245" width="1008" height="360" rx="24" fill="#0f1a2a" stroke="#25324a"/>
-  <g transform="translate(140,300)">
-    <rect width="300" height="340" rx="22" fill="#111f33" stroke="#2a3a57"/>
-    <rect x="44" y="56" width="212" height="212" rx="18" fill="#0f1a2a" stroke="#2a3a57"/>
-    <path d="M74,86 h60 v60 h-60z M164,86 h60 v60 h-60z M74,176 h60 v60 h-60z M164,176 h60 v60 h-60z" fill="#2dd4bf" opacity="0.55"/>
-    <text x="44" y="300" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Scan → Check in</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Summit Operations Platform: QR check-in feeding a live occupancy board across 18 sessions">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="84" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">SUMMIT OPERATIONS PLATFORM</text>
+  <text x="62" y="146" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="500">Run a live event from one screen.</text>
+
+  <!-- QR check-in -->
+  <g transform="translate(64,214)">
+    <rect width="240" height="248" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+    <text x="18" y="34" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">CHECK IN</text>
+    <g transform="translate(78,58)" fill="#17150f">
+      <rect width="26" height="26"/><rect x="36" width="26" height="26"/><rect x="72" width="26" height="26"/>
+      <rect y="36" width="26" height="26"/><rect x="72" y="36" width="26" height="26"/>
+      <rect y="72" width="26" height="26"/><rect x="36" y="72" width="26" height="26"/><rect x="72" y="72" width="26" height="26"/>
+    </g>
+    <text x="120" y="200" font-family="ui-sans-serif, system-ui" font-size="16" text-anchor="middle" fill="#17150f">QR + UCR email</text>
+    <text x="120" y="224" font-family="ui-sans-serif, system-ui" font-size="13" text-anchor="middle" fill="#17150f" fill-opacity="0.6">validated at the door</text>
   </g>
-  <g transform="translate(470,300)">
-    <rect width="634" height="340" rx="22" fill="#111f33" stroke="#2a3a57"/>
-    <text x="28" y="52" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Rooms</text>
-    <rect x="28" y="78" width="580" height="18" rx="9" fill="#7c5cff" opacity="0.75"/>
-    <rect x="28" y="116" width="520" height="18" rx="9" fill="#7c5cff" opacity="0.55"/>
-    <rect x="28" y="154" width="470" height="18" rx="9" fill="#7c5cff" opacity="0.40"/>
+  <text x="322" y="346" font-size="30" fill="#c1440e">→</text>
+
+  <!-- occupancy board -->
+  <g transform="translate(372,214)" font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <rect width="764" height="248" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.22"/>
+    <text x="24" y="40" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">LIVE OCCUPANCY · 18 SESSIONS</text>
+
+    <g transform="translate(24,60)">
+      <text x="0" y="18" font-size="15">Session A</text>
+      <rect x="150" y="4" width="540" height="18" fill="#eae4d6"/>
+      <rect x="150" y="4" width="486" height="18" fill="#17150f"/>
+      <text x="700" y="18" font-size="13" text-anchor="end" fill="#17150f" fill-opacity="0.7">90%</text>
+    </g>
+    <g transform="translate(24,96)">
+      <text x="0" y="18" font-size="15">Session B</text>
+      <rect x="150" y="4" width="540" height="18" fill="#eae4d6"/>
+      <rect x="150" y="4" width="540" height="18" fill="#c1440e"/>
+      <text x="700" y="18" font-size="13" text-anchor="end" fill="#c1440e">FULL — reassign</text>
+    </g>
+    <g transform="translate(24,132)">
+      <text x="0" y="18" font-size="15">Session C</text>
+      <rect x="150" y="4" width="540" height="18" fill="#eae4d6"/>
+      <rect x="150" y="4" width="270" height="18" fill="#17150f"/>
+      <text x="700" y="18" font-size="13" text-anchor="end" fill="#17150f" fill-opacity="0.7">50%</text>
+    </g>
+    <g transform="translate(24,168)">
+      <text x="0" y="18" font-size="15">Session D</text>
+      <rect x="150" y="4" width="540" height="18" fill="#eae4d6"/>
+      <rect x="150" y="4" width="378" height="18" fill="#17150f"/>
+      <text x="700" y="18" font-size="13" text-anchor="end" fill="#17150f" fill-opacity="0.7">70%</text>
+    </g>
+    <text x="24" y="228" font-size="14" fill="#17150f" fill-opacity="0.6">Floor Host checks in · Admin watches capacity, gets alerts, reassigns</text>
   </g>
+
+  <line x1="64" y1="512" x2="1136" y2="512" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="558" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="24">120+ check-ins across 18 sessions — built on Streamlit + Google Sheets against a fixed event date.</text>
+  <text x="64" y="602" fill="#17150f" fill-opacity="0.42" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2">EXPLANATORY DIAGRAM · NOT A PRODUCT SCREENSHOT</text>
 </svg>

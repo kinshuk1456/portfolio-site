@@ -7,7 +7,24 @@
 //   3) fallback to latest published
 
 import { fetchJSON } from '../content-api.js';
-import { pickFeatured, formatDate, escapeHtml } from '../shared/ui.js';
+import { pickFeatured, formatDate, escapeHtml, renderMetricChips } from '../shared/ui.js';
+import { miniFlow, buildFlow, impactStrip, featureFor } from '../shared/graphics.js';
+
+// A minimal, non-converging vertical node motif. It lives in the narrow channel
+// between the headline and the "Product / Analytics" type, above the portrait —
+// so it never crosses the text, the words, or the face. Placement is in CSS.
+function heroSchematicSvg() {
+  return `
+  <svg viewBox="0 0 160 520" fill="none" stroke="currentColor" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1" opacity="0.55">
+      <path d="M95,50 L55,180 L110,305 L70,435"/>
+    </g>
+    <circle cx="110" cy="305" r="5" fill="#c1440e" stroke="none"/>
+    <g stroke="currentColor" stroke-width="1.1" fill="var(--bg)">
+      <circle cx="95" cy="50" r="3.5"/><circle cx="55" cy="180" r="3.5"/><circle cx="70" cy="435" r="3.5"/>
+    </g>
+  </svg>`;
+}
 
 const enc = encodeURIComponent;
 const pad = (n) => String(n).padStart(2, '0');
@@ -39,15 +56,19 @@ export async function renderHome({ site }) {
 
   const [feature, ...restProjects] = featuredProjects;
 
+  const featureGraphic = featureFor(feature?.slug || '');
   const workFeature = feature ? `
     <a class="work-feature" href="/project.html?slug=${enc(feature.slug)}" data-reveal>
       <div class="work-feature-media">
-        ${feature.coverImage ? `<img src="/${feature.coverImage}" alt="" loading="lazy" />` : ''}
+        ${featureGraphic
+          ? `<div class="feat-graphic">${featureGraphic}</div>`
+          : (feature.coverImage ? `<img src="/${feature.coverImage}" alt="" loading="lazy" />` : '')}
       </div>
       <div class="work-feature-body">
         <span class="work-num">01</span>
         <h3 class="work-feature-title">${escapeHtml(feature.title)}</h3>
         ${feature.summary ? `<p class="work-feature-summary">${escapeHtml(feature.summary)}</p>` : ''}
+        ${feature.metrics && feature.metrics.length ? renderMetricChips(feature.metrics) : ''}
         <div class="work-feature-foot">
           <span class="label work-disc">${(feature.disciplines || []).map(escapeHtml).join(' · ') || escapeHtml(formatDate(feature.date))}</span>
           <span class="work-cta label">Case study →</span>
@@ -99,6 +120,7 @@ export async function renderHome({ site }) {
     html: `
       <section class="hero hero-stage" data-hero>
         <canvas class="hero-signal" aria-hidden="true"></canvas>
+        <div class="hero-schematic" data-hero-schematic aria-hidden="true">${heroSchematicSvg()}</div>
         <div class="hero-stage-inner">
           <div class="hero-words" aria-hidden="true">
             <span class="hero-word hero-word-1">${escapeHtml(disciplines[0] || 'Product')}</span>
@@ -126,7 +148,7 @@ export async function renderHome({ site }) {
             <div class="hero-avail label" aria-label="Open to ${escapeHtml(statusRoles.join(', '))} roles">
               <span aria-hidden="true">Open to&nbsp;</span>
               <span class="role-rotate" aria-hidden="true" style="--n:${statusRoles.length}">
-                ${statusRoles.map(r => `<span>${escapeHtml(r)}</span>`).join('')}
+                ${statusRoles.map((r, i) => `<span style="--i:${i}">${escapeHtml(r)}</span>`).join('')}
               </span>
               <span aria-hidden="true">&nbsp;roles</span>
             </div>
@@ -179,9 +201,62 @@ export async function renderHome({ site }) {
         </div>
       </section>
 
+      <section class="section bg-grid" data-reveal>
+        <div class="section-head">
+          <div class="section-index label">§ 02 — What I build</div>
+          <h2>The same pattern, across every domain.</h2>
+        </div>
+        <p class="section-note">Different domains, one shape: interpret a messy input, turn it into something structured, and make the correctness provable.</p>
+        <div class="sysgrid">
+          <div class="syscat"><div class="syscat-k">AI Systems</div>${miniFlow(['prompt', 'model', 'structured output', 'validation'])}</div>
+          <div class="syscat"><div class="syscat-k">Data Products</div>${miniFlow(['sources', 'SQL / model', 'metric', 'decision'])}</div>
+          <div class="syscat"><div class="syscat-k">Internal Tools</div>${miniFlow(['manual work', 'automation', 'workflow', 'time saved'])}</div>
+          <div class="syscat"><div class="syscat-k">Customer Workflows</div>${miniFlow(['problem', 'requirements', 'build', 'adoption'])}</div>
+        </div>
+      </section>
+
+      <section class="section section-build bg-dots" data-reveal>
+        <div class="section-head">
+          <div class="section-index label">§ 03 — How I build</div>
+          <h2>Understand. Build. Validate. Ship.</h2>
+        </div>
+        ${buildFlow([
+          { key: 'Understand', notes: ['customer', 'workflow', 'constraints'] },
+          { key: 'Build', notes: ['prototype', 'data', 'interfaces'] },
+          { key: 'Validate', notes: ['tests', 'users', 'failure modes'] },
+          { key: 'Ship', notes: ['deployment', 'adoption', 'iteration'] }
+        ])}
+      </section>
+
+      <section class="section" data-reveal>
+        <div class="section-head">
+          <div class="section-index label">§ 04 — Impact</div>
+          <h2>Outcomes I can stand behind.</h2>
+        </div>
+        ${impactStrip([
+          { value: 167, label: 'automated tests' },
+          { value: 120, suffix: '+', label: 'live event check-ins' },
+          { value: 15, label: 'analytics products' },
+          { value: 10, prefix: '~', suffix: '+ hrs/wk', label: 'recurring reporting eliminated' },
+          { value: 25, prefix: '~', suffix: '%', label: 'throughput improvement' }
+        ])}
+      </section>
+
+      <section class="section section-split" data-reveal>
+        <div class="section-rail">
+          <div class="section-index label">§ 05 — Building in public</div>
+          <h2>What I'm shipping now</h2>
+          <p class="section-note">The things I'm experimenting with, shipping, and improving.</p>
+          <a class="link" href="https://github.com/kinshuk1456" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+        <div class="section-main">
+          <div class="gh" data-github><p class="muted">Loading recent GitHub activity…</p></div>
+        </div>
+      </section>
+
       <section class="section section-split section-split--right">
         <div class="section-rail">
-          <div class="section-index label">§ 02 — Writing</div>
+          <div class="section-index label">§ 06 — Writing</div>
           <h2>How I think</h2>
           <p class="section-note">Short notes on product, analytics, and turning ambiguity into decisions.</p>
           <a class="link" href="/insights.html">All notes →</a>
@@ -197,6 +272,34 @@ export async function renderHome({ site }) {
           <a class="link" href="/life.html">More</a>
         </div>
         <div class="life-strip">${lifeChips}</div>
+      </section>
+
+      <section class="section ask-section section--ink" data-reveal>
+        <div class="ask-inner">
+          <div class="ask-orb-wrap" aria-hidden="true">
+            <canvas class="ask-orb-canvas" width="220" height="220"></canvas>
+          </div>
+          <div class="ask-copy">
+            <div class="section-index label">§ 07 — Ask</div>
+            <h2>Ask my portfolio</h2>
+            <p class="section-note">Ask about my projects, experience, or how I built something — answered by an assistant grounded in the real work.</p>
+            <div class="ai-console">
+              <button class="ai-console-bar" type="button" data-action="open-chat" aria-label="Open the portfolio assistant">
+                <span class="ai-caret" aria-hidden="true">&gt;</span>
+                <span>Ask about my work…</span>
+              </button>
+              <div class="ask-prompts">
+                <button class="ask-chip" type="button" data-ask="Why did you change Vizor's architecture?">Why did you change Vizor's architecture?</button>
+                <button class="ask-chip" type="button" data-ask="What did you build at PIM Brands?">What did you build at PIM Brands?</button>
+                <button class="ask-chip" type="button" data-ask="Which projects best show customer-facing engineering?">Which projects best show customer-facing engineering?</button>
+                <button class="ask-chip" type="button" data-ask="How does your technical background complement your MBA?">How does your technical background complement your MBA?</button>
+              </div>
+              <div class="ai-status">
+                <span>Ask about my projects, experience, or how I built something.</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     `
   };

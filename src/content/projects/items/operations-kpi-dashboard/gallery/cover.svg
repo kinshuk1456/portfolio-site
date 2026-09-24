@@ -1,31 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b1020"/>
-      <stop offset="1" stop-color="#123247"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="675" fill="url(#g)"/>
-  <text x="96" y="150" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="44" font-weight="700">Operations KPI Dashboard</text>
-  <text x="96" y="196" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="20">Power BI · SQL · Snowflake · Redzone</text>
-  <rect x="96" y="245" width="1008" height="360" rx="24" fill="#0f1a2a" stroke="#25324a"/>
-  <g transform="translate(120,280)">
-    <rect width="290" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
-    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">KPI Health</text>
-    <text x="20" y="88" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="700">Stable</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="PIM Brands operational analytics: OEE, downtime and changeover reporting built from four source systems">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="84" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">PIM BRANDS — OPERATIONAL ANALYTICS</text>
+  <text x="62" y="146" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="500">Learn the line, then measure it.</text>
+
+  <!-- KPI tiles -->
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <g transform="translate(64,214)">
+      <rect width="256" height="120" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.22"/>
+      <text x="20" y="40" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">OEE</text>
+      <text x="20" y="86" font-size="34" font-weight="700">availability · performance · quality</text>
+    </g>
+    <g transform="translate(340,214)">
+      <rect width="256" height="120" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="20" y="40" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">DOWNTIME</text>
+      <text x="20" y="88" font-size="30" font-weight="700">tracked by cause</text>
+    </g>
+    <g transform="translate(616,214)">
+      <rect width="256" height="120" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="20" y="40" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">CHANGEOVER</text>
+      <text x="20" y="88" font-size="30" font-weight="700">time &amp; capacity</text>
+    </g>
+    <g transform="translate(892,214)">
+      <rect width="244" height="120" fill="#17150f"/>
+      <text x="20" y="40" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#f4f1e8" fill-opacity="0.6">DELIVERED</text>
+      <text x="20" y="90" font-size="40" font-weight="700" fill="#f4f1e8">15</text>
+      <text x="70" y="90" font-size="18" fill="#f4f1e8" fill-opacity="0.75">analytics products</text>
+    </g>
+
+    <!-- trend band -->
+    <g transform="translate(64,362)">
+      <rect width="1072" height="150" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.22"/>
+      <text x="20" y="34" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">KPI HEALTH → DRIVERS → DRILL-DOWN</text>
+      <path d="M40,120 C180,60 300,132 440,86 C580,42 720,120 860,70 C960,36 1010,96 1040,72" fill="none" stroke="#c1440e" stroke-width="4"/>
+      <g fill="#17150f">
+        <circle cx="40" cy="120" r="5"/><circle cx="440" cy="86" r="5"/><circle cx="860" cy="70" r="5"/>
+      </g>
+    </g>
   </g>
-  <g transform="translate(430,280)">
-    <rect width="290" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
-    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">Backlog</text>
-    <text x="20" y="88" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="700">Visible</text>
-  </g>
-  <g transform="translate(740,280)">
-    <rect width="290" height="120" rx="16" fill="#111f33" stroke="#2a3a57"/>
-    <text x="20" y="44" fill="#9db0d0" font-family="ui-sans-serif, system-ui" font-size="14">SLA</text>
-    <text x="20" y="88" fill="#eaf0ff" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="700">Tracked</text>
-  </g>
-  <g transform="translate(120,420)">
-    <rect width="910" height="160" rx="16" fill="#111f33" stroke="#2a3a57"/>
-    <path d="M50,120 C190,40 290,150 420,80 C560,10 690,150 820,60" fill="none" stroke="#2dd4bf" stroke-width="5"/>
-  </g>
+
+  <line x1="64" y1="552" x2="1136" y2="552" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="596" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="24">Four source systems reconciled into Power BI · ~10+ hours/week of manual reporting automated away.</text>
+  <text x="64" y="636" fill="#17150f" fill-opacity="0.42" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2">EXPLANATORY DIAGRAM · NOT A PRODUCT SCREENSHOT · NO PROPRIETARY DATA</text>
 </svg>

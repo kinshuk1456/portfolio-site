@@ -1,23 +1,26 @@
 {
   "slug": "dons-drugs-consulting",
   "status": "published",
-  "featured": true,
-
+  "featured": false,
+  "tier": "selected",
   "title": "Don's Drugs — Community Pharmacy Growth Strategy",
   "date": "2026-06-01",
   "summary": "With a three-person MBA consulting team, I helped Don's Drugs — an independent community pharmacy in San Bernardino — surface ~$156K in estimated annual revenue opportunity by turning existing patient relationships into growth: preventive care, medication adherence, and high-touch retention.",
-
   "problem": "Don's Drugs had strong relationships with its patient base but wasn't fully capturing the value in them. The core question: how can an independent community pharmacy generate more from its existing patients — and run more efficiently — without losing the high-touch service that differentiates it from national chains?",
   "approach": "Combined qualitative business analysis with market research and financial reasoning: industry and competitive analysis, an operational review of manual workflows (refill recovery and medication adherence), and a margin comparison across pharmacy services (dispensing → medication management → vaccinations → specialty). We reframed the existing patient base as a strategic asset and sized the opportunity financially.",
-  "tools": ["Industry & Competitive Analysis", "Customer Lifetime Value", "Workflow & Process Analysis", "Revenue & Margin Modeling", "Opportunity Prioritization", "Executive Presentation"],
+  "tools": [
+    "Industry & Competitive Analysis",
+    "Customer Lifetime Value",
+    "Workflow & Process Analysis",
+    "Revenue & Margin Modeling",
+    "Opportunity Prioritization",
+    "Executive Presentation"
+  ],
   "outcome": "A consulting-style strategy delivered as the MBA capstone, built on three pillars — preventive-care expansion, a medication-adherence ecosystem, and high-touch retention — representing an estimated ~$156K in annual revenue opportunity (estimated, not realized), while protecting the pharmacy's community-focused edge.",
-
   "role": "MBA Consultant (team of 3)",
   "team": "3-person MBA consulting team",
   "duration": "March – June 2026 · MGT 238, UC Riverside",
-
   "links": [],
-
   "tags": [
     "Consulting",
     "Growth Strategy",
@@ -25,20 +28,36 @@
     "Customer Lifetime Value",
     "MBA Capstone"
   ],
-
-  "disciplines": ["Strategy", "Product"],
-
+  "disciplines": [
+    "Strategy",
+    "Product"
+  ],
   "images": {
     "cover": "gallery/cover.svg",
-    "gallery": ["gallery/01.svg"],
+    "gallery": [
+      "gallery/01.svg"
+    ],
     "alt": {
       "gallery/cover.svg": "Don's Drugs growth strategy — ~$156K estimated annual opportunity across three pillars",
       "gallery/01.svg": "Value ladder from dispensing to specialty services, and the three strategic pillars"
     }
   },
-
   "caseStudy": {
     "enabled": true,
     "path": "case-study.md"
-  }
+  },
+  "metrics": [
+    {
+      "value": 156,
+      "prefix": "$",
+      "suffix": "K",
+      "short": "opportunity (est.)",
+      "label": "Estimated annual opportunity"
+    },
+    {
+      "value": 3,
+      "short": "person team",
+      "label": "Person consulting team"
+    }
+  ]
 }

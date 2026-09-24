@@ -2,21 +2,22 @@
   "slug": "habitpact",
   "status": "published",
   "featured": true,
+  "tier": "featured",
   "title": "HabitPact",
-  "date": "2026-06-01",
-  "summary": "A behavioral-accountability mobile app that helps people follow through on their goals by attaching real consequences — financial, social, and device-based — to the commitments they make.",
-  "problem": "Most habit apps track what you do. HabitPact adds a reason to actually do it. Users set a goal (fitness, studying, productivity), commit to it, and stake something on follow-through — a financial penalty, an accountability partner who gets notified, or a device restriction that limits distractions until the commitment is met. The bet: consequences move behavior in a way streak counters alone don't.",
-  "approach": "Owned the product end to end — vision, user journeys, spec, and roadmap — from whiteboard concept to a working prototype. Built cross-platform in Flutter, using AI-assisted development (Claude, ChatGPT) across requirements, prototyping, and debugging to ship quickly. Feature set was prioritized against market and competitive research of habit-tracking and commitment-device tools.",
+  "date": "2026-03-01",
+  "summary": "A private accountability app where friends set goals together, verify each other's progress, and put real stakes on follow-through — built to test whether habits stick better inside a trusted group than they do alone.",
+  "problem": "Most habit trackers depend almost entirely on self-discipline: a streak counter and your own willpower. HabitPact explores a different bet — that follow-through gets stronger when the goal, the proof, the validation, and the consequence all live inside a friend group you don't want to let down. Users create a pact, commit to it, submit proof, and have peers approve it, with points-based stakes on the line.",
+  "approach": "Owned the whole problem, not just the code — product concept, user journeys, product rules and edge cases, architecture, and release readiness, from whiteboard to a beta-ready build. Built cross-platform in Flutter on Firebase (Auth + Firestore + Cloud Functions), using AI-assisted development to move fast while independently validating the generated code, state behavior, persistence, and edge cases against real acceptance criteria rather than trusting it blindly.",
   "tools": [
     "Flutter",
     "Firebase Auth",
     "Cloud Firestore",
     "Cloud Functions"
   ],
-  "outcome": "Working prototype: demoable and beta-ready. Built solo, 0-to-1, from whiteboard to a shippable cross-platform app.",
+  "outcome": "Taken from concept to a beta-ready product: 167 automated host tests passing, tested on 2 physical Android devices, and a release APK produced. Built solo, 0-to-1 — a working, demoable cross-platform app with friend groups, proof submission, and peer validation functional in the prototype.",
   "role": "Founder & Product Lead",
   "team": "Solo",
-  "duration": "2026 · Ongoing",
+  "duration": "Mar 2026 – Present · Beta-ready",
   "links": [
     {
       "label": "Request a Demo",
@@ -33,21 +34,21 @@
   "images": {
     "cover": "gallery/cover.png",
     "gallery": [
-      "gallery/01.jpeg",
-      "gallery/02.jpeg",
-      "gallery/03.jpeg",
-      "gallery/05.jpeg",
-      "gallery/06.jpeg",
-      "gallery/07.jpeg"
+      "gallery/home.webp",
+      "gallery/pacts.webp",
+      "gallery/create-pact.webp",
+      "gallery/chats.webp",
+      "gallery/direct-chat.webp",
+      "gallery/profile.webp"
     ],
     "alt": {
       "gallery/cover.png": "HabitPact branded hero — 'Accountability that makes goals stick' with a phone mockup showing a 21-day streak and completed habits",
-      "gallery/01.jpeg": "HabitPact app splash screen showing the HP logo and tagline 'Accountability that sticks'",
-      "gallery/02.jpeg": "HabitPact Chats screen — social accountability hub with direct messaging and group creation",
-      "gallery/03.jpeg": "HabitPact Pacts screen — an active 14-day workout commitment with a $10 stake at 100% progress, awaiting proof submission",
-      "gallery/05.jpeg": "HabitPact Home dashboard — active commitment pacts with progress bars, staked points, and Submit Proof actions, plus an automatic screen-time tracking card",
-      "gallery/06.jpeg": "HabitPact Create Pact screen — choosing how a pact is verified: photo proof, partner review, or automatic step and screen-time tracking",
-      "gallery/07.jpeg": "HabitPact Profile screen — identity card with points balance and a points ledger of approvals, penalties, and the welcome bonus"
+      "gallery/home.webp": "Home dashboard — active commitment pacts with staked points, live progress bars, and one-tap 'Submit Proof'",
+      "gallery/pacts.webp": "Commitment Pacts — goals filtered by Active / Awaiting / Completed / Failed, each showing its point stake, progress, and the proof it needs",
+      "gallery/create-pact.webp": "Create a pact — choose a friend or group, pick a goal preset, and set how it's verified: photo proof, partner review, or automatic step and screen-time tracking",
+      "gallery/chats.webp": "Chats — the social accountability layer, with direct messages and group threads where partners nudge and verify each other",
+      "gallery/direct-chat.webp": "A direct-message thread between accountability partners checking in on a screen-time pact",
+      "gallery/profile.webp": "Profile and points ledger — a verified account with a running record of points earned and lost as pacts are kept or missed"
     }
   },
   "caseStudy": {
@@ -57,5 +58,17 @@
   "disciplines": [
     "Product",
     "Engineering"
+  ],
+  "metrics": [
+    {
+      "value": 167,
+      "short": "tests",
+      "label": "Automated host tests passing"
+    },
+    {
+      "value": 2,
+      "short": "devices",
+      "label": "Physical Android devices tested"
+    }
   ]
 }

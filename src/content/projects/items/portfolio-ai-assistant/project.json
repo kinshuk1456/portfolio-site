@@ -1,0 +1,52 @@
+{
+  "slug": "portfolio-ai-assistant",
+  "status": "published",
+  "featured": false,
+  "tier": "labs",
+
+  "title": "Portfolio AI Assistant",
+  "date": "2026-04-01",
+  "summary": "The 'Ask about my work' assistant on this site — a small, grounded chatbot that lets a visitor explore my background and projects conversationally, built to be honest and cheap to run rather than to show off an AI stack.",
+
+  "problem": "A portfolio is a static thing: a recruiter has a specific question ('what's his forward-deployed experience?') and has to go hunting for the answer across pages. I wanted to let people just ask — without the assistant making things up, and without a bill or an API key exposed in the browser.",
+  "approach": "Built it as a Cloudflare Pages Function at /api/chat that holds the API key server-side and calls Google's Gemini free tier. Answers are grounded in a hand-authored context block about my real work — deliberately not a RAG pipeline, vector database, or agent framework, because the surface is small enough that a curated, verifiable context is both more accurate and simpler. The system prompt forbids inventing facts, dates, or titles and keeps answers short; the handler never hard-fails, and the client falls back to a grounded demo answer if the endpoint is unreachable.",
+  "tools": [
+    "Cloudflare Pages Functions",
+    "Google Gemini API",
+    "JavaScript",
+    "Streaming (SSE)"
+  ],
+  "outcome": "A working assistant on the Contact page that answers questions about my experience and projects, grounded only in facts I've written and verified — with guardrails against fabrication, graceful failure, and no key ever in the browser.",
+
+  "role": "Builder / Developer",
+  "team": "Solo",
+  "duration": "2026 · part of this site",
+
+  "links": [
+    { "label": "Try it on the Contact page", "url": "/contact.html" }
+  ],
+
+  "tags": [
+    "Applied AI",
+    "Cloudflare",
+    "Gemini",
+    "Guardrails",
+    "Serverless"
+  ],
+
+  "disciplines": ["Product", "Engineering"],
+
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": ["gallery/diagram.svg"],
+    "alt": {
+      "gallery/cover.svg": "Portfolio AI Assistant — a grounded chatbot answering questions about real work, with fabrication guardrails",
+      "gallery/diagram.svg": "Explanatory architecture diagram: the browser posts to a Cloudflare Pages Function that holds the key and grounds a Gemini call in a hand-written context, streaming an answer back with a graceful fallback"
+    }
+  },
+
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  }
+}

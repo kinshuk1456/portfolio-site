@@ -6,7 +6,7 @@
 //   the grid so CSS counters and edge borders stay correct.
 
 import { fetchJSON } from '../content-api.js';
-import { renderProjectCards, projectDisciplines } from '../shared/ui.js';
+import { renderProjectGroups, projectDisciplines } from '../shared/ui.js';
 
 export async function renderProjects() {
   const index = await fetchJSON('/content/projects/index.json');
@@ -24,15 +24,15 @@ export async function renderProjects() {
     html: `
       <section class="page-head">
         <h1>Projects</h1>
-        <p class="muted">Selected work across product, analytics, and forward-deployed engineering — problem, decision, outcome.</p>
+        <p class="muted">Products, systems, analytics, and client work — grouped by how much I owned. Each one is a problem, a decision, and an outcome. Filter by discipline, or read a case study.</p>
       </section>
 
-      <section class="section" data-project-filter>
+      <section class="section bg-grid" data-project-filter>
         <div class="filter-bar">
           <div class="filter-chips" role="group" aria-label="Filter projects by discipline">${chips}</div>
           <span class="filter-count label" data-filter-count>${index.length} projects</span>
         </div>
-        <div class="grid" data-project-grid>${renderProjectCards(index)}</div>
+        <div class="project-collections" data-project-grid>${renderProjectGroups(index)}</div>
         <script type="application/json" data-projects>${JSON.stringify(index).replace(/</g, '\\u003c')}</script>
       </section>
     `

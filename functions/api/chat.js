@@ -10,69 +10,100 @@
 // Optional: bind a KV namespace named CHAT_RL for per-IP rate limiting (see README).
 
 const PORTFOLIO_CONTEXT = `
-Kinshuk Agarwal — MBA candidate at UC Riverside, based in Riverside, California.
-Background in software development and data/analytics. Positioning: works where
-product, data, and implementation meet. Targeting Product, Analytics, and Forward
-Deployed Engineering roles. Note: he has NOT held a role literally titled "Forward
-Deployed Engineer" — but his work maps naturally to it. Be honest about that if asked.
+Kinshuk Agarwal — CS undergrad and STEM MBA (UC Riverside), based in the San Francisco Bay Area, California.
+Positioning: a technical product builder and operator at the intersection of AI, software,
+data, and real-world workflows. He likes starting with a messy real-world problem,
+understanding how people actually work, and building the software, AI system, data product,
+or process that makes the workflow better. Targeting roles like Forward Deployed / Deployment
+Engineer, AI / Customer Engineer, Technical Product Manager, Founder's Office, and Strategy &
+Operations. Note: he has NOT held a role literally titled "Forward Deployed Engineer" — but his
+work maps naturally to it. Be honest about that if asked.
 
 Experience:
-- PIM Brands — Data Analytics Intern. Built Power BI dashboards on SQL/Snowflake to
-  track operational KPIs and support decisions across engineering and operations.
-- Fly Me High — Software Developer.
-- Inn4Smart Solutions — Software Developer Intern.
+- PIM Brands — Data Analytics Intern (Operations), Aug–Dec 2025. Spent the first part of the
+  internship embedded with manufacturing teams learning how production ran BEFORE building
+  dashboards. Delivered 15 analytics products (OEE, downtime, changeover, capacity) used in
+  recurring reviews; reconciled data across Snowflake, SQL Server, SAP HANA, and Redzone into
+  Power BI; automated Python/SQL reporting saving ~10+ hours/week; presented to plant and
+  executive leadership.
+- Fly Me High — Software Developer, first full-time technical hire, Jun 2023–May 2024. Replaced
+  spreadsheet sales/ops workflows with an internal platform. Built the backend in Java/Spring Boot
+  on PostgreSQL, designed/debugged REST APIs (Postman, ~25% faster responses), coordinated ~4
+  frontend interns. ~30 min less per customer record; adoption grew from ~3 to 6–7 users.
+- Inn4Smart Solutions — Software Developer Intern, Jan–May 2023. Built a data-integration workflow:
+  spreadsheets → structured JSON → external API, with validation, retries, and failure logging so
+  failures were detectable, understandable, and recoverable. Thousands of records; 8-release cadence;
+  documented recovery and trained 6+ users.
+- Sri Kalyani Cottons — Operations & Trading Analyst (family cotton manufacturing/trading business,
+  NOT a software role). Worked with customers on cotton quality specs, analyzed production, found
+  bottlenecks, and reframed inventory around quality parameters. Contributed to ~25% higher
+  throughput (a team result).
 
-Selected projects (published). For each: name — disciplines — timeline — what it is,
-what he did, and the outcome. If asked to summarize any project, use these details.
+Selected projects (published). If asked to summarize any project, use these details.
 
-1. Vizor — AI-assisted Tableau Workbook Reviewer (Forward Deployed + Analytics). July 2026 –
-   present. Solo project. A Python MCP (Model Context Protocol) tool that parses .twb Tableau
-   XML into a structured model, generates honest, confidence-scored observations about
-   dashboards and worksheets, and applies safe, deterministic automated edits (renaming
-   worksheets to describe what they show, refreshing identity metadata) while GUARANTEEING the
-   file stays valid, reopenable Tableau XML. Deterministic scoring = same input always yields
-   the same result; edited workbooks are re-parsed in pytest to prove they still open. Tools:
-   Python, MCP, Tableau (.twb/XML), pytest. Outcome: turns manual workbook cleanup into a
-   repeatable, reviewable flow where a human stays in control. His clearest example of building
-   agentic / LLM-adjacent tooling grounded in real, verifiable output.
+1. Vizor — AI Dashboard Optimization for Tableau (Forward Deployed + Analytics + Engineering). July
+   2026 – present, solo, Windows private beta. A local-first tool: you describe a dashboard change
+   in natural language ("add West-region revenue as a KPI"), an agent interprets it and PROPOSES a
+   structured, neutral change spec (add/replace/move), and — after you approve — a DETERMINISTIC
+   compiler applies it to the real Tableau workbook. The model never sees or edits the workbook XML.
+   Every apply runs an apply loop (proposed → accepted → compiled → applied) with package, schema,
+   field, zone, and fidelity validation and FAILS CLOSED; outputs are versioned workbooks
+   (<source>_vizor_vN.twb), the original's SHA-256 is verified unchanged, and edits are undoable.
+   Python/FastAPI backend, MCP, React/TS; Power BI (.pbip) adapters too. Evolution to explain
+   honestly: it began as a screenshot → six-lens critique web app (advice only), then pivoted to the
+   propose-and-apply transformation system. Metrics are scoped: real versioned workbooks, per-
+   generation layout-fidelity scoring (70s–90s on evaluated dashboards, peak 91), field-tested on a
+   few real dashboards. Do NOT cite "24 transformations / ~95% / 0 failures" — unsupported. Key idea:
+   the model plans; deterministic code ships the workbook only when validation passes — the boundary is the product.
 
-2. Don's Drugs — Community Pharmacy Growth Strategy (Strategy + Product). March – June 2026,
-   MBA capstone (MGT 238, UC Riverside), team of 3. For Don's Drugs, an independent community
-   pharmacy in San Bernardino, the team turned existing patient relationships into growth across
-   three pillars: preventive-care expansion, a medication-adherence ecosystem, and high-touch
-   retention. Identified ~$156K in ESTIMATED annual revenue opportunity (estimated, NOT realized).
-   Work: industry/competitive analysis, customer lifetime value, workflow analysis, revenue/margin
-   modeling, opportunity prioritization, executive presentation. Delivered as the MBA capstone.
+2. HabitPact — Product + Engineering. 2026, beta-ready, solo, 0-to-1. A private accountability app
+   where friends set goals together, submit proof, and peers approve it, with points-based stakes.
+   Built in Flutter on Firebase (Auth, Firestore, Cloud Functions). Proof: 167 automated host tests
+   passing, tested on 2 physical Android devices, release APK produced. Friend groups, proof
+   submission, and peer validation work in the prototype; device-lock, real financial penalties,
+   and rewards are explored but NOT shipped — don't present them as live.
 
-3. Operations KPI Dashboard (Power BI) — Analytics + Forward Deployed. Aug – Dec 2025. Power BI
-   dashboards built on SQL, Snowflake, Redzone, and Excel that tracked operational KPIs across
-   engineering and operations. Outcome: improved visibility into operational KPIs and enabled
-   faster, more consistent, data-driven discussions across teams (repeatable operational reviews).
+3. Summit Operations Platform — Check-in & Occupancy (Forward Deployed + Product). Built for the UC
+   Riverside School of Business Emerging Careers Summit. Streamlit + Google Sheets API + QR check-in
+   with UCR email validation, role-based Floor Host/Admin views, real-time occupancy, capacity
+   alerts, session reassignment, and admin export. Ran the live event: 120+ check-ins across 18
+   sessions. Used Google Sheets as the backend (no separate database) on purpose.
 
-4. HabitPact — Product + Engineering. 2026, ongoing. A 0-to-1 behavioral-accountability mobile
-   app that helps people follow through on goals by attaching REAL consequences — financial,
-   social, and device-based — to their commitments. Built solo from whiteboard to a shippable
-   cross-platform app. Tools: Flutter, Firebase Auth, Cloud Firestore, Cloud Functions. Outcome:
-   a working, demoable, beta-ready prototype. Emphasis on problem framing, user flows, and shipping.
+4. Grhastha — Guided Puja at Home (Product + Engineering). Family-led, non-profit oriented; Kinshuk
+   is a product/technical contributor (don't overstate ownership). Three pillars: Know When
+   (location-aware timing/muhurta), Know How (step-by-step guidance, materials, substitutes), Know
+   the Words (Sanskrit mantras with audio, transliteration, meaning). Principles: no login, no
+   subscription, calm/authentic not gamified, onboard once. Initial focus: Ganesh Chaturthi.
 
-5. Event Check-In Product System (QR + Python) — Forward Deployed + Product. 2025. A QR-based
-   event check-in system with real-time participant tracking and dashboard reporting across 30+
-   rooms. Tools: Python, SQLite, data visualization. Outcome: real-time tracking and simplified
-   event reporting, with a workflow designed for speed, clarity, and operational reliability.
+5. PIM Brands — Operational Analytics (Analytics + Forward Deployed). See PIM experience above:
+   floor-first discovery, 15 analytics products, four source systems into Power BI, ~10+ hours/week
+   of reporting automated.
 
-6. Digital Home — Product + Engineering. March 2026, ~1 week. A static-hostable portfolio and
-   content system with content validation, generated indexes, and a local authoring Studio — no
-   backend. Content lives in src/content, builds output to dist/, updates = edit local files and
-   rebuild. Tools: HTML, CSS, vanilla JS, Node.js. (This portfolio site itself.)
+6. Fly Me High — Internal Operations Platform (Forward Deployed + Engineering + Product). See Fly Me
+   High experience above: first technical hire building a Java/Spring Boot + PostgreSQL internal
+   system inside a non-technical travel company.
 
-7. Product Delivery & Agile Execution Case — Product + Strategy. Jun 2023 – May 2024. A delivery
-   playbook shaped by real sprint execution: clearer user stories, tighter QA/UAT alignment, and
-   smoother releases. Tools: Jira, Agile/Scrum, PRDs, documentation, stakeholder management.
-   Outcome: improved release readiness; reduced deployment cycle time by ~40% and improved backend
-   responsiveness by ~25% (as reported during the role).
+7. Inn4Smart — Enterprise Data Integration Workflow (Forward Deployed + Engineering). See Inn4Smart
+   experience above. Key lesson: reliability isn't "the API returned 200" — failures must be
+   detectable, understandable, and recoverable.
 
-Toolkit: SQL, Power BI, Snowflake, Python, Tableau, Excel, plus applied AI tooling —
-LLMs, RAG (retrieval-augmented generation), and MCP (Model Context Protocol, used in Vizor).
+8. Don's Drugs — Community Pharmacy Growth Strategy (Strategy + Product). Mar–Jun 2026, MBA capstone
+   (MGT 238), team of 3, independent pharmacy in San Bernardino. Three pillars (preventive care,
+   medication adherence, high-touch retention). Modeled ~$156K in ESTIMATED annual opportunity
+   (estimated, NOT realized revenue).
+
+9. Sri Kalyani Cottons — Operations & Trading Improvement (Operations + Strategy). See experience
+   above. Operations/trading, not software.
+
+10. Portfolio AI Assistant (Product + Engineering) — this very chatbot. A Cloudflare Pages Function
+    at /api/chat, holding the key server-side, calling Google's Gemini free tier, grounded in a
+    hand-written context (deliberately NOT RAG, a vector database, or an agent), with guardrails
+    against inventing facts and a graceful fallback.
+
+11. Digital Home — the portfolio/content system this site runs on (HTML/CSS/vanilla JS/Node).
+
+Toolkit: React, TypeScript, FastAPI, Flutter, Java/Spring Boot, PostgreSQL, Python, SQL, Snowflake,
+Power BI, Tableau, plus applied AI tooling — LLMs and MCP (Model Context Protocol, used in Vizor).
 Contact: kinshuk.agarwal@email.ucr.edu.
 `;
 

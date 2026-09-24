@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="System diagram: manual workflows become requirements, then a Spring Boot REST backend on PostgreSQL with an intern-built frontend, used by internal operations">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="82" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">SYSTEM &amp; TEAM</text>
+  <text x="62" y="140" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="500">Workflow in, internal product out</text>
+
+  <g font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <g transform="translate(64,210)">
+      <rect width="230" height="150" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="18" y="32" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">DISCOVERY</text>
+      <text x="18" y="66" font-size="19" font-weight="600">Learn the</text>
+      <text x="18" y="90" font-size="19" font-weight="600">business</text>
+      <text x="18" y="122" font-size="14" fill-opacity="0.6">pains → requirements</text>
+    </g>
+    <text x="306" y="292" font-size="26" fill="#c1440e">→</text>
+
+    <g transform="translate(350,210)">
+      <rect width="230" height="150" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.5"/>
+      <text x="18" y="32" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">BACKEND</text>
+      <text x="18" y="66" font-size="19" font-weight="600">Spring Boot</text>
+      <text x="18" y="90" font-size="15" fill-opacity="0.6">REST APIs</text>
+      <text x="18" y="122" font-size="15" fill-opacity="0.6">tested in Postman</text>
+    </g>
+    <text x="592" y="292" font-size="26" fill="#c1440e">→</text>
+
+    <g transform="translate(636,210)">
+      <rect width="230" height="150" fill="#17150f"/>
+      <text x="18" y="32" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#f4f1e8" fill-opacity="0.6">DATA</text>
+      <text x="18" y="66" font-size="19" font-weight="600" fill="#f4f1e8">PostgreSQL</text>
+      <text x="18" y="98" font-size="14" fill="#f4f1e8" fill-opacity="0.65">customers ·</text>
+      <text x="18" y="120" font-size="14" fill="#f4f1e8" fill-opacity="0.65">prospects · handoffs</text>
+    </g>
+    <text x="878" y="292" font-size="26" fill="#c1440e">→</text>
+
+    <g transform="translate(922,210)">
+      <rect width="214" height="150" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/>
+      <text x="18" y="32" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#17150f" fill-opacity="0.55">FRONTEND</text>
+      <text x="18" y="66" font-size="19" font-weight="600">~4 interns</text>
+      <text x="18" y="98" font-size="14" fill-opacity="0.6">tasks + roadmap</text>
+      <text x="18" y="120" font-size="14" fill-opacity="0.6">I coordinated</text>
+    </g>
+  </g>
+
+  <g transform="translate(64,420)" font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <rect width="1072" height="70" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.22"/>
+    <text x="20" y="30" font-family="ui-monospace, Menlo, monospace" font-size="12" letter-spacing="2" fill="#c1440e">USED BY</text>
+    <text x="20" y="54" font-size="18">Internal sales &amp; operations — 3 → 6–7 users as the tool earned trust</text>
+  </g>
+
+  <line x1="64" y1="536" x2="1136" y2="536" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="580" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="23">The hard half wasn't the code — it was turning a non-technical org's real workflow into software people adopted.</text>
+</svg>

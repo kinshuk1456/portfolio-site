@@ -1,0 +1,62 @@
+{
+  "slug": "inn4smart-integration",
+  "status": "published",
+  "featured": false,
+  "tier": "selected",
+  "title": "Inn4Smart — Enterprise Data Integration Workflow",
+  "date": "2023-05-01",
+  "summary": "A pipeline that turned large, messy spreadsheet datasets into structured JSON and moved thousands of records reliably through an external API — with the failure handling that makes 'reliable' actually mean something.",
+  "problem": "Large spreadsheet-based datasets needed to become structured data that could move through an external API workflow at scale. The catch is that at thousands of records, things go wrong constantly — malformed rows, rejected payloads, timeouts — and a pipeline that only works on the happy path isn't a pipeline you can trust.",
+  "approach": "Built and supported the flow end to end: spreadsheet input processing, transformation into structured JSON, submission to the external API, and then the parts that actually matter — response checks, validation, retry behavior on failure, and failure logging so problems were visible instead of silent. I pushed edge cases hard in Postman, worked alongside QA and product across an 8-release cadence, documented the failure and recovery procedures, and trained 6+ users to run and troubleshoot it.",
+  "tools": [
+    "JavaScript",
+    "Spring Boot",
+    "REST APIs",
+    "JSON",
+    "Postman",
+    "Git"
+  ],
+  "outcome": "Thousands of records moved through the external API workflow with failures made detectable, understandable, and recoverable — plus documented recovery procedures and 6+ trained users so the pipeline didn't depend on one person to keep running.",
+  "role": "Software Developer Intern",
+  "team": "With QA + product teams",
+  "duration": "Jan 2023 — May 2023 · Inn4Smart Solutions",
+  "links": [],
+  "tags": [
+    "Data Integration",
+    "APIs",
+    "Reliability",
+    "Validation",
+    "Documentation"
+  ],
+  "disciplines": [
+    "Forward Deployed",
+    "Engineering"
+  ],
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": [
+      "gallery/diagram.svg"
+    ],
+    "alt": {
+      "gallery/cover.svg": "Inn4Smart data integration — spreadsheets transformed to JSON and submitted to an external API with validation, retries, and failure logging",
+      "gallery/diagram.svg": "Explanatory pipeline diagram: spreadsheet input to JSON transformation to API submission, with a response check that branches to success or to retry and failure logging"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "metrics": [
+    {
+      "value": 8,
+      "short": "release cadence",
+      "label": "Release cadence supported"
+    },
+    {
+      "value": 6,
+      "suffix": "+",
+      "short": "users trained",
+      "label": "Users trained to run it"
+    }
+  ]
+}

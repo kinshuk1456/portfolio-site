@@ -1,56 +1,93 @@
 {
   "items": [
     {
+      "id": "habitpact-founder-2026",
+      "company": "HabitPact",
+      "role": "Founder & Product Lead",
+      "location": "San Francisco Bay Area, CA",
+      "startDate": "2026-03-01",
+      "endDate": "",
+      "current": true,
+      "added": "Product ownership · 0→1",
+      "visual": "habitpact",
+      "description": "An independent social-accountability product, owned end to end — concept, user flows, product rules, architecture, testing, and release readiness — taken solo from whiteboard to a beta-ready build.",
+      "metrics": [
+        { "value": 167, "label": "Automated tests" },
+        { "value": 2, "label": "Physical devices validated" }
+      ],
+      "tools": ["Flutter", "Dart", "Firebase"],
+      "links": [{ "label": "Explore the build", "url": "/project.html?slug=habitpact" }]
+    },
+    {
       "id": "pim-brands-data-analytics-intern-2025",
       "company": "PIM Brands",
-      "role": "Data Analytics Intern",
-      "location": "California",
+      "role": "Data Analytics Intern — Operations",
+      "location": "Somerset, NJ",
       "startDate": "2025-08-01",
       "endDate": "2025-12-01",
       "current": false,
-      "description": "Built and maintained reporting to make operational performance visible and help engineering + operations teams make faster, more consistent decisions.",
-      "achievements": [
-        "Built Power BI dashboards for operational KPIs used in recurring reviews",
-        "Wrote and maintained SQL queries (Snowflake + Redzone) to create reliable, repeatable KPI views",
-        "Partnered with engineering and operations stakeholders to translate workflow pain points into decision-ready reporting"
+      "added": "Enterprise data · field discovery",
+      "visual": "pim",
+      "description": "Enterprise field work: time on the factory floor first, then manufacturing analytics — OEE, downtime, changeover — reconciled from four source systems into decisions plant and operations leaders acted on.",
+      "metrics": [
+        { "value": 15, "label": "Analytics products" },
+        { "value": 10, "suffix": "+", "label": "Hours/week reporting eliminated" }
       ],
-      "tools": ["Power BI", "SQL", "Snowflake", "Redzone", "Excel"],
-      "links": []
+      "tools": ["Snowflake", "SQL Server", "SAP HANA", "Redzone", "Power BI"],
+      "links": [{ "label": "View case study", "url": "/project.html?slug=operations-kpi-dashboard" }]
     },
     {
       "id": "fly-me-high-software-developer-2023",
       "company": "Fly Me High",
       "role": "Software Developer",
-      "location": "",
+      "location": "Bengaluru, India",
       "startDate": "2023-06-01",
       "endDate": "2024-05-01",
       "current": false,
-      "description": "Supported end-to-end delivery by turning stakeholder needs into clear requirements, coordinating QA/UAT readiness, and keeping releases predictable.",
-      "achievements": [
-        "Translated stakeholder pain points into user stories and acceptance criteria; supported backlog grooming and sprint planning",
-        "Coordinated QA and release readiness to reduce thrash and improve delivery consistency",
-        "Helped improve backend responsiveness through issue triage and tighter feedback loops",
-        "Maintained product documentation so requirements, changes, and release notes stayed aligned"
+      "added": "Software · user workflows",
+      "visual": "flymehigh",
+      "description": "First full-time technical hire at a travel company running on spreadsheets. Learned the business, turned it into requirements, built the internal backend, and coordinated four frontend interns.",
+      "metrics": [
+        { "value": 30, "prefix": "~", "suffix": " min", "label": "Cut per customer record" },
+        { "value": "~3 → 6–7", "plain": true, "label": "Internal users" }
       ],
-      "tools": ["Jira", "Agile / Scrum", "Documentation", "Stakeholder management"],
-      "links": []
+      "tools": ["Java", "Spring Boot", "PostgreSQL", "JavaScript", "REST APIs"],
+      "links": [{ "label": "View case study", "url": "/project.html?slug=fly-me-high-platform" }]
     },
     {
       "id": "inn4smart-software-developer-intern-2023",
       "company": "Inn4Smart Solutions",
       "role": "Software Developer Intern",
-      "location": "",
+      "location": "Gurugram, India",
       "startDate": "2023-01-01",
       "endDate": "2023-05-01",
       "current": false,
-      "description": "Built Java features using object-oriented design and collaborated with QA and stakeholders during UAT to validate outputs against requirements.",
-      "achievements": [
-        "Implemented Java/OOP features and validated outputs during UAT",
-        "Collaborated with QA and product teams to tighten testing workflows and feedback loops",
-        "Improved defect prevention by strengthening validation and clarifying edge cases before release"
+      "added": "Integrations · reliability",
+      "visual": "inn4smart",
+      "description": "Turned a brittle manual data workflow into something repeatable and supportable — spreadsheet to structured JSON to an external API — with validation, retries, and failure logging so problems were recoverable, not silent.",
+      "metrics": [
+        { "value": 8, "label": "Release cadence supported" },
+        { "value": 6, "suffix": "+", "label": "Users trained" }
       ],
-      "tools": ["Java", "OOP", "UAT", "QA coordination"],
-      "links": []
+      "tools": ["JavaScript", "Spring Boot", "REST APIs", "JSON", "Postman"],
+      "links": [{ "label": "View case study", "url": "/project.html?slug=inn4smart-integration" }]
+    },
+    {
+      "id": "sri-kalyani-operations-trading",
+      "company": "Sri Kalyani Cottons",
+      "role": "Operations & Trading Analyst",
+      "location": "Hyderabad, India",
+      "startDate": "2020-06-01",
+      "endDate": "2022-12-01",
+      "current": false,
+      "added": "Operations · customer understanding",
+      "visual": "srikalyani",
+      "description": "Where the through-line starts. Before I built software, I learned how real workflows break — working directly with customers on cotton quality, finding production bottlenecks, and matching inventory to need by quality parameters.",
+      "metrics": [
+        { "value": 25, "prefix": "~", "suffix": "%", "label": "Higher throughput (contributed)" }
+      ],
+      "tools": ["Operations", "Trading", "Customer discovery"],
+      "links": [{ "label": "View case study", "url": "/project.html?slug=sri-kalyani-cottons" }]
     }
   ]
 }

@@ -1,38 +1,39 @@
 {
   "slug": "event-checkin-system",
   "status": "published",
-  "featured": false,
-  "title": "Event Check-In Product System (QR + Python)",
+  "featured": true,
+  "tier": "featured",
+  "title": "Summit Operations Platform — Check-in & Occupancy",
   "date": "2025-03-01",
-  "summary": "A QR-based event check-in system with real-time tracking and dashboard reporting across 30+ rooms.",
-  "problem": "Event operations needed a fast, reliable way to onboard attendees, track participation in real time, and provide stakeholders with clear reporting during and after events—without manual reconciliation.",
-  "approach": "Gathered stakeholder requirements, designed the check-in workflow, and implemented a QR onboarding system with real-time participant tracking and a reporting dashboard for visibility across 30+ rooms.",
+  "summary": "A lightweight operations tool built for the UC Riverside School of Business Emerging Careers Summit: QR check-in, role-based staff workflows, and real-time session occupancy — so a live event could be run and watched from one screen.",
+  "problem": "A real event with a fixed date needed to onboard attendees at the door, keep sessions from overfilling, and give organizers live visibility — without clipboards, manual tallies, or after-the-fact reconciliation.",
+  "approach": "Built the tool in Streamlit backed by the Google Sheets API, so organizers could read and edit the same source of truth they already trusted with no separate database to stand up. Attendees check in by QR; UCR email validation keeps the roster clean. Staff get role-based views — a Floor Host flow for the door and an Admin flow for oversight — with live occupancy and capacity monitoring, capacity alerts when a room fills, session reassignment when it does, and an administrative export at the end.",
   "tools": [
     "Python",
-    "SQLite",
-    "Data Visualization"
+    "Streamlit",
+    "Google Sheets API",
+    "QR check-in"
   ],
-  "outcome": "Enabled real-time participant tracking and simplified event reporting with a workflow designed for speed, clarity, and operational reliability.",
+  "outcome": "Ran the live Summit end to end: 120+ attendee check-ins across 18 sessions, with organizers watching occupancy in real time and reassigning attendees on the fly instead of turning people away at a full room.",
   "role": "Builder / Developer",
-  "team": "Stakeholders + event operations",
-  "duration": "",
+  "team": "Built for event organizers + floor staff",
+  "duration": "UCR School of Business · Emerging Careers Summit",
   "links": [],
   "tags": [
-    "Requirements Gathering",
-    "Stakeholder Management",
-    "Process Optimization",
-    "Documentation"
+    "Event Operations",
+    "Streamlit",
+    "Real-time Occupancy",
+    "Role-based Workflows",
+    "Requirements Gathering"
   ],
   "images": {
     "cover": "gallery/cover.svg",
     "gallery": [
-      "gallery/diagram.svg",
-      "gallery/01.svg"
+      "gallery/diagram.svg"
     ],
     "alt": {
-      "gallery/cover.svg": "Event check-in system cover",
-      "gallery/01.svg": "Real-time room tracking dashboard",
-      "gallery/diagram.svg": "Check-in flow: QR scan → logged via Python backend → live attendance dashboard across 30+ rooms"
+      "gallery/cover.svg": "Summit Operations Platform — QR check-in feeding a live occupancy board across 18 sessions",
+      "gallery/diagram.svg": "Explanatory workflow diagram: attendee scans a QR code, UCR email is validated, check-in is written to Google Sheets, and Floor Host and Admin views show live occupancy with capacity alerts and session reassignment"
     }
   },
   "caseStudy": {
@@ -41,6 +42,20 @@
   },
   "disciplines": [
     "Forward Deployed",
-    "Product"
+    "Product",
+    "Analytics"
+  ],
+  "metrics": [
+    {
+      "value": 120,
+      "suffix": "+",
+      "short": "check-ins",
+      "label": "Attendee check-ins, live"
+    },
+    {
+      "value": 18,
+      "short": "sessions",
+      "label": "Sessions tracked in real time"
+    }
   ]
 }

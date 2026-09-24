@@ -324,28 +324,33 @@
 }
 @keyframes wordIn { to { opacity: 1; } }
 
-/* Rotating role status (accessible: full text in aria-label; spans decorative) */
+/* Rotating role status. All roles stack in one grid cell, so the container
+   reserves the width of the LONGEST role (no width jump against " roles"). Each
+   role is delayed by one slot (i × 2.6s over an n × 2.6s cycle) and its visible
+   keyframe window (3–18%) is shorter than one slot (100/n%), so exactly one role
+   is ever readable — the outgoing one has fully faded before the next fades in.
+   (Sized for up to ~5 roles.) Accessible: full text is in the aria-label. */
 .role-rotate {
   display: inline-grid; overflow: hidden; vertical-align: bottom;
   height: 1.25em; text-align: left;
+  min-width: max-content; flex: 0 0 auto;   /* reserve the longest role's width */
 }
 .role-rotate > span {
-  grid-area: 1 / 1; color: var(--accent-ink);
-  animation: roleCycle calc(var(--n, 3) * 2.6s) infinite;
+  grid-area: 1 / 1; color: var(--accent-ink); white-space: nowrap;
   opacity: 0;
+  animation: roleCycle calc(var(--n, 5) * 2.6s) infinite;
+  animation-delay: calc(var(--i, 0) * 2.6s);
 }
-.role-rotate > span:nth-child(1) { animation-delay: 0s; }
-.role-rotate > span:nth-child(2) { animation-delay: 2.6s; }
-.role-rotate > span:nth-child(3) { animation-delay: 5.2s; }
 @keyframes roleCycle {
-  0%, 3% { opacity: 0; transform: translateY(0.5em); }
-  6%, 30% { opacity: 1; transform: translateY(0); }
-  36%, 100% { opacity: 0; transform: translateY(-0.5em); }
+  0% { opacity: 0; transform: translateY(0.4em); }
+  3% { opacity: 1; transform: translateY(0); }
+  15% { opacity: 1; transform: translateY(0); }
+  18% { opacity: 0; transform: translateY(-0.4em); }
+  100% { opacity: 0; transform: translateY(-0.4em); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .role-rotate { height: auto; }
-  .role-rotate > span { position: static; opacity: 1; animation: none; transform: none; }
-  .role-rotate > span:not(:last-child)::after { content: " · "; }
+  .role-rotate > span { animation: none; transform: none; opacity: 0; }
+  .role-rotate > span:first-child { opacity: 1; }
 }
 
 /* Copy layer (front-most, kept to the left, clear of the face) */
@@ -383,8 +388,9 @@
 }
 
 /* Tablet & down — disciplines reflow into a clean typographic sequence
-   (no fragile overlap on narrow viewports) */
-@media (max-width: 900px) {
+   (no fragile overlap on narrow viewports). Raised to 1100px so the absolute
+   portrait never overlaps the lede copy on mid-width screens. */
+@media (max-width: 1100px) {
   .hero-words {
     position: static; inset: auto; order: 1;
     display: grid; gap: 2px; margin: 0 0 var(--space-3);
@@ -399,8 +405,9 @@
   .hero-word-3 { color: var(--accent-ink); }
 }
 
-/* Mobile — dedicated composition (stacked, large portrait, no parallax) */
-@media (max-width: 760px) {
+/* Stacked composition (portrait in normal flow — no absolute overlap). Applies
+   from 1100px down so text always has its own space; the portrait sits below. */
+@media (max-width: 1100px) {
   .hero-stage-inner { min-height: 0; display: flex; flex-direction: column; }
   .hero-lede { max-width: none; padding: var(--space-6) 0 var(--space-3); transform: none; order: 0; }
   .hero-headline { font-size: clamp(2.4rem, 11vw, 3.4rem); }
@@ -561,6 +568,349 @@ a.card:hover .card-arrow { opacity: 1; transform: translateX(0); }
 .grid { border-left: 1px solid var(--rule); }
 .grid .card:nth-child(3n) { border-right: 1px solid var(--rule); }
 
+/* Reading-progress hairline (long-form pages). Position indicator, not motion —
+   stays on under reduced motion. */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0;
+  background: var(--accent); z-index: 60; pointer-events: none;
+  transition: width 0.1s linear;
+}
+
+/* Metric tiles — animated count-up in case-study Outcome sections. Shares the
+   editorial hairline-grid language of the project cards. */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-left: 1px solid var(--rule); border-top: 1px solid var(--rule); margin: 0 0 var(--space-5); }
+.stat { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: var(--space-5); }
+.stat-num { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat-num .stat-unit { color: var(--accent-ink); }
+.stat-cap { margin-top: 10px; color: var(--muted); font-size: 0.9rem; line-height: 1.4; }
+@media (max-width: 520px) { .stat-num { font-size: 2.1rem; } }
+
+/* Card proof row — static outcome chips (value + short label). Counters animate
+   on case-study pages, not here. */
+.card-metrics { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 2px; }
+.card-metric { font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.card-metric b { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; color: var(--fg); margin-right: 5px; }
+
+/* Step Player — accessible tablist over a build story (Vizor). */
+.step-player .stepper { display: grid; grid-template-columns: minmax(200px, 260px) 1fr; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.stepper-rail { list-style: none; margin: 0; padding: 0; border-right: 1px solid var(--rule); }
+.stepper-tab { display: flex; gap: 12px; align-items: baseline; width: 100%; text-align: left; background: transparent; border: 0; border-bottom: 1px solid var(--border); padding: 16px 18px; cursor: pointer; color: var(--muted); transition: background var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out); }
+.stepper-tab:hover { color: var(--fg); }
+.stepper-tab[aria-selected="true"] { color: var(--fg); background: var(--surface); box-shadow: inset 3px 0 0 var(--accent); }
+.stepper-tab .step-n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--accent-ink); }
+.stepper-tab .step-t { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; line-height: 1.15; }
+.stepper-panels { padding: 24px 26px; border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule); }
+.step-panel-n { color: var(--accent-ink); }
+.step-panel-title { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; letter-spacing: -0.01em; margin: 6px 0 12px; }
+@media (max-width: 720px) {
+  .step-player .stepper { grid-template-columns: 1fr; }
+  .stepper-rail { display: flex; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--rule); -webkit-overflow-scrolling: touch; }
+  .stepper-tab { border-bottom: 0; border-right: 1px solid var(--border); white-space: nowrap; min-height: 44px; }
+  .stepper-tab[aria-selected="true"] { box-shadow: inset 0 -3px 0 var(--accent); }
+  .stepper-panels { border-right: 0; }
+}
+
+/* How I build — four-step band */
+.section-build .section-head { margin-bottom: var(--space-5); }
+.build-steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.build-step { padding: 22px 20px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: grid; gap: 8px; align-content: start; }
+.build-step-n { color: var(--accent-ink); }
+.build-step-k { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; }
+.build-step-d { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+@media (max-width: 820px) { .build-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .build-steps { grid-template-columns: 1fr; } }
+
+/* Building in public — GitHub */
+.gh-repos { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.gh-repo { display: block; padding: 18px 20px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: transparent; transition: background var(--dur-2) var(--ease-out); }
+.gh-repo:hover { background: var(--surface); }
+.gh-repo-name { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; }
+.gh-repo-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.45; margin-top: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.gh-repo-meta { display: flex; gap: 14px; margin-top: 12px; color: var(--faint); }
+.gh-activity { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid var(--border); }
+.gh-event { display: flex; gap: 10px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.gh-event-verb { color: var(--accent-ink); white-space: nowrap; }
+.gh-event-repo { font-family: var(--font-mono); font-size: 0.82rem; }
+.gh-event-when { margin-left: auto; color: var(--faint); white-space: nowrap; }
+.gh-all { display: inline-block; margin-top: 16px; }
+@media (max-width: 640px) { .gh-repos { grid-template-columns: 1fr; } }
+
+/* Ask my portfolio — ambient orb entry point */
+.ask-section { border-top: 1px solid var(--rule); }
+.ask-inner { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-7); align-items: center; padding-top: var(--space-6); }
+.ask-orb-wrap { display: flex; justify-content: center; }
+.ask-orb-canvas { width: 200px; height: 200px; display: block; }
+.ask-prompts { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 22px; }
+.ask-chip { font-size: 0.85rem; color: var(--fg); background: transparent; border: 1px solid var(--rule); padding: 9px 13px; cursor: pointer; text-align: left; transition: background var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out); }
+.ask-chip:hover { background: var(--fg); color: var(--bg); }
+@media (max-width: 720px) {
+  .ask-inner { grid-template-columns: 1fr; }
+  .ask-orb-wrap { justify-content: flex-start; }
+  .ask-orb-canvas { width: 150px; height: 150px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress, .stepper-tab, .gh-repo, .ask-chip, .card-metric { transition: none; }
+}
+
+/* ============================================================
+   VISUAL SYSTEM — reusable graphic language (nodes, flows,
+   diagrams, backgrounds, ink section, technical typography).
+   Inherits site tokens; SVG uses currentColor + rust accent.
+   ============================================================ */
+
+:root { --grid-ink: rgba(23,21,15,0.05); }
+:root[data-theme="dark"] { --grid-ink: rgba(242,239,228,0.06); }
+
+/* Faint technical backgrounds — used selectively for rhythm. */
+.bg-dots { background-image: radial-gradient(var(--grid-ink) 1.2px, transparent 1.3px); background-size: 24px 24px; background-position: -1px -1px; }
+.bg-grid { background-image: linear-gradient(var(--grid-ink) 1px, transparent 1px), linear-gradient(90deg, var(--grid-ink) 1px, transparent 1px); background-size: 46px 46px; }
+
+/* A single scoped dark (ink) moment — overrides the palette locally so every
+   child (rules, labels, diagrams via currentColor) inverts cleanly. */
+.section--ink {
+  --bg: #14130e; --surface: #1b1a14; --surface-2: #23211a;
+  --fg: #f2efe4; --muted: rgba(242,239,228,0.62); --faint: rgba(242,239,228,0.40);
+  --border: rgba(242,239,228,0.20); --rule: #f2efe4; --accent-ink: #e0623a; --grid-ink: rgba(242,239,228,0.06);
+  background: var(--bg); color: var(--fg);
+  padding: var(--space-7) var(--space-6); border: 1px solid var(--rule);
+}
+.section--ink h2 { color: var(--fg); }
+
+/* Mono fragments — terminal / API / code microcopy used as texture. */
+.frag { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--faint); white-space: pre; }
+
+/* Vertical mini-flow (Systems I Build, supporting flows). */
+.mini-flow { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+.mini-node { font-family: var(--font-mono); font-size: 0.76rem; border: 1px solid var(--border); padding: 5px 9px; background: var(--surface); color: var(--fg); }
+.mini-node--accent { border-color: var(--accent); color: var(--accent-ink); }
+.mini-arrow { color: var(--accent-ink); font-size: 0.8rem; line-height: 0.9; margin-left: 12px; }
+
+/* Systems I Build — four connected categories (lives in the ink section). */
+.sysgrid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); margin-top: var(--space-5); }
+.syscat { padding: 22px 20px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: grid; gap: 14px; align-content: start; }
+.syscat-k { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; }
+@media (max-width: 860px) { .sysgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .sysgrid { grid-template-columns: 1fr; } }
+
+/* How I build — horizontal systems diagram with a draw-on-scroll connector. */
+.bflow { margin-top: var(--space-5); }
+.bflow-track { position: relative; height: 2px; background: var(--border); margin-bottom: var(--space-5); }
+.bflow-line { position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--accent); }
+.bflow[data-flow-draw].is-drawn .bflow-line { width: 100%; transition: width 1100ms var(--ease-editorial); }
+.bflow-cols { display: grid; grid-template-columns: repeat(4, 1fr); }
+.bflow-col { position: relative; padding-right: 22px; }
+.bflow-dot { position: absolute; top: -30px; left: 0; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; }
+.bflow-n { font-family: var(--font-display); font-size: 2.6rem; font-weight: 500; line-height: 1; letter-spacing: -0.02em; }
+.bflow-k { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink); margin: 10px 0 12px; }
+.bflow-notes { list-style: none; margin: 0; padding: 0; color: var(--muted); font-size: 0.86rem; line-height: 1.7; }
+@media (max-width: 820px) { .bflow-cols { grid-template-columns: repeat(2, 1fr); gap: var(--space-5) 0; } }
+@media (max-width: 460px) { .bflow-cols { grid-template-columns: 1fr; gap: var(--space-4) 0; } .bflow-dot { display: none; } }
+
+/* Impact strip — verified metrics as typography + hairlines. */
+.impact { display: grid; border-top: 1px solid var(--rule); margin-top: var(--space-5); }
+.impact-row { display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.impact-num { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 5vw, 3.2rem); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+.impact-num .impact-unit { color: var(--accent-ink); font-size: 0.5em; margin-left: 1px; }
+.impact-rule { flex: 1 1 auto; height: 1px; background: var(--border); align-self: center; min-width: 24px; }
+.impact-label { flex: 0 0 auto; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: right; max-width: 46%; }
+@media (max-width: 520px) { .impact-label { font-size: 0.68rem; } }
+
+/* Feature graphics (inline SVG per flagship project). */
+.feat-graphic { border: 1px solid var(--rule); background: var(--surface); color: var(--fg); aspect-ratio: 16 / 11; display: block; overflow: hidden; }
+.feat-svg { width: 100%; height: 100%; display: block; }
+.feat-flow-path { stroke-dashoffset: 0; }
+.work-feature:hover .feat-flow-path { animation: featdash 1.1s linear infinite; }
+@keyframes featdash { to { stroke-dashoffset: -14; } }
+
+/* Architecture diagram (case studies). */
+.arch { border: 1px solid var(--rule); background: var(--surface); padding: var(--space-5); color: var(--fg); }
+.arch-svg { width: 100%; max-width: 440px; height: auto; display: block; margin-inline: auto; }
+.arch-boxes rect { transition: stroke var(--dur-2) var(--ease-out); }
+.arch-boxes rect:hover { stroke: var(--accent); }
+
+/* AI console framing around the orb. */
+.ai-console { border: 1px solid var(--rule); background: var(--surface); padding: var(--space-5); max-width: 540px; }
+.ai-console-bar { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; border: 1px solid var(--border); background: var(--bg); padding: 12px 14px; color: var(--muted); font-family: var(--font-sans); font-size: 0.92rem; cursor: text; transition: border-color var(--dur-2) var(--ease-out); }
+.ai-console-bar:hover { border-color: var(--accent); }
+.ai-console-bar .ai-caret { color: var(--accent-ink); font-family: var(--font-mono); }
+.ai-status { margin-top: 14px; font-family: var(--font-sans); font-size: 0.86rem; line-height: 1.5; color: var(--muted); }
+
+/* GitHub activity timeline. */
+.gh-timeline { list-style: none; margin: 0; padding: 0; }
+.gh-tl-item { position: relative; padding: 0 0 14px 22px; border-left: 1px solid var(--border); }
+.gh-tl-item:last-child { border-left-color: transparent; }
+.gh-tl-item::before { content: ""; position: absolute; left: -4px; top: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.gh-tl-verb { color: var(--accent-ink); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.gh-tl-repo { font-family: var(--font-mono); font-size: 0.82rem; }
+.gh-tl-when { color: var(--faint); font-size: 0.78rem; margin-left: 8px; }
+.gh-col-head { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.gh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+@media (max-width: 720px) { .gh-grid { grid-template-columns: 1fr; gap: var(--space-5); } }
+
+/* ============================================================
+   Experience — editorial career journey (accumulation thesis,
+   grid timeline with per-role chapters, role visuals, metrics).
+   ============================================================ */
+.xp-hero h1 { font-size: var(--text-display); line-height: 0.96; letter-spacing: -0.03em; }
+.xp-hero-sub { max-width: 62ch; font-size: var(--text-lg); font-family: var(--font-sans); margin-top: var(--space-4); }
+
+/* Capability stack — each layer kept, not replaced */
+.xp-stack { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin-top: var(--space-6); }
+.xp-stack-item { flex: 1 1 128px; display: grid; gap: 6px; align-content: center; padding: 16px 18px; border: 1px solid var(--rule); }
+.xp-stack-year { color: var(--accent-ink); }
+.xp-stack-cap { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; letter-spacing: -0.01em; line-height: 1.05; }
+.xp-stack-plus { flex: 0 0 auto; display: flex; align-items: center; color: var(--accent-ink); font-family: var(--font-display); font-size: 1.5rem; }
+.xp-verbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: var(--space-5); font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.xp-verbs i { color: var(--accent-ink); font-style: normal; }
+
+/* Timeline */
+.xp-timeline { padding-top: var(--space-6); }
+.xp-role { display: grid; grid-template-columns: 90px 28px minmax(0, 1fr); gap: 0 var(--space-5); }
+.xp-role-date { text-align: right; padding-top: 3px; }
+.xp-role-year { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; color: var(--fg); line-height: 1; display: block; }
+.xp-role-range { display: block; margin-top: 7px; color: var(--faint); }
+.xp-role-rail { position: relative; }
+.xp-role-rail::before { content: ""; position: absolute; left: 13px; top: 8px; bottom: 0; width: 1px; background: var(--border); }
+.xp-role:last-child .xp-role-rail::before { bottom: calc(100% - 64px); }
+.xp-role-node { position: absolute; left: 9px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+.xp-role-content { padding-bottom: var(--space-8); }
+.xp-role:last-child .xp-role-content { padding-bottom: var(--space-6); }
+.xp-role-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); flex-wrap: wrap; }
+.xp-role-company { font-family: var(--font-display); font-weight: 500; font-size: 1.9rem; letter-spacing: -0.02em; line-height: 1.02; }
+.xp-role-title { color: var(--muted); margin-top: 5px; font-size: 0.98rem; }
+.xp-role-loc { color: var(--faint); }
+/* Wraps rather than nowrap: the longest "Added → …" label (~358px) must not
+   spill past the content column on narrow phones (≤~370px). On desktop there is
+   room in the role-head row, so it still sits on one line. */
+.xp-added { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--border); padding: 6px 10px; white-space: normal; overflow-wrap: anywhere; }
+.xp-added span { color: var(--muted); }
+.xp-role-context { color: var(--muted); font-size: 1rem; line-height: 1.6; max-width: 62ch; margin: var(--space-4) 0 var(--space-5); }
+
+/* Per-role workflow visuals (chip flows) */
+.role-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; margin: 0 0 var(--space-5); }
+.rf-node { font-family: var(--font-mono); font-size: 0.76rem; border: 1px solid var(--border); background: var(--surface); padding: 7px 11px; white-space: nowrap; }
+.rf-arrow { color: var(--accent-ink); font-size: 0.82rem; }
+.rf-group { display: inline-flex; flex-direction: column; gap: 4px; border: 1px solid var(--border); padding: 8px 10px; background: var(--surface-2); }
+.rf-src { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
+.rf-note { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-ink); margin-left: 4px; white-space: nowrap; }
+.rf--product .rf-node:last-of-type, .rf--ops .rf-node:last-of-type { border-color: var(--accent); color: var(--accent-ink); }
+.rf--through .rf-node { font-family: var(--font-sans); font-size: 0.92rem; padding: 9px 14px; background: transparent; }
+
+/* Role metrics as typography */
+.xp-metrics { display: flex; flex-wrap: wrap; gap: var(--space-6) var(--space-7); margin: 0 0 var(--space-5); }
+.xp-metric-num { font-family: var(--font-display); font-weight: 500; font-size: 2.8rem; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.xp-metric-num .xp-unit { color: var(--accent-ink); font-size: 0.5em; margin-left: 1px; }
+.xp-metric-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 8px; max-width: 24ch; }
+
+.xp-tools { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 var(--space-4); }
+.xp-tools span { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 4px 8px; }
+
+.xp-role-cta { margin-top: 4px; }
+.xp-cta { display: inline-block; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); border-bottom: 1px solid var(--accent); padding-bottom: 2px; transition: color var(--dur-2) var(--ease-out); }
+.xp-cta:hover { color: var(--fg); }
+
+/* Through-line + teaching */
+.xp-throughline { border-top: 1px solid var(--rule); }
+.xp-throughline h2 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-2xl); letter-spacing: -0.02em; margin: 8px 0 var(--space-5); }
+.xp-teaching { border-top: 1px solid var(--border); }
+.xp-teach-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); margin-top: var(--space-4); }
+.xp-teach-item { padding: 18px 20px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: grid; gap: 6px; align-content: start; }
+.xp-teach-role { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; }
+
+@media (max-width: 1024px) { .xp-metric-num { font-size: 2.4rem; } }
+@media (max-width: 760px) {
+  .xp-role { grid-template-columns: 1fr; gap: 0; }
+  .xp-role-date { text-align: left; display: flex; align-items: baseline; gap: 12px; margin-bottom: var(--space-3); }
+  .xp-role-year { font-size: 1.15rem; }
+  .xp-role-range { margin-top: 0; }
+  .xp-role-rail { display: none; }
+  .xp-role-content { padding-bottom: var(--space-7); border-bottom: 1px solid var(--border); }
+  .xp-role-company { font-size: 1.6rem; }
+}
+@media (max-width: 640px) { .xp-teach-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .xp-stack { flex-direction: column; } .xp-stack-item { flex: none; } .xp-stack-plus { justify-content: center; padding: 2px 0; } }
+@media (max-width: 460px) { .xp-metrics { gap: var(--space-5); } .xp-metric-num { font-size: 2.1rem; } }
+
+/* Experience — print: keep each role whole (heading + visual + metrics + CTA
+   together), drop the decorative timeline rail. */
+/* Experience print — scoped to the Experience page only (must not touch
+   project-detail pages). Web layout stays spacious; print is compacted so roles
+   don't float in the top half of empty pages, and headings never orphan. */
+@media print {
+  /* Density: collapse the big web whitespace for a tighter export. */
+  body[data-page="experience"] .section { margin-top: 20px; }
+  body[data-page="experience"] .page-head { padding-top: 0; padding-bottom: 12px; }
+  body[data-page="experience"] .xp-hero-sub { margin-top: 8px; }
+  body[data-page="experience"] .xp-stack { margin-top: 12px; gap: 6px; }
+  body[data-page="experience"] .xp-stack-item { padding: 10px 12px; }
+  body[data-page="experience"] .xp-timeline { padding-top: 12px; }
+  body[data-page="experience"] .xp-role-context { margin: 8px 0 12px; }
+  body[data-page="experience"] .role-flow { margin-bottom: 12px; }
+
+  /* Rail is decorative; drop it. Stack the date inline above the content (the
+     same collision-free pattern the web uses when the timeline narrows) so a long
+     range like "Mar 2026 – Present" can never overlap the role heading in print. */
+  body[data-page="experience"] .xp-role-rail { display: none !important; }
+  body[data-page="experience"] .xp-role {
+    grid-template-columns: 1fr; gap: 0;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  body[data-page="experience"] .xp-role-date {
+    text-align: left; display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px;
+  }
+  body[data-page="experience"] .xp-role-year { font-size: 1.15rem; }
+  body[data-page="experience"] .xp-role-range { margin-top: 0; }
+  body[data-page="experience"] .xp-role-content { padding-bottom: 18px; break-inside: avoid; page-break-inside: avoid; }
+  body[data-page="experience"] .xp-role:last-child .xp-role-content { padding-bottom: 0; }
+  body[data-page="experience"] .xp-role-head,
+  body[data-page="experience"] .xp-role-company { break-after: avoid; page-break-after: avoid; }
+  body[data-page="experience"] .xp-metrics,
+  body[data-page="experience"] .xp-metric,
+  body[data-page="experience"] .xp-role-cta,
+  body[data-page="experience"] .role-flow,
+  body[data-page="experience"] .xp-stack,
+  body[data-page="experience"] .xp-teach-item { break-inside: avoid; page-break-inside: avoid; }
+
+  /* No orphan headings: keep the through-line and Teaching & leadership blocks
+     (heading + cards) whole — they're small enough to stay together. */
+  body[data-page="experience"] .xp-throughline,
+  body[data-page="experience"] .xp-teaching { break-inside: avoid; page-break-inside: avoid; }
+
+  /* PIM enterprise fan-in and every role-flow must stay readable in print. */
+  body[data-page="experience"] .role-flow .rf-node { font-size: 0.72rem; padding: 5px 8px; }
+  body[data-page="experience"] .role-flow .rf-src,
+  body[data-page="experience"] .role-flow .rf-note { font-size: 0.7rem; }
+  body[data-page="experience"] .rf--through .rf-node { font-size: 0.86rem; }
+}
+
+/* Hero schematic layer + floating fragments. */
+/* Schematic sits ONLY in the narrow channel between the headline (ends ~45%) and
+   the "Product / Analytics" type (starts ~57%), above the portrait head (~47%):
+   a subtle vertical motif that crosses no text, no words, and no face. Minimal
+   and secondary; hidden once the hero stacks. */
+.hero-schematic { position: absolute; top: 11%; left: 45.5%; width: 10.5%; height: 32%; right: auto; bottom: auto; z-index: 0; pointer-events: none; opacity: 0.28; overflow: hidden; }
+.hero-schematic svg { width: 100%; height: 100%; }
+@media (max-width: 1100px) { .hero-schematic { display: none; } }
+
+/* Ask/console section on the homepage sits as the ink moment when marked. */
+.ask-section.section--ink .ask-chip { border-color: var(--border); color: var(--fg); }
+.ask-section.section--ink .ask-chip:hover { background: var(--fg); color: var(--bg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .work-feature:hover .feat-flow-path { animation: none; }
+  .bflow[data-flow-draw].is-drawn .bflow-line { transition: none; width: 100%; }
+}
+
+/* Project collections — the three-level hierarchy (featured / selected / labs).
+   Each tier is its own grid, so the counter and 3n edge borders reset per group. */
+.project-collections { display: grid; gap: var(--space-8); }
+.project-collection { display: grid; gap: 0; }
+.collection-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-4); }
+.collection-title { font-family: var(--font-display); font-weight: 500; font-size: var(--text-2xl); letter-spacing: -0.02em; line-height: 1.05; }
+.collection-note { font-size: var(--text-sm); max-width: 42ch; text-align: right; }
+@media (max-width: 640px) { .collection-note { text-align: left; } }
+
 /* ============================================================
    Tags
    ============================================================ */
@@ -600,6 +950,7 @@ textarea.input { resize: vertical; }
 .timeline-role { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; letter-spacing: -0.01em; line-height: 1.1; }
 .timeline-meta .muted { margin-top: 6px; }
 .timeline-meta .muted:last-child { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 10px; }
+.timeline-links { margin-top: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); }
 @media (max-width: 860px) { .timeline-item { grid-template-columns: 1fr; gap: var(--space-3); padding: var(--space-6) 0; } }
 
 /* ============================================================
@@ -650,8 +1001,9 @@ textarea.input { resize: vertical; }
   margin-top: var(--space-6);
   padding: 12px 0;
   border-bottom: 1px solid var(--rule);
-  background: color-mix(in srgb, var(--bg) 90%, transparent);
-  backdrop-filter: saturate(1.1) blur(6px);
+  /* Fully opaque so scrolling content never shows through the sticky bar (was
+     10% translucent, which made the architecture diagram appear to cross it). */
+  background: var(--bg);
   font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.05em; text-transform: uppercase;
 }
 .section-nav a { color: var(--muted); padding-bottom: 2px; border-bottom: 1px solid transparent; transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out); }
@@ -692,6 +1044,15 @@ textarea.input { resize: vertical; }
 [data-reveal].is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; } }
 html:not(.js) [data-reveal] { opacity: 1; transform: none; }
+/* Print/PDF must never depend on scroll reveals: force every progressive block
+   visible regardless of whether it entered the viewport, and kill motion so no
+   half-drawn/half-faded state is captured. Genuinely universal (the reveal
+   mechanism is global), so it stays an unscoped print rule by design. */
+@media print {
+  [data-reveal], [data-reveal].is-visible { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+  [data-flow-draw] .bflow-line, [data-flow-draw].is-drawn .bflow-line { width: 100% !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; transition-delay: 0s !important; animation-delay: 0s !important; }
+}
 
 /* ============================================================
    Ask assistant — editorial drawer
@@ -765,4 +1126,54 @@ html:not(.js) [data-reveal] { opacity: 1; transform: none; }
 @media (max-width: 560px) {
   .chat-fab { padding: 13px; }
   .chat-fab-label { display: none; }
+}
+
+/* ============================================================
+   Print / PDF — export-only polish. Web layout is untouched
+   (everything here is inside @media print).
+   ============================================================ */
+@media print {
+  /* Universal: drop navigation and floating chrome on every printed page. */
+  .sidebar, .topbar, .sidebar-backdrop, .section-nav,
+  .chat-fab, .scroll-progress, .hero-schematic { display: none !important; }
+  .content-column { margin-left: 0 !important; }
+
+  /* Universal typographic hygiene: keep headings with their content and avoid
+     stranding one or two lines of a paragraph across a page break. */
+  h1, h2, h3, .collection-title, .step-panel-title {
+    break-after: avoid; page-break-after: avoid;
+  }
+  p, li { orphans: 2; widows: 2; }
+
+  /* --- Project-detail case study only (scoped so Experience is untouched) --- */
+  /* Long-form case-study containers paginate naturally — no break-inside:avoid
+     on .article/.section/.prose, so nothing gets pushed to a blank page. */
+
+  /* System architecture stays with its heading and caption; the SVG is bounded
+     so an avoid-break never overflows a page. */
+  body[data-page="project"] #architecture { break-inside: avoid; page-break-inside: avoid; }
+  body[data-page="project"] .arch { break-inside: avoid; page-break-inside: avoid; }
+  body[data-page="project"] .arch-svg { break-inside: avoid; page-break-inside: avoid; max-width: 360px; max-height: 620px; }
+
+  /* Step Player: print the whole build story (reveal every step, drop the
+     interactive rail) and keep each step intact instead of splitting it. */
+  body[data-page="project"] .stepper { grid-template-columns: 1fr; }
+  /* Keep the "How it was built" heading with its steps so it isn't stranded at
+     the foot of the previous page. Chromium honors break-inside (not
+     break-before/after), so scope it to the whole Step Player block; when it
+     can't fit in the remaining space it moves to the next page as a unit. */
+  body[data-page="project"] .step-player { break-inside: avoid; page-break-inside: avoid; }
+  body[data-page="project"] .stepper-rail { display: none !important; }
+  body[data-page="project"] .stepper-panels { border: 0 !important; padding: 0 !important; }
+  body[data-page="project"] .stepper-panel {
+    display: block !important; break-inside: avoid; page-break-inside: avoid;
+    border: 1px solid rgba(23,21,15,0.18); padding: 14px 16px; margin: 0 0 12px;
+  }
+
+  /* Keep compact, bounded blocks from splitting across pages. */
+  body[data-page="project"] .stats,
+  body[data-page="project"] .stat,
+  body[data-page="project"] .impact-row,
+  body[data-page="project"] .card,
+  body[data-page="project"] .gallery-item { break-inside: avoid; page-break-inside: avoid; }
 }

@@ -1,0 +1,56 @@
+{
+  "slug": "sri-kalyani-cottons",
+  "status": "published",
+  "featured": false,
+  "tier": "selected",
+  "title": "Sri Kalyani Cottons — Operations & Trading Improvement",
+  "date": "2022-06-01",
+  "summary": "Operations and trading work at a family-owned cotton manufacturing and trading business: understanding what customers actually needed, organizing inventory around quality, and finding the bottlenecks that were holding back production.",
+  "problem": "In cotton trading, 'do you have what I need?' is really a question about quality — staple length, micronaire, strength, cleanliness, moisture — and a customer's needs rarely map cleanly to a single lot on hand. Meanwhile, production had bottlenecks that were quietly capping throughput. Both problems came down to understanding the operation and the customer well enough to make a good call.",
+  "approach": "Worked directly with customers to understand the cotton quality and specifications they needed, and supported trade decisions against that. On the production side, I analyzed the workflow, identified bottlenecks, monitored operations, and helped drive process improvements. A practical shift: thinking about inventory in terms of its quality parameters, so the team could find lots that matched a customer's need — or discuss a workable alternative — instead of simply saying inventory wasn't available.",
+  "tools": [
+    "Operations analysis",
+    "Bottleneck identification",
+    "Quality-based inventory thinking",
+    "Customer & trade support"
+  ],
+  "outcome": "Process changes I contributed to were part of a roughly 25% increase in production throughput, and reframing inventory around quality parameters helped turn dead-end 'not available' conversations into matches or workable alternatives for customers.",
+  "role": "Operations & Trading Analyst",
+  "team": "Family-owned manufacturing & trading business",
+  "duration": "Sri Kalyani Cottons",
+  "links": [],
+  "tags": [
+    "Operations",
+    "Manufacturing",
+    "Customer Discovery",
+    "Process Improvement",
+    "Trading"
+  ],
+  "disciplines": [
+    "Operations",
+    "Strategy"
+  ],
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": [
+      "gallery/diagram.svg"
+    ],
+    "alt": {
+      "gallery/cover.svg": "Sri Kalyani Cottons — matching cotton lots to customer quality needs and finding production bottlenecks",
+      "gallery/diagram.svg": "Explanatory process diagram: a customer's quality specification matched against inventory organized by quality parameters, yielding a matching lot or a workable alternative"
+    }
+  },
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+  "metrics": [
+    {
+      "value": 25,
+      "prefix": "~",
+      "suffix": "%",
+      "short": "throughput",
+      "label": "Higher throughput (contributed)"
+    }
+  ]
+}

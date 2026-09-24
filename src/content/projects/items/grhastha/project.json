@@ -1,0 +1,50 @@
+{
+  "slug": "grhastha",
+  "status": "published",
+  "featured": true,
+  "tier": "featured",
+
+  "title": "Grhastha — Guided Puja at Home",
+  "date": "2026-08-01",
+  "summary": "A calm, guided way for Hindu households to perform authentic puja at home — accurate timing, step-by-step guidance, and the mantras with their meaning — designed to preserve authenticity and access rather than gamify devotion.",
+
+  "problem": "Doing a puja properly at home means knowing three hard things at once: when it should happen, how to actually perform it, and what the words mean. That knowledge is often scattered, inconsistent online, or lost between generations — and most apps in the space lean on subscriptions, logins, and merchandising that sit awkwardly with something sacred.",
+  "approach": "Shaped the product around three pillars — Know When, Know How, Know the Words — and a firm set of principles: no login, no subscription, calm and devotional rather than SaaS-looking, authentic rather than gamified, with a sacred-calendar / almanac feeling and a Madhubani-inspired Ganesh visual language. First-run onboarding only; on later visits you go straight to the home experience. Initial focus is Ganesh Chaturthi, with other festivals to follow.",
+  "tools": [
+    "Product design",
+    "Cultural & UX research",
+    "Location-aware timing (muhurta)",
+    "Content design (Sanskrit · transliteration · audio)"
+  ],
+  "outcome": "A product designed to reduce complexity without reducing authenticity: households get accurate, location-aware timing, unhurried step-by-step guidance, and the mantras in Sanskrit with transliteration, audio, and meaning — no account, no paywall.",
+
+  "role": "Product / technical contributor",
+  "team": "Family-led, non-profit oriented",
+  "duration": "2026 · in development",
+
+  "links": [],
+
+  "tags": [
+    "Cultural Technology",
+    "Product Design",
+    "Non-profit",
+    "Accessibility",
+    "0-to-1"
+  ],
+
+  "disciplines": ["Product", "Engineering"],
+
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": ["gallery/diagram.svg"],
+    "alt": {
+      "gallery/cover.svg": "Grhastha — three pillars for guided home puja: Know When, Know How, Know the Words, in a calm almanac style",
+      "gallery/diagram.svg": "Explanatory product-flow diagram: first-run onboarding once, then a direct home experience branching into location-aware timing, step-by-step guidance with materials and substitutes, and mantras with audio, transliteration and meaning"
+    }
+  },
+
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  }
+}

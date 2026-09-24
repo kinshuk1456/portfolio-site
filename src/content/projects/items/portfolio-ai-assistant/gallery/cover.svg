@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Portfolio AI Assistant: a grounded chatbot answering questions about real work, with guardrails against fabrication">
+  <rect width="1200" height="675" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="84" fill="#17150f" fill-opacity="0.55" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">PORTFOLIO AI ASSISTANT</text>
+  <text x="62" y="146" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="500">Ask about my work — grounded, not made up.</text>
+
+  <!-- chat mock -->
+  <g transform="translate(64,214)" font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <rect width="640" height="300" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.22"/>
+    <g transform="translate(24,28)">
+      <rect width="360" height="52" fill="#eae4d6"/>
+      <text x="18" y="32" font-size="16">What's his forward-deployed experience?</text>
+    </g>
+    <g transform="translate(160,104)">
+      <rect width="456" height="160" fill="#17150f"/>
+      <text x="18" y="34" font-size="15" fill="#f4f1e8" fill-opacity="0.7" font-family="ui-monospace, Menlo, monospace">ANSWER · from verified context</text>
+      <text x="18" y="68" font-size="15" fill="#f4f1e8">He's built tools deployed into real workflows —</text>
+      <text x="18" y="92" font-size="15" fill="#f4f1e8">a live event ops platform, an internal system</text>
+      <text x="18" y="116" font-size="15" fill="#f4f1e8">at a travel company, and Vizor.</text>
+      <text x="18" y="146" font-size="13" fill="#c1440e">↳ won't invent facts it doesn't have</text>
+    </g>
+  </g>
+
+  <!-- guardrails column -->
+  <g transform="translate(744,214)" font-family="ui-sans-serif, system-ui" fill="#17150f">
+    <text x="0" y="20" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="2" fill="#c1440e">GUARDRAILS</text>
+    <g transform="translate(0,40)" font-size="17">
+      <rect width="392" height="56" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="18" y="34">No invented facts or metrics</text>
+      <rect y="68" width="392" height="56" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.2"/><text x="18" y="102">Key stays server-side</text>
+      <rect y="136" width="392" height="56" fill="#f7ece6" stroke="#c1440e" stroke-opacity="0.5"/><text x="18" y="170">Graceful fallback, never 502</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="560" x2="1136" y2="560" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="604" fill="#17150f" fill-opacity="0.7" font-family="Georgia, serif" font-style="italic" font-size="23">Cloudflare Pages Function + Gemini free tier · a curated context, deliberately not RAG or an agent.</text>
+</svg>
