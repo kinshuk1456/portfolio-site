@@ -141,6 +141,7 @@ export async function renderProjectDetail() {
 
   // Build the in-page section nav from the sections that actually render.
   const sections = [
+    slug === 'habitpact' ? ['demo', 'Try the demo'] : null,
     project.problem || project.approach ? ['overview', 'Overview'] : null,
     (project.outcome || metrics.length) ? ['outcome', 'Outcome'] : null,
     stepPlayerHtml ? ['build-story', 'How it was built'] : null,
@@ -191,6 +192,20 @@ export async function renderProjectDetail() {
         ` : ''}
 
         ${sectionNav}
+
+        ${slug === 'habitpact' ? `
+        <section class="section" id="demo" aria-labelledby="habitpact-demo-title">
+          <div class="two-col">
+            <div>
+              <p class="label">Interactive product demo</p>
+              <h2 id="habitpact-demo-title">Make a pact. See it through.</h2>
+              <p class="prose">Try the accountability loop: set a goal, invite a friend, submit proof, and see how peer review changes the points.</p>
+              <p class="prose">This browser demo uses fictional people and sample proof. No account, camera, or real money required. It illustrates the app’s core flow; it isn’t the live Flutter app.</p>
+              <a class="link" href="/habitpact-demo.html" target="_blank" rel="noopener">Open demo in a full window ↗</a>
+            </div>
+            <iframe src="/habitpact-demo.html" title="HabitPact interactive demo: create a pact and review sample proof" loading="lazy" style="width:100%;max-width:430px;height:780px;border:1px solid var(--border);border-radius:28px;background:#f7f8f5;display:block;margin-inline:auto" ></iframe>
+          </div>
+        </section>` : ''}
 
         ${(project.problem || project.approach) ? `
         <section class="section" id="overview">
