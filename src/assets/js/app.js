@@ -13,7 +13,7 @@ import { renderProjectGroups, renderProjectGrid } from './shared/ui.js';
 
 import { renderHome } from './renderers/home.js';
 import { renderProjects } from './renderers/projects.js';
-import { renderProjectDetail } from './renderers/project-detail.js';
+import { renderProjectDetail } from './renderers/project-detail.js?v=habitpact-flutter-1';
 import { renderExperience } from './renderers/experience.js';
 import { renderEducation } from './renderers/education.js';
 import { renderFeed } from './renderers/feed.js';
