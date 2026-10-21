@@ -141,6 +141,7 @@ export async function renderProjectDetail() {
 
   // Build the in-page section nav from the sections that actually render.
   const sections = [
+    slug === 'habitpact' ? ['demo', 'Try the demo'] : null,
     project.problem || project.approach ? ['overview', 'Overview'] : null,
     (project.outcome || metrics.length) ? ['outcome', 'Outcome'] : null,
     stepPlayerHtml ? ['build-story', 'How it was built'] : null,
@@ -181,16 +182,27 @@ export async function renderProjectDetail() {
           <h1 class="article-title">${escapeHtml(project.title || slug)}</h1>
           ${project.summary ? `<p class="article-summary">${escapeHtml(project.summary)}</p>` : ''}
           ${factsHtml}
-          ${links ? `<div class="hero-cta">${links}</div>` : ''}
+          ${(links || slug === 'habitpact') ? `<div class="hero-cta">${slug === 'habitpact' ? '<a class="btn" href="#demo">Try the app ↓</a>' : ''}${links}</div>` : ''}
         </header>
 
-        ${coverSrc ? `
+        ${coverSrc && slug !== 'habitpact' ? `
           <div class="article-cover" data-reveal>
             <img src="/${escapeHtml(coverSrc)}" alt="${escapeHtml(project?.images?.alt?.[project.images.cover] || '')}" loading="eager" />
           </div>
         ` : ''}
 
         ${sectionNav}
+
+        ${slug === 'habitpact' ? `
+        <section class="section habitpact-embed" id="demo" aria-labelledby="habitpact-demo-title">
+          <div class="habitpact-embed-heading">
+            <div><p class="label">Try the product</p><h2 id="habitpact-demo-title">A little accountability goes a long way.</h2></div>
+            <a class="link" href="/habitpact-demo.html" target="_blank" rel="noopener">Open full screen ↗</a>
+          </div>
+          <p class="prose habitpact-embed-intro">Explore the actual HabitPact app with a sample account. Start a pact, find your accountability circle, and see the points behind the promise.</p>
+          <iframe class="habitpact-embed-frame" src="/habitpact-demo.html" title="Try the actual HabitPact Flutter app with sample data" loading="lazy"></iframe>
+          <p class="habitpact-embed-note">Sample data · No sign-in · Phone tracking, uploads, and payments are unavailable in the browser demo.</p>
+        </section>` : ''}
 
         ${(project.problem || project.approach) ? `
         <section class="section" id="overview">

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc" >
+<title id="title">HabitPact logo</title>
+<desc id="desc">Two rounded pillars joined by a soft central bridge, forming an H.</desc>
+<path d="M295 150
+C253.579 150 220 183.579 220 225
+L220 775
+C220 816.421 253.579 850 295 850
+C336.421 850 370 816.421 370 775
+L370 553
+C410 553 438 541 462 528
+C476 521 488 518 500 518
+C512 518 524 521 538 528
+C562 541 590 553 630 553
+L630 775
+C630 816.421 663.579 850 705 850
+C746.421 850 780 816.421 780 775
+L780 225
+C780 183.579 746.421 150 705 150
+C663.579 150 630 183.579 630 225
+L630 447
+C590 447 562 459 538 472
+C524 479 512 482 500 482
+C488 482 476 479 462 472
+C438 459 410 447 370 447
+L370 225
+C370 183.579 336.421 150 295 150Z" fill="#FFFFFF" transform="translate(160 160) scale(.68)"/>
+</svg>
+
