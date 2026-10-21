@@ -182,10 +182,10 @@ export async function renderProjectDetail() {
           <h1 class="article-title">${escapeHtml(project.title || slug)}</h1>
           ${project.summary ? `<p class="article-summary">${escapeHtml(project.summary)}</p>` : ''}
           ${factsHtml}
-          ${links ? `<div class="hero-cta">${links}</div>` : ''}
+          ${(links || slug === 'habitpact') ? `<div class="hero-cta">${slug === 'habitpact' ? '<a class="btn" href="#demo">Try the app ↓</a>' : ''}${links}</div>` : ''}
         </header>
 
-        ${coverSrc ? `
+        ${coverSrc && slug !== 'habitpact' ? `
           <div class="article-cover" data-reveal>
             <img src="/${escapeHtml(coverSrc)}" alt="${escapeHtml(project?.images?.alt?.[project.images.cover] || '')}" loading="eager" />
           </div>
@@ -194,17 +194,14 @@ export async function renderProjectDetail() {
         ${sectionNav}
 
         ${slug === 'habitpact' ? `
-        <section class="section" id="demo" aria-labelledby="habitpact-demo-title">
-          <div class="two-col">
-            <div>
-              <p class="label">Interactive product demo</p>
-              <h2 id="habitpact-demo-title">Make a pact. See it through.</h2>
-              <p class="prose">Try the accountability loop: set a goal, invite a friend, submit proof, and see how peer review changes the points.</p>
-              <p class="prose">This browser demo uses fictional people and sample proof. No account, camera, or real money required. It illustrates the app’s core flow; it isn’t the live Flutter app.</p>
-              <a class="link" href="/habitpact-demo.html" target="_blank" rel="noopener">Open demo in a full window ↗</a>
-            </div>
-            <iframe src="/habitpact-demo.html" title="HabitPact interactive demo: create a pact and review sample proof" loading="lazy" style="width:100%;max-width:430px;height:780px;border:1px solid var(--border);border-radius:28px;background:#f7f8f5;display:block;margin-inline:auto" ></iframe>
+        <section class="section habitpact-embed" id="demo" aria-labelledby="habitpact-demo-title">
+          <div class="habitpact-embed-heading">
+            <div><p class="label">Try the product</p><h2 id="habitpact-demo-title">A little accountability goes a long way.</h2></div>
+            <a class="link" href="/habitpact-demo.html" target="_blank" rel="noopener">Open full screen ↗</a>
           </div>
+          <p class="prose habitpact-embed-intro">Explore the actual HabitPact app with a sample account. Start a pact, find your accountability circle, and see the points behind the promise.</p>
+          <iframe class="habitpact-embed-frame" src="/habitpact-demo.html" title="Try the actual HabitPact Flutter app with sample data" loading="lazy"></iframe>
+          <p class="habitpact-embed-note">Sample data · No sign-in · Phone tracking, uploads, and payments are unavailable in the browser demo.</p>
         </section>` : ''}
 
         ${(project.problem || project.approach) ? `
