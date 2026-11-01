@@ -1,0 +1,98 @@
+{
+  "slug": "voice-agent-audit",
+  "status": "published",
+  "featured": true,
+  "tier": "featured",
+
+  "title": "Voice Agent Audit",
+  "subtitle": "AI-Powered Conversational Testing for Voice Agents",
+  "date": "2026-10-29",
+  "summary": "A Python bot that phones an AI medical receptionist as a fictional patient, holds real two-sided calls about scheduling, refills, insurance and office questions, records each speaker on its own channel, and turns what happens into regression tests and evidence-linked findings. Built for an AI engineering take-home assessment.",
+
+  "problem": "A voice agent can pass every unit test and still fall apart on a real phone line: it talks over people, waits too long, loops on identity checks, or answers a question nobody asked. Testing that properly means calling it like a real person would, with goals, a consistent identity and imperfect timing, and keeping enough evidence to tell the agent's bugs apart from the tester's own mistakes.",
+  "approach": "Built an AI patient as a LiveKit Agents session in pipeline mode: local faster-whisper (tiny.en) for speech-to-text, GPT-OSS 120B or 20B on Groq for the patient's reply, and a local Windows SAPI voice for speech, with no speech-to-speech model. Calls go out over Twilio Programmable Voice through LiveKit Cloud's Twilio connector. A scoped-memory controller gives the model fixed scenario facts, recent turns and a record of what has been answered, then checks every draft before it's spoken. A separate recorder captures the patient and receptionist on separate stereo channels, alongside transcripts, a per-turn decision log and latency metrics. Every call needed individual approval and had a 180-second cap and a hard spending limit.",
+  "tools": [
+    "Python",
+    "LiveKit Agents",
+    "Twilio Programmable Voice",
+    "faster-whisper",
+    "Silero VAD",
+    "Groq · GPT-OSS 120B / 20B",
+    "Windows SAPI",
+    "pytest"
+  ],
+  "outcome": "29 real call attempts produced 24 genuine two-sided recorded conversations. Ten were selected for the assessment: seven clean calls and three coherent calls with disclosed flaws, covering 7 of 10 scenario types. The recordings support six receptionist findings at different confidence levels, none confirmed against the product's intended behavior, plus a separate list of the caller's own limitations. 367 automated tests cover call controls, turn handling and the patient's safety checks, using recorded receptionist turns, and none of them places a call.",
+
+  "role": "Builder / Engineer",
+  "team": "Solo",
+  "duration": "Oct 2026 · AI engineering take-home",
+
+  "links": [
+    {
+      "label": "Request a walkthrough",
+      "url": "mailto:kinshuk.agarwal@email.ucr.edu?subject=Voice%20Agent%20Audit%20Walkthrough"
+    }
+  ],
+
+  "tags": [
+    "Python",
+    "LiveKit",
+    "Twilio",
+    "Whisper",
+    "Groq",
+    "GPT-OSS",
+    "Conversational AI",
+    "Testing"
+  ],
+
+  "disciplines": ["Engineering"],
+
+  "images": {
+    "cover": "gallery/cover.svg",
+    "gallery": ["gallery/turn-timeline.svg", "gallery/model-latency.svg"],
+    "alt": {
+      "gallery/cover.svg": "Voice Agent Audit: a fictional patient and an AI receptionist taking turns on separate audio channels, above the STT, text model, guard and TTS pipeline",
+      "gallery/turn-timeline.svg": "Where one turn's time went on a real call (real-10): about 1.23 s of end-of-turn wait, which includes Whisper's ~0.3 s, then about 0.8–1.0 s to GPT-OSS's first token and under 0.1 s to SAPI's first audio. LiveKit measured 2.09–2.14 s end to end",
+      "gallery/model-latency.svg": "Text-generation latency from a limited offline comparison (22 requests per model over 12 recorded-call probes): median 1.44 s for local Qwen 1.5B, 0.41 s for GPT-OSS 20B, 0.49 s for GPT-OSS 120B. This is text generation only, not end-to-end call latency"
+    }
+  },
+
+  "galleryTitle": "Measurements",
+  "galleryLayout": "wide",
+
+  "caseStudy": {
+    "enabled": true,
+    "path": "case-study.md"
+  },
+
+  "metrics": [
+    { "value": 29, "short": "call attempts", "label": "Real telephone call attempts" },
+    { "value": 24, "short": "recorded calls", "label": "Genuine two-sided recorded conversations" },
+    { "value": 10, "short": "selected", "label": "Conversations selected for the assessment" },
+    { "value": 7, "short": "scenario types", "label": "Scenario types covered by the selected ten" }
+  ],
+
+  "stepsTitle": "Engineering decisions",
+  "steps": [
+    {
+      "n": "01",
+      "title": "Turn-taking on a real line",
+      "body": "Problem: on one call the clinic opened with a 9.4-second disclosure and greeting, the bot's 18-second greeting gate expired, and the patient never spoke. Elsewhere the bot talked over the receptionist or replied slowly. Evidence: what looked like a 9-second speech-to-text delay wasn't one. Whisper transcribed the greeting in 0.33 s, and the 8.9 s was end-of-turn delay under the manual turn detection used during the greeting. Fix: raised the greeting timeout to 30 s, treated \"help you\" as an invitation to speak, and added a regression that replays that call's real timeline. Replaying every real receptionist channel through Silero showed that 0.8 s of VAD silence cut the reply gap with no premature turns, while 0.6 s split real sentences, so I set it to 0.8 s and kept the speech-to-text model. Trade-off: turns still take about 2 s, and the bot occasionally overlaps the receptionist."
+    },
+    {
+      "n": "02",
+      "title": "Keeping the patient consistent",
+      "body": "Problem: the patient repeated details, restated its name and date of birth when asked only to confirm them, and lost track of what it still needed to ask. Fix: a scoped-memory controller with immutable scenario facts (fictional name, DOB, goal), the last four turns, a running record of which questions had actually been answered, and recall of older turns only when the receptionist referred back to them. Always-on retrieval had made offline proxy scores worse (18/24 to 15/24 for GPT-OSS 20B). Every draft is checked before it's spoken for invented contact details, identity changes, claims about real appointments, and unauthorized actions. Trade-off: strict checks ended at least one good call abruptly, when the guard rejected the patient's drafted goodbye. The caller also still over-answers confirmations. Both are documented as limitations."
+    },
+    {
+      "n": "03",
+      "title": "Choosing the text model",
+      "body": "Problem: most quality failures came from the patient's text model, not the audio. A local Qwen 1.5B was free, but it slipped into the receptionist's role and contradicted itself on early calls. Gemini Flash-Lite did well offline, but its pre-call check timed out even on minimal requests, so it never ran on a call. Evidence: in an offline comparison of 22 requests per model over recorded-call probes, median text generation was 1.44 s for Qwen 1.5B, 0.41 s for GPT-OSS 20B and 0.49 s for GPT-OSS 120B. GPT-OSS also passed 18/24 proxy checks to Qwen's 10. Decision: GPT-OSS 120B as the default. 20B was enabled, after replaying 39 recorded receptionist turns, when Groq's free daily quota ran out mid-run. A faster Qwen 27B preview was ruled out because it attempted a prohibited transfer in replay. There are no retries or silent fallbacks: a failed request ends the turn instead of speaking a partial reply."
+    },
+    {
+      "n": "04",
+      "title": "Turning failed calls into tests",
+      "body": "Problem: passing tests didn't mean realistic calls. Approach: every recording and transcript was kept unedited. Recorded receptionist audio was replayed offline through the full pipeline, with the output clearly labeled as simulated. Each failure (a verification loop, a hang-up at a support offer, a truncated model reply, a quota stop) became a targeted test before the next approved call. Findings about the receptionist were kept separate from the caller's own limitations, and each quote was marked by how it was checked. Example: I first blamed one rejected reply on whitespace normalization. Reinspection showed the model had actually misspelled the patient's surname, so the guard had been right. The wrong reading and the correction both stay in the record."
+    }
+  ]
+}
