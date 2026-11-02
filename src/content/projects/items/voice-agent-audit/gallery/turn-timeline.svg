@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-label="One turn on real call real-10: about 1.23 s of end-of-turn wait, including about 0.3 s of Whisper transcription, then about 0.8 to 1.0 s until GPT-OSS's first token, then under 0.1 s until SAPI's first audio. LiveKit measured 2.09 to 2.14 s end to end.">
+  <rect width="1200" height="600" fill="#f4f1e8"/>
+  <rect x="0.5" y="0.5" width="1199" height="599" fill="none" stroke="#17150f" stroke-opacity="0.14"/>
+  <text x="64" y="76" font-family="ui-monospace, Menlo, monospace" font-size="16" letter-spacing="3" fill="#17150f" fill-opacity="0.55">ONE CONVERSATIONAL TURN · REAL CALL real-10</text>
+  <text x="62" y="128" fill="#17150f" font-family="Georgia, 'Times New Roman', serif" font-size="38">Where the ~2 seconds between speakers go</text>
+  <text x="64" y="194" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="2" fill="#c1440e">RECEPTIONIST</text>
+  <rect x="64" y="204" width="76" height="22" fill="#c1440e" fill-opacity="0.9"/>
+  <text x="148" y="220" font-family="ui-monospace, Menlo, monospace" font-size="15" fill="#17150f" fill-opacity="0.6">← stops speaking</text>
+  <rect x="140" y="252" width="467.4" height="58" fill="#eae4d6" stroke="#17150f" stroke-opacity="0.22"/>
+  <text x="152" y="277" font-family="ui-sans-serif, system-ui" font-size="16" font-weight="600" fill="#17150f">End-of-turn wait</text>
+  <text x="152" y="297" font-family="ui-monospace, Menlo, monospace" font-size="15" fill="#17150f" fill-opacity="0.65">1.23 s · VAD silence + endpointing</text>
+  <rect x="482" y="318" width="114.0" height="12" fill="#17150f" fill-opacity="0.55"/>
+  <text x="478" y="348" font-family="ui-monospace, Menlo, monospace" font-size="15" fill="#17150f" fill-opacity="0.65" text-anchor="end">Whisper ~0.3 s runs inside this wait</text>
+  <rect x="607.4" y="252" width="311.6" height="58" fill="#fbfaf5" stroke="#17150f" stroke-opacity="0.22"/>
+  <text x="619.4" y="277" font-family="ui-sans-serif, system-ui" font-size="16" font-weight="600" fill="#17150f">GPT-OSS</text>
+  <text x="619.4" y="297" font-family="ui-monospace, Menlo, monospace" font-size="15" fill="#17150f" fill-opacity="0.65">~0.8–1.0 s to first token</text>
+  <rect x="919" y="252" width="30.4" height="58" fill="#17150f"/>
+  <text x="959.4" y="277" font-family="ui-sans-serif, system-ui" font-size="16" font-weight="600" fill="#17150f">SAPI</text>
+  <text x="959.4" y="297" font-family="ui-monospace, Menlo, monospace" font-size="15" fill="#17150f" fill-opacity="0.65">&lt;0.1 s</text>
+  <text x="949.4" y="380" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="2" fill="#17150f">AI PATIENT</text>
+  <rect x="949.4" y="390" width="186.6" height="22" fill="#17150f" fill-opacity="0.9"/>
+  <line x1="140" y1="430" x2="1128" y2="430" stroke="#17150f" stroke-opacity="0.5"/>
+  <line x1="140" y1="426" x2="140" y2="434" stroke="#17150f" stroke-opacity="0.5"/>
+  <text x="140" y="454" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#17150f" fill-opacity="0.6" text-anchor="middle">0.0 s</text>
+  <line x1="330" y1="426" x2="330" y2="434" stroke="#17150f" stroke-opacity="0.5"/>
+  <text x="330" y="454" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#17150f" fill-opacity="0.6" text-anchor="middle">0.5 s</text>
+  <line x1="520" y1="426" x2="520" y2="434" stroke="#17150f" stroke-opacity="0.5"/>
+  <text x="520" y="454" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#17150f" fill-opacity="0.6" text-anchor="middle">1.0 s</text>
+  <line x1="710" y1="426" x2="710" y2="434" stroke="#17150f" stroke-opacity="0.5"/>
+  <text x="710" y="454" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#17150f" fill-opacity="0.6" text-anchor="middle">1.5 s</text>
+  <line x1="900" y1="426" x2="900" y2="434" stroke="#17150f" stroke-opacity="0.5"/>
+  <text x="900" y="454" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#17150f" fill-opacity="0.6" text-anchor="middle">2.0 s</text>
+  <line x1="1090" y1="426" x2="1090" y2="434" stroke="#17150f" stroke-opacity="0.5"/>
+  <text x="1090" y="454" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#17150f" fill-opacity="0.6" text-anchor="middle">2.5 s</text>
+  <line x1="64" y1="486" x2="1136" y2="486" stroke="#17150f" stroke-opacity="0.25"/>
+  <text x="64" y="522" fill="#17150f" fill-opacity="0.75" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="21">LiveKit measured 2.09–2.14 s end to end on this call. Most of it is a deliberate wait, not the model.</text>
+  <text x="64" y="558" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="2" fill="#17150f" fill-opacity="0.42">STAGE TIMES FROM ONE CALL'S METRICS · SEGMENTS APPROXIMATE · NOT A GUARANTEE</text>
+
+</svg>

@@ -102,6 +102,25 @@ Selected projects (published). If asked to summarize any project, use these deta
 
 11. Digital Home — the portfolio/content system this site runs on (HTML/CSS/vanilla JS/Node).
 
+12. Voice Agent Audit — AI-Powered Conversational Testing for Voice Agents (Engineering). Oct 2026,
+    solo, built for an AI engineering take-home assessment — NOT a commercial product, never deployed
+    to customers. A Python AI "patient" bot that phoned an AI medical receptionist test line, held
+    real two-sided calls (scheduling, rescheduling, cancellation, refills, insurance, office hours,
+    visit preparation, accessibility) with fictional identities, recorded each speaker on its own
+    stereo channel, and reported findings. LiveKit Agents in PIPELINE mode: local faster-whisper
+    tiny.en STT → GPT-OSS 120B/20B on Groq (text) → local Windows SAPI TTS; NOT speech-to-speech.
+    Calls via Twilio Programmable Voice through LiveKit Cloud's Twilio connector. A scoped-memory
+    controller (immutable scenario facts, last four turns, answered-question tracking) checks every
+    draft before it is spoken. Results: 29 real call attempts, 24 genuine two-sided recordings, 10
+    selected (7 clean, 3 coherent with disclosed flaws) covering 7 of 10 scenario types, 367
+    automated tests (none place a call). Six receptionist findings at varying confidence, NONE
+    confirmed as product bugs; the caller's own limitations are listed separately (over-answers
+    confirmations, ~2 s turns, Whisper mishearings). Offline text-generation medians over 22
+    requests: local Qwen 1.5B 1.44 s, GPT-OSS 20B 0.41 s, GPT-OSS 120B 0.49 s — text generation
+    only, not call latency. The repository is private; don't name the company or share phone
+    numbers. Key lesson: measure each stage before changing components — a "slow STT" was really a
+    turn-commit setting.
+
 Toolkit: React, TypeScript, FastAPI, Flutter, Java/Spring Boot, PostgreSQL, Python, SQL, Snowflake,
 Power BI, Tableau, plus applied AI tooling — LLMs and MCP (Model Context Protocol, used in Vizor).
 Contact: kinshuk.agarwal@email.ucr.edu.

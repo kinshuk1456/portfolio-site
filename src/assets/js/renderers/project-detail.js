@@ -10,7 +10,7 @@ import { fetchJSON, fetchText } from '../content-api.js';
 import { getSlug } from '../router.js';
 import { markdownToHtml } from '../shared/markdown.js';
 import { escapeHtml, formatDate, renderTags } from '../shared/ui.js';
-import { vizorArchitecture } from '../shared/graphics.js';
+import { vizorArchitecture, voiceAgentArchitecture } from '../shared/graphics.js?v=voice-agent-audit-1';
 
 // Inline-SVG architecture diagrams keyed by slug (case-study visual storytelling).
 const ARCHITECTURES = {
@@ -18,6 +18,11 @@ const ARCHITECTURES = {
     title: 'System architecture',
     note: 'The agent only ever proposes a neutral change spec — it never sees or edits Tableau XML. A deterministic compiler applies the approved change and runs schema, field, zone and fidelity validation, so the output is a valid, versioned workbook or nothing at all.',
     svg: vizorArchitecture
+  },
+  'voice-agent-audit': {
+    title: 'System architecture',
+    note: 'A separate STT → text LLM → TTS pipeline, not a speech-to-speech model. The text model drafts the patient\'s reply, but a deterministic guard decides whether it gets spoken. Recording, transcripts, the decision log and per-turn latency run alongside every call, so each failure can be traced to a stage and turned into a test.',
+    svg: voiceAgentArchitecture
   }
 };
 
@@ -72,6 +77,9 @@ export async function renderProjectDetail() {
     return `<figure class="gallery-item"><img class="gallery-img" src="/${escapeHtml(src)}" alt="" loading="lazy" />${alt ? `<figcaption class="label">${escapeHtml(alt)}</figcaption>` : ''}</figure>`;
   }).join('');
 
+  const galleryTitle = project.galleryTitle || 'Gallery';
+  const galleryClass = project.galleryLayout === 'wide' ? 'gallery gallery--wide' : 'gallery';
+
   const coverSrc = project?.images?.cover
     ? `data/projects/items/${slug}/${project.images.cover}`
     : '';
@@ -105,11 +113,12 @@ export async function renderProjectDetail() {
   // Step Player — an interactive build-story progression (e.g. Vizor). All step
   // content is in the DOM; app.js setupStepPlayer turns it into a tablist.
   const steps = Array.isArray(project.steps) ? project.steps : [];
+  const stepsTitle = project.stepsTitle || 'How it was built';
   const stepPlayerHtml = steps.length ? `
     <section class="section step-player" id="build-story" data-step-player>
-      <h2>How it was built</h2>
+      <h2>${escapeHtml(stepsTitle)}</h2>
       <div class="stepper">
-        <ol class="stepper-rail" role="tablist" aria-label="Build story">
+        <ol class="stepper-rail" role="tablist" aria-label="${escapeHtml(stepsTitle)}">
           ${steps.map((s, i) => `
             <li role="presentation">
               <button class="stepper-tab" role="tab" id="step-tab-${i}" data-step="${i}"
@@ -144,10 +153,10 @@ export async function renderProjectDetail() {
     slug === 'habitpact' ? ['demo', 'Try the demo'] : null,
     project.problem || project.approach ? ['overview', 'Overview'] : null,
     (project.outcome || metrics.length) ? ['outcome', 'Outcome'] : null,
-    stepPlayerHtml ? ['build-story', 'How it was built'] : null,
+    stepPlayerHtml ? ['build-story', stepsTitle] : null,
     architectureHtml ? ['architecture', 'Architecture'] : null,
     (project.tools || []).length ? ['tools', 'Tools'] : null,
-    gallery ? ['gallery', 'Gallery'] : null,
+    gallery ? ['gallery', galleryTitle] : null,
     caseStudyHtml ? ['case-study', 'Case study'] : null
   ].filter(Boolean);
 
@@ -180,6 +189,7 @@ export async function renderProjectDetail() {
 
         <header class="article-head">
           <h1 class="article-title">${escapeHtml(project.title || slug)}</h1>
+          ${project.subtitle ? `<p class="article-subtitle">${escapeHtml(project.subtitle)}</p>` : ''}
           ${project.summary ? `<p class="article-summary">${escapeHtml(project.summary)}</p>` : ''}
           ${factsHtml}
           ${(links || slug === 'habitpact') ? `<div class="hero-cta">${slug === 'habitpact' ? '<a class="btn" href="#demo">Try the app ↓</a>' : ''}${links}</div>` : ''}
@@ -237,8 +247,8 @@ export async function renderProjectDetail() {
 
         ${gallery ? `
           <section class="section" id="gallery">
-            <h2>Gallery</h2>
-            <div class="gallery">${gallery}</div>
+            <h2>${escapeHtml(galleryTitle)}</h2>
+            <div class="${galleryClass}">${gallery}</div>
           </section>
         ` : ''}
 

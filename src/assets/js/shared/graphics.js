@@ -234,3 +234,68 @@ export function vizorArchitecture() {
     <text x="14" y="500" fill="currentColor" font-family="ui-monospace, Menlo, monospace" font-size="11" opacity="0.6">code touches the workbook. The model never edits XML.</text>
   </svg>`;
 }
+
+// Voice Agent Audit case-study architecture — a separate STT → text LLM → TTS
+// pipeline (no speech-to-speech model). Every draft reply passes a guard before
+// it is spoken; recording, transcripts, the decision log and latency run as a
+// parallel observation layer that feeds human review and regression tests.
+export function voiceAgentArchitecture() {
+  const box = (y, title, sub, strong = false) => `
+      <text x="149" y="${y + 21}" font-size="13"${strong ? ' font-weight="600"' : ''}>${title}</text>
+      <text x="149" y="${y + 37}" font-size="10" opacity="0.55">${sub}</text>`;
+  const obs = (y, title, sub) => `
+      <text x="361" y="${y + 21}" font-size="11">${title}</text>
+      <text x="361" y="${y + 37}" font-size="9.5" opacity="0.55">${sub}</text>`;
+  return `
+  <svg class="arch-svg arch-svg--wide" viewBox="0 0 440 556" role="img" aria-label="Voice Agent Audit architecture, top to bottom: the receptionist's phone line connects through Twilio Programmable Voice and LiveKit Cloud's Twilio connector; Silero VAD and an end-of-turn window decide when the receptionist has finished; local faster-whisper transcribes it; GPT-OSS on Groq drafts the patient's reply with scenario memory; a response guard speaks it, substitutes a grounded line, or ends the call politely; local Windows SAPI speaks the reply back down the phone line. In parallel, a stereo recorder, speaker-labeled transcripts, a decision log and per-turn latency metrics feed human review, findings and regression tests.">
+    <g class="arch-boxes" fill="none" stroke="currentColor" stroke-width="1.4">
+      <rect x="24" y="16" width="250" height="48" rx="2"/>
+      <rect x="24" y="84" width="250" height="48" rx="2"/>
+      <rect x="24" y="152" width="250" height="48" rx="2"/>
+      <rect x="24" y="220" width="250" height="48" rx="2"/>
+      <rect x="24" y="288" width="250" height="48" rx="2"/>
+      <rect x="24" y="356" width="250" height="48" rx="2"/>
+      <rect x="24" y="424" width="250" height="48" rx="2"/>
+      <rect x="296" y="84" width="130" height="48" rx="2" stroke-dasharray="3 3"/>
+      <rect x="296" y="220" width="130" height="48" rx="2" stroke-dasharray="3 3"/>
+      <rect x="296" y="288" width="130" height="48" rx="2" stroke-dasharray="3 3"/>
+      <rect x="296" y="356" width="130" height="48" rx="2" stroke-dasharray="3 3"/>
+      <rect x="296" y="424" width="130" height="48" rx="2" stroke="${RUST}"/>
+    </g>
+    <g class="arch-lines" fill="none" stroke="${RUST}" stroke-width="1.5">
+      <path d="M149,64 V84"/>
+      <path d="M149,132 V152"/>
+      <path d="M149,200 V220"/>
+      <path d="M149,268 V288"/>
+      <path d="M149,336 V356"/>
+      <path d="M149,404 V424"/>
+      <path d="M24,448 H10 V40 H24"/>
+      <path d="M18,34 L24,40 L18,46"/>
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity="0.5">
+      <path d="M274,108 H296"/>
+      <path d="M274,244 H296"/>
+      <path d="M274,312 H296"/>
+      <path d="M274,380 H296"/>
+      <path d="M361,132 V220 M361,268 V288 M361,336 V356 M361,404 V424"/>
+    </g>
+    <g fill="currentColor" font-family="ui-monospace, Menlo, monospace" text-anchor="middle">
+      ${box(16, 'RECEPTIONIST · PHONE LINE', 'the voice agent under test')}
+      ${box(84, 'TWILIO → LIVEKIT CLOUD', 'Programmable Voice · Twilio connector')}
+      ${box(152, 'VAD + END-OF-TURN', 'Silero · 1.0–2.5 s window')}
+      ${box(220, 'WHISPER STT', 'faster-whisper tiny.en · local CPU')}
+      ${box(288, 'GPT-OSS · SCENARIO MEMORY', 'fixed facts · 4 recent turns · open Qs', true)}
+      ${box(356, 'RESPONSE GUARD', 'speak · grounded line · end politely', true)}
+      ${box(424, 'WINDOWS SAPI TTS', 'local · patient reply to the line')}
+      <text x="361" y="70" font-size="9.5" opacity="0.55">OBSERVATION</text>
+      ${obs(84, 'STEREO RECORDING', 'channel per speaker')}
+      ${obs(220, 'TRANSCRIPTS', 'speaker-labeled')}
+      ${obs(288, 'DECISION LOG', 'every draft + verdict')}
+      ${obs(356, 'LATENCY', 'per stage, per turn')}
+      ${obs(424, 'REVIEW + TESTS', 'findings · regressions')}
+    </g>
+    <text x="10" y="506" fill="currentColor" font-family="ui-monospace, Menlo, monospace" font-size="11" opacity="0.6">Separate STT → text LLM → TTS. No speech-to-speech model.</text>
+    <text x="10" y="522" fill="currentColor" font-family="ui-monospace, Menlo, monospace" font-size="11" opacity="0.6">Every reply is checked before it is spoken; every call</text>
+    <text x="10" y="538" fill="currentColor" font-family="ui-monospace, Menlo, monospace" font-size="11" opacity="0.6">leaves unedited audio, transcripts and a decision log.</text>
+  </svg>`;
+}
