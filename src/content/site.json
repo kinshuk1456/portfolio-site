@@ -28,7 +28,7 @@
       "ctaPrimary": { "label": "Selected work", "href": "/projects.html" },
       "ctaSecondary": { "label": "How I think", "href": "/insights.html" }
     },
-    "featuredProjectSlugs": ["vizor", "habitpact", "event-checkin-system", "grhastha", "operations-kpi-dashboard"],
+    "featuredProjectSlugs": ["vizor", "habitpact", "event-checkin-system", "operations-kpi-dashboard"],
     "featuredInsightSlugs": ["from-messy-data-to-decisions"],
     "featuredLifeSlugs": ["trail-notes-reset"]
   },

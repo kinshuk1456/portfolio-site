@@ -7,7 +7,7 @@
 // - dist/content contains GENERATED artifacts only (indexes/manifests)
 // - exclude src/content/templates from dist
 
-import { rm, mkdir, readdir, copyFile } from 'node:fs/promises';
+import { rm, mkdir, readdir, copyFile, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { validateContent } from './validate-content.mjs';
@@ -54,6 +54,16 @@ async function copyAuthoredContentToDist() {
 
   // Remove templates from dist/data (authoring-only)
   await rm(path.join(DIST, 'data', 'templates'), { recursive: true, force: true });
+
+  // Drop unpublished projects so a hidden project can't be opened by direct URL
+  // (indexes already skip them; this keeps their files off the deployed site).
+  const itemsDir = path.join(DIST, 'data', 'projects', 'items');
+  for (const entry of await readdir(itemsDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const dir = path.join(itemsDir, entry.name);
+    const project = JSON.parse(await readFile(path.join(dir, 'project.json'), 'utf8'));
+    if ((project.status || 'draft') !== 'published') await rm(dir, { recursive: true, force: true });
+  }
 }
 
 async function main() {
