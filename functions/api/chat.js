@@ -69,12 +69,6 @@ Selected projects (published). If asked to summarize any project, use these deta
    alerts, session reassignment, and admin export. Ran the live event: 120+ check-ins across 18
    sessions. Used Google Sheets as the backend (no separate database) on purpose.
 
-4. Grhastha — Guided Puja at Home (Product + Engineering). Family-led, non-profit oriented; Kinshuk
-   is a product/technical contributor (don't overstate ownership). Three pillars: Know When
-   (location-aware timing/muhurta), Know How (step-by-step guidance, materials, substitutes), Know
-   the Words (Sanskrit mantras with audio, transliteration, meaning). Principles: no login, no
-   subscription, calm/authentic not gamified, onboard once. Initial focus: Ganesh Chaturthi.
-
 5. PIM Brands — Operational Analytics (Analytics + Forward Deployed). See PIM experience above:
    floor-first discovery, 15 analytics products, four source systems into Power BI, ~10+ hours/week
    of reporting automated.
